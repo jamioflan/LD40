@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class WorldBuilder : MonoBehaviour
 {
@@ -168,6 +169,8 @@ public class WorldBuilder : MonoBehaviour
                         whatAnExcellentPieceOfTrash.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
                     }
                 }
+                Debug.Log(i + ", " + j);
+                //worldTiles[i, j].floorMesh.GetComponent<NavMeshSurface>().BuildNavMesh();
             }
         }
 
@@ -177,5 +180,10 @@ public class WorldBuilder : MonoBehaviour
 
         Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
         Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
+
+        NavMeshSurface meshSurf = worldTiles[iBestHomeX, iBestHomeY].floorMesh.GetComponent<NavMeshSurface>();
+        Debug.Log(meshSurf.GetType());
+        Debug.Log("About to build Nav Mesh!!!");
+        meshSurf.BuildNavMesh();
     }
 }
