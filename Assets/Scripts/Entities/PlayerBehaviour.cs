@@ -60,6 +60,7 @@ public class PlayerBehaviour : MonoBehaviour {
                     if ( hit.collider.GetComponent<Workbench>() != null)
                     {
                         // Open the work bench menu
+                        Core.GetCore().theWorkbenchMenu.gameObject.SetActive(true);
                     }
                 }
             }
