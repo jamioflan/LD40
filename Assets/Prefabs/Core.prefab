@@ -555,7 +555,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265426107364128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.637462, y: 2.7975216, z: 3.3700466}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4013313439888086}
@@ -1149,8 +1149,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee192d5ab0c522741bac25dcc41ef99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumItems: 5
   ShowBuiltItems: 0
+  m_xItems:
+  - m_xDebugName: Part1
+    m_bSpaceshipPart: 1
+    m_iIndex: 0
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Part2
+    m_bSpaceshipPart: 1
+    m_iIndex: 1
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Part3
+    m_bSpaceshipPart: 1
+    m_iIndex: 2
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Part4
+    m_bSpaceshipPart: 1
+    m_iIndex: 3
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Part5
+    m_bSpaceshipPart: 1
+    m_iIndex: 4
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Skill_JetPack
+    m_bSpaceshipPart: 0
+    m_iIndex: 0
+    m_iGreenCost: 0
+    m_iRedCost: 0
+    m_iBlueCost: 0
+    m_bBuilt: 1
+  - m_xDebugName: Skill_Scanner
+    m_bSpaceshipPart: 0
+    m_iIndex: 1
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Skill_Stun
+    m_bSpaceshipPart: 0
+    m_iIndex: 2
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Skill_Slow
+    m_bSpaceshipPart: 0
+    m_iIndex: 3
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
+  - m_xDebugName: Skill_SpeedBoost
+    m_bSpaceshipPart: 0
+    m_iIndex: 4
+    m_iGreenCost: 5
+    m_iRedCost: 5
+    m_iBlueCost: 5
+    m_bBuilt: 0
 --- !u!114 &114561573964969256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1357,6 +1427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theWorkbenchMenu: {fileID: 114506503716013552}
+  theWorkbench: {fileID: 0}
+  theSpaceship: {fileID: 0}
   thePlayer: {fileID: 0}
   worldBuilder: {fileID: 114710636587697150}
 --- !u!114 &114614272863192894
