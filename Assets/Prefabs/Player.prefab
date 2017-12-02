@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc141891960fb945adea9abd3e287e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: 2.001
+  interactDistance: 4
   jumpSpeed: 15
   scandiumTemplate: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390,
     type: 2}

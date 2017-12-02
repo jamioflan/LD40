@@ -76,11 +76,11 @@ public class PlayerBehaviour : MonoBehaviour {
                 if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude < interactDistance)
                 {
                     
-                    if ( hit.collider.GetComponent<ResourceBase>() != null)
+                    if ( hit.collider.GetComponentInParent<ResourceBase>() != null)
                     {
-                        if (AddResource(hit.collider.GetComponent<ResourceBase>() ) )
+                        if (AddResource(hit.collider.GetComponentInParent<ResourceBase>() ) )
                         {
-                            Destroy(hit.collider.gameObject);
+                            Destroy(hit.collider.GetComponentInParent<ResourceBase>().gameObject);
                         }
                     }
                     if ( hit.collider.GetComponent<Workbench>() != null)

@@ -70,6 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4754297964967398}
+  - component: {fileID: 114062431420141850}
   m_Layer: 0
   m_Name: PurpleOre
   m_TagString: Untagged
@@ -372,7 +373,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146240746510658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.184041, y: 67.03637, z: -157.88702}
+  m_LocalPosition: {x: 133.09871, y: 43.708813, z: -166.49493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4763733530933208}
@@ -974,3 +975,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114062431420141850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1146240746510658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419dc8270818bf54ea708fd7b88682de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1

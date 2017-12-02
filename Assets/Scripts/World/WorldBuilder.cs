@@ -89,7 +89,16 @@ public class WorldBuilder : MonoBehaviour
             }
         }
 
+        fLowestPerlinScore -= 0.1f;
+        fHighestPerlinScore += 0.1f;
+
         // Biome-y bsns
+        List<KeyValuePair<int, int>>[] tilesByBiome = new List<KeyValuePair<int, int>>[Biomes.iNUM_BIOMES];
+        for (int i = 0; i < Biomes.iNUM_BIOMES; i++)
+        {
+            tilesByBiome[i] = new List<KeyValuePair<int, int>>();
+        }
+
         Biome[,] biomes = new Biome[width, height];
         for (int i = 0; i < width; i++)
         {
@@ -104,8 +113,12 @@ public class WorldBuilder : MonoBehaviour
                 else if (fBiomeSeed > 0.1f)
                     biomes[i, j] = Biome.CRUMPETS;
                 else biomes[i, j] = Biome.SHINYLAND;
+
+                tilesByBiome[(int)biomes[i, j]].Add(new KeyValuePair<int, int>(i, j));
             }
         }
+
+
 
 
         // Spawn tiles
@@ -171,11 +184,26 @@ public class WorldBuilder : MonoBehaviour
             }
         }
 
+        // Spawn some sweet loot
+        for (int i = 0; i < Biomes.iNUM_BIOMES; i++)
+        {
+            for (int j = 0; j < sweetLoot[i].whyDoIHaveToDoThisUnity.Count; j++)
+            {
+                KeyValuePair<int, int> pair = tilesByBiome[i][Random.Range(0, tilesByBiome[i].Count)];
+                WorldTile tile = worldTiles[pair.Key, pair.Value];
+                GameObject loot = Instantiate<GameObject>(sweetLoot[i].whyDoIHaveToDoThisUnity[j], tile.transform);
+                loot.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), tile.walls.Length > 0 ? 2.0f : 0.0f, Random.Range(2.0f, 8.0f)); // No hacks here, honest.
+                loot.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
+            }
+        }
+
         Destroy(worldTiles[iBestHomeX, iBestHomeY].gameObject);
         worldTiles[iBestHomeX, iBestHomeY] = Instantiate<WorldTile>(home, transform);
         worldTiles[iBestHomeX, iBestHomeY].transform.localPosition = new Vector3(-width * 5.0f + iBestHomeX * 10.0f, 0.0f, -height * 5.0f + iBestHomeY * 10.0f);
 
         Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
         Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
+
+        
     }
 }
