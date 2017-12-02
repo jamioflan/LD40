@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDistance: 2
-  jumpSpeed: 8
+  jumpSpeed: 15
   scandiumTemplate: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390,
     type: 2}
   greenTemplate: {fileID: 114870246407678840, guid: 4045db8386a72e14ea073cb404f2d4a8,
