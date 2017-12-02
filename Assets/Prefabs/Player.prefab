@@ -408,11 +408,11 @@ MonoBehaviour:
   jumpSpeed: 15
   scandiumTemplate: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390,
     type: 2}
-  greenTemplate: {fileID: 114870246407678840, guid: 4045db8386a72e14ea073cb404f2d4a8,
+  gemTemplate: {fileID: 114870246407678840, guid: 4045db8386a72e14ea073cb404f2d4a8,
     type: 2}
-  redTemplate: {fileID: 114870246407678840, guid: 3732d60b65c009f4191e76288da0b842,
+  fuelTemplate: {fileID: 114870246407678840, guid: 3732d60b65c009f4191e76288da0b842,
     type: 2}
-  blueTemplate: {fileID: 114870246407678840, guid: 1bb69224421845c4bb7165b6255424fb,
+  beamsTemplate: {fileID: 114870246407678840, guid: 1bb69224421845c4bb7165b6255424fb,
     type: 2}
   collectedResources: []
   capacity: 5

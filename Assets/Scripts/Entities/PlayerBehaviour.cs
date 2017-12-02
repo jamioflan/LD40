@@ -12,9 +12,9 @@ public class PlayerBehaviour : MonoBehaviour {
      * Resource Templates *
      *********************/
 	public CollectedResource scandiumTemplate;
-    public CollectedResource greenTemplate;
-    public CollectedResource redTemplate;
-    public CollectedResource blueTemplate;
+    public CollectedResource gemTemplate;
+    public CollectedResource fuelTemplate;
+    public CollectedResource beamsTemplate;
 
 	public List<CollectedResource> collectedResources;
 	public int capacity = 5;
@@ -126,17 +126,17 @@ public class PlayerBehaviour : MonoBehaviour {
         CollectedResource template;
         switch (resource.type)
         {
-            case ResourceBase.ResourceType.Scandium:
+            case ResourceBase.ResourceType.SCANDIUM:
                 template = scandiumTemplate;
                 break;
-            case ResourceBase.ResourceType.Green:
-                template = greenTemplate;
+            case ResourceBase.ResourceType.GEMS:
+                template = gemTemplate;
                 break;
-            case ResourceBase.ResourceType.Red:
-                template = redTemplate;
+            case ResourceBase.ResourceType.FUEL:
+                template = fuelTemplate;
                 break;
-            case ResourceBase.ResourceType.Blue:
-                template = blueTemplate;
+            case ResourceBase.ResourceType.BEAMS:
+                template = beamsTemplate;
                 break;
             default: // This is just to make VS happy...
                 template = scandiumTemplate;
