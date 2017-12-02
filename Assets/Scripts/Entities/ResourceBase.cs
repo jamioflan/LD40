@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class ResourceBase : MonoBehaviour {
 
-    public enum ResourceType { Scandium, Red, Green, Blue }
+    public enum ResourceType
+    {
+        SCANDIUM,
+        GEMS,
+        FUEL,
+        BEAMS
+    }
 
     public ResourceType type;
 

@@ -93,8 +93,8 @@ public class WorldBuilder : MonoBehaviour
             }
         }
 
-        fLowestPerlinScore -= 0.1f;
-        fHighestPerlinScore += 0.1f;
+        fLowestPerlinScore -= 0.2f;
+        fHighestPerlinScore += 0.2f;
 
         // Biome-y bsns
         List<KeyValuePair<int, int>>[] tilesByBiome = new List<KeyValuePair<int, int>>[Biomes.iNUM_BIOMES];
