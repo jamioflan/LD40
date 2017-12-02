@@ -49,6 +49,7 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             currentYSpeed = 0.0F;
         }
+        // move with speed
         moveDirection *= speed;
         moveDirection.y += currentYSpeed;
 
