@@ -24,8 +24,11 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public float currentYSpeed = 0.0F;
 
-	// Use this for initialization
-	void Start () {
+    public Transform body, head;
+    public float fBodyAngle = 0.0f, fHeadAngle = 0.0f;
+
+    // Use this for initialization
+    void Start () {
 
 	}
 	
@@ -53,7 +56,17 @@ public class PlayerBehaviour : MonoBehaviour {
         moveDirection *= speed;
         moveDirection.y += currentYSpeed;
 
-		controller.Move (moveDirection * Time.fixedDeltaTime);
+        if (moveDirection.magnitude > 1.0f)
+        {
+            float fAngle = Mathf.Rad2Deg * Mathf.Atan2(controller.velocity.z, controller.velocity.x);
+            fBodyAngle = Mathf.LerpAngle(fBodyAngle, fAngle, 8.0f * Time.fixedDeltaTime);
+            body.localEulerAngles = new Vector3(0.0f, 180.0f - fBodyAngle, 0.0f);
+        }
+
+        fHeadAngle = Mathf.LerpAngle(fHeadAngle, fBodyAngle, 4.0f * Time.fixedDeltaTime);
+        head.localEulerAngles = new Vector3(0.0f, 180.0f - fHeadAngle, 0.0f);
+
+        controller.Move (moveDirection * Time.fixedDeltaTime);
         if (Input.GetMouseButtonDown(0) )
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
