@@ -158,6 +158,11 @@ public class WorkbenchMenu : MonoBehaviour
         }
 	}
 
+    public void BackOut()
+    {
+        Core.GetCore().theWorkbenchMenu.gameObject.SetActive(false);
+    }
+
     struct ListItem
     {
         public bool m_bBuilt; // Whether the player has built this item
