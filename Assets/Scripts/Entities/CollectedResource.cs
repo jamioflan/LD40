@@ -5,7 +5,12 @@ using UnityEngine;
 public enum ResourceType { Scandium, Red, Green, Blue }
 
 public class CollectedResource : MonoBehaviour {
+    public static float followDistance = 1.0F;
+    public float speed = 8.0F;
+    public ResourceType type;
 
+    // The object that this one is following
+    public Transform leader;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,6 +18,11 @@ public class CollectedResource : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        Vector3 distance = leader.position - transform.position;
+		if (distance.magnitude > followDistance ) {
+            // We have to catch up
+            Vector3 moveDirection = transform.TransformDirection(distance) * speed;
+            transform.Translate(moveDirection * Time.deltaTime);
+        }
 	}
 }
