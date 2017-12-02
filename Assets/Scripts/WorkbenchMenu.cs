@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WorkbenchMenu : MonoBehaviour
 {
-    public GameObject Menu;
-
     public int NumItems = 5; // Get this from somewhere?
     public bool ShowBuiltItems = false;
 
@@ -40,12 +38,6 @@ public class WorkbenchMenu : MonoBehaviour
         // afford) and hide/show the right build button and increment/decrement buttons.
 
 	}
-
-    // Function to open or close the workbench menu
-    void SetWorkbenchMenuOpen(bool bOpen)
-    {
-        Menu.SetActive(bOpen);
-    }
 
     // OnClick functions
     public void Listbox_Decrement()

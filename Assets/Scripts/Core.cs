@@ -6,6 +6,8 @@ public class Core : MonoBehaviour
 {
     private static Core theCore;
 
+    public WorkbenchMenu theWorkbenchMenu;
+
     public static Core GetCore()
     {
         return theCore;

@@ -1842,6 +1842,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114611528901540096, guid: 39a70b4284cd1e6448202b83ec29c4e6,
+        type: 2}
+      propertyPath: theWorkbenchMenu
+      value: 
+      objectReference: {fileID: 1185746183}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39a70b4284cd1e6448202b83ec29c4e6, type: 2}
   m_IsPrefabParent: 0
@@ -2063,6 +2068,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1733334414855874, guid: 6017527de9376ad478e0317eae05d390,
     type: 2}
   m_PrefabInternal: {fileID: 1185746181}
+--- !u!114 &1185746183 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114963307091477542, guid: 6017527de9376ad478e0317eae05d390,
+    type: 2}
+  m_PrefabInternal: {fileID: 1185746181}
+  m_Script: {fileID: 11500000, guid: ee192d5ab0c522741bac25dcc41ef99a, type: 3}
 --- !u!1 &1185912188
 GameObject:
   m_ObjectHideFlags: 0

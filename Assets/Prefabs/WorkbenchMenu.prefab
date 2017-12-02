@@ -1360,7 +1360,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee192d5ab0c522741bac25dcc41ef99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Menu: {fileID: 1733334414855874}
   NumItems: 5
   ShowBuiltItems: 0
 --- !u!222 &222004321910184838
