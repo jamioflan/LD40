@@ -35,5 +35,13 @@ public class Core : MonoBehaviour
 
     }
 
+    public static WorldTile OuEstLeBase(bool bSilVousPlait = false)
+    {
+        if(bSilVousPlait)
+        {
+            return theCore.worldBuilder.theBase;
+        }
 
+        return null;
+    }
 }

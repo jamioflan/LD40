@@ -15,6 +15,7 @@ public class WorldBuilder : MonoBehaviour
     public eurgh[] sweetLoot = new eurgh[Biomes.iNUM_BIOMES];
     public PlayerBehaviour playerPrefab;
     public WorldTile[,] worldTiles;
+    public WorldTile theBase;
     public Material[] biomeMaterials = new Material[Biomes.iNUM_BIOMES];
     public int width = 40, height = 40;
     public float fHillNoiseScale = 9.57f;
@@ -200,6 +201,7 @@ public class WorldBuilder : MonoBehaviour
         Destroy(worldTiles[iBestHomeX, iBestHomeY].gameObject);
         worldTiles[iBestHomeX, iBestHomeY] = Instantiate<WorldTile>(home, transform);
         worldTiles[iBestHomeX, iBestHomeY].transform.localPosition = new Vector3(-width * 5.0f + iBestHomeX * 10.0f, 0.0f, -height * 5.0f + iBestHomeY * 10.0f);
+        theBase = worldTiles[iBestHomeX, iBestHomeY];
 
         Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
         Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
