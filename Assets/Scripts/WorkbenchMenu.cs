@@ -10,22 +10,27 @@ public class WorkbenchMenu : MonoBehaviour
     // Use this for initialization
     void Start()
 	{
+        
+	}
+
+    public void Initialise()
+    {
         // Make sure NumItems is non-negative
-        if( NumItems < 0 )
+        if (NumItems < 0)
         {
             NumItems = 0;
             return;
         }
 
         // Fill the list
-        m_xItems = new List<ListItem>( NumItems );
-        for( uint u = 0; u < NumItems; u++ )
+        m_xItems = new List<ListItem>(NumItems);
+        for (uint u = 0; u < NumItems; u++)
         {
             ListItem xItem;
             xItem.m_bBuilt = false; // No saved profile data, so initialise everything to false
             m_xItems.Add(xItem);
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update()
