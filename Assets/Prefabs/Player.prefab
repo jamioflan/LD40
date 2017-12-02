@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc141891960fb945adea9abd3e287e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactDistance: 2
+  interactDistance: 2.001
   jumpSpeed: 15
   scandiumTemplate: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390,
     type: 2}
@@ -416,7 +416,6 @@ MonoBehaviour:
     type: 2}
   collectedResources: []
   capacity: 5
-  moveDirection: {x: 0, y: 0, z: 0}
   speed: 12
   currentYSpeed: 0
   body: {fileID: 4889667815838630}
