@@ -8,6 +8,7 @@ public class Core : MonoBehaviour
 
     public WorkbenchMenu theWorkbenchMenu;
     public PlayerBehaviour thePlayer;
+    public WorldBuilder worldBuilder;
 
     public static Core GetCore()
     {
@@ -22,6 +23,8 @@ public class Core : MonoBehaviour
             Destroy(theCore.gameObject);
         }
         theCore = this;
+
+        worldBuilder.GenerateWorld();
     }
     
     private void Update()

@@ -16,20 +16,19 @@ public class WorldBuilder : MonoBehaviour
     public PlayerBehaviour playerPrefab;
     public WorldTile[,] worldTiles;
     public Material[] biomeMaterials = new Material[Biomes.iNUM_BIOMES];
-    public int iWidth = 40, iHeight = 40;
+    public int width = 40, height = 40;
     public float fHillNoiseScale = 9.57f;
     public float fBiomeNoiseScale = 3.81f;
 
 	void Start ()
     {
-        GenerateWorld(iWidth, iHeight);
     }
 	
 	void Update ()
     {
 	}
 
-    private void GenerateWorld(int width, int height)
+    public void GenerateWorld()
     {
         int iBestHomeX = 0, iBestHomeY = 0;
         float fBestHomeScore = 10000000.0f;
@@ -68,18 +67,16 @@ public class WorldBuilder : MonoBehaviour
         float fNoiseOffsetY = Random.Range(-10000.0f, 10000.0f);
 
         // Fill randomly
-        float fMaxPerlinOutput = 0.0f;
         for (int i = 1; i < width - 1; i++)
         {
             for(int j = 1; j < height - 1; j++)
             {
                 tiles[i, j] = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
-                if (tiles[i, j] > fMaxPerlinOutput)
-                    fMaxPerlinOutput = tiles[i, j];
             }
         }
 
         float fLowestPerlinScore = 1.0f;
+        float fHighestPerlinScore = 0.0f;
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -87,6 +84,8 @@ public class WorldBuilder : MonoBehaviour
                float fPerlin = Mathf.PerlinNoise(fNoiseOffsetX + fBiomeNoiseScale * (float)i / (float)width, fNoiseOffsetY + fBiomeNoiseScale * (float)j / (float)height);
                 if (fPerlin < fLowestPerlinScore)
                     fLowestPerlinScore = fPerlin;
+                if (fPerlin > fHighestPerlinScore)
+                    fHighestPerlinScore = fPerlin;
             }
         }
 
@@ -97,6 +96,7 @@ public class WorldBuilder : MonoBehaviour
             for (int j = 0; j < height; j++)
             {
                 float fBiomeSeed = Mathf.PerlinNoise(fNoiseOffsetX + fBiomeNoiseScale * (float)i / (float)width, fNoiseOffsetY + fBiomeNoiseScale * (float)j / (float)height);
+                fBiomeSeed = fLowestPerlinScore + (fHighestPerlinScore - fLowestPerlinScore) * fBiomeSeed;
                 if (fBiomeSeed > 0.7f)
                     biomes[i, j] = Biome.SAND;
                 else if (fBiomeSeed > 0.4f)

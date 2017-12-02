@@ -1357,6 +1357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theWorkbenchMenu: {fileID: 114506503716013552}
+  thePlayer: {fileID: 0}
+  worldBuilder: {fileID: 114710636587697150}
 --- !u!114 &114614272863192894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1494,6 +1496,11 @@ MonoBehaviour:
     - {fileID: 1146240746510658, guid: 9c47d5b35fb522b48ba90bc763582be0, type: 2}
   - whyDoIHaveToDoThisUnity:
     - {fileID: 1146240746510658, guid: 9c47d5b35fb522b48ba90bc763582be0, type: 2}
+  sweetLoot:
+  - whyDoIHaveToDoThisUnity: []
+  - whyDoIHaveToDoThisUnity: []
+  - whyDoIHaveToDoThisUnity: []
+  - whyDoIHaveToDoThisUnity: []
   playerPrefab: {fileID: 114257802786489760, guid: d0c062d72dc9ae345b5ff43026a4e558,
     type: 2}
   biomeMaterials:
@@ -1501,8 +1508,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6c4c17456697f1444bd2ca23d5c100eb, type: 2}
   - {fileID: 2100000, guid: 9327f9299925c57439f2535a96f8dc2c, type: 2}
   - {fileID: 2100000, guid: 0cb284ba0aaaae64ea53ca40b1523755, type: 2}
-  iWidth: 40
-  iHeight: 40
+  width: 40
+  height: 40
   fHillNoiseScale: 9.57
   fBiomeNoiseScale: 3.81
 --- !u!114 &114741338876624194
