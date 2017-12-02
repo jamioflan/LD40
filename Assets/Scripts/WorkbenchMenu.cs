@@ -170,9 +170,18 @@ public class WorkbenchMenu : MonoBehaviour
                 }
             }
 
-            Core.GetCore().theWorkbench.Pay(xItem.m_iGreenCost, xItem.m_iRedCost, xItem.m_iBlueCost);
-
-            // TODO: Actually build the item and add it to the ship/unlock the player skill...
+            // Pay and build
+            if (Core.GetCore().theWorkbench.Pay(xItem.m_iGreenCost, xItem.m_iRedCost, xItem.m_iBlueCost))
+            {
+                if (xItem.m_bSpaceshipPart)
+                {
+                    Core.GetCore().theSpaceship.OnPartPurchased(xItem.m_iIndex);
+                }
+                else
+                {
+                    Core.GetCore().thePlayer.UnlockSkill(xItem.m_iIndex);
+                }
+            }
         }
 	}
 
@@ -184,8 +193,11 @@ public class WorkbenchMenu : MonoBehaviour
 
     struct ListItem
     {
-        // Whether it's a spaceship part ( if not it's a skill)
+        // Whether it's a spaceship part (if not it's a skill)
         public bool m_bSpaceshipPart;
+
+        // The index of the spaceship part/skill
+        public int m_iIndex;
 
         // Cost
         public int m_iGreenCost;

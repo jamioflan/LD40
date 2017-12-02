@@ -161,4 +161,9 @@ public class PlayerBehaviour : MonoBehaviour {
             }
         }
     }
+
+    public void UnlockSkill(int iSkillIndex)
+    {
+        // TODO
+    }
 }
