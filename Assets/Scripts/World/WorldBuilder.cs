@@ -99,30 +99,13 @@ public class WorldBuilder : MonoBehaviour
                     case 2: tile = edge; break;
                 }
                 worldTiles[i, j] = Instantiate<WorldTile>(tile, transform);
-                worldTiles[i, j].transform.localPosition = new Vector3(i * 10.0f, 0.0f, j * 10.0f);
+                worldTiles[i, j].transform.localPosition = new Vector3(-width * 5.0f + i * 10.0f, 0.0f, -height * 5.0f + j * 10.0f);
 
                 // Setup walls
                 switch (tiles[i, j])
                 {
                     case 0:
                     {
-                        if (i == 0 || i == width - 1)
-                            break;
-                        if (j == 0 || j == height - 1)
-                            break;
-
-                        bool bNaff = false;
-                        for(int x = -1; x <= 1; x++)
-                        {
-                            for(int y = -1; y <= 1; y++)
-                            {
-                                if (tiles[x + i, y + j] > 0)
-                                   bNaff = true;
-                            }
-                        }
-                        if (bNaff)
-                            break;
-
                         float fPerlinScore = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
                         float fDistFromCentre = new Vector3(i - width / 2, 0.0f, j - height / 2).magnitude;
                         float fScore = (fPerlinScore + 1.0f) * (fDistFromCentre + 1.0f);
