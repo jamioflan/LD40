@@ -109,6 +109,7 @@ public class Workbench : MonoBehaviour
                     {
                         ListItem xListItem = m_xItems[iIndexToTry];
 
+                        if (xListItem.m_bBuilt)
                         {
                             iIndexToTry++;
                         }
@@ -132,6 +133,7 @@ public class Workbench : MonoBehaviour
                         {
                             ListItem xListItem = m_xItems[iIndexToTry];
 
+                            if (xListItem.m_bBuilt)
                             {
                                 iIndexToTry--;
                             }
