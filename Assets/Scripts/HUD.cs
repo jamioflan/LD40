@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
@@ -32,5 +33,13 @@ public class HUD : MonoBehaviour
             onScreenPos = (onScreenPos / (max * 2)) + new Vector2(0.5f, 0.5f); //undo mapping
             Debug.Log(onScreenPos);
         }*/
+    }
+
+    public void PopulateCarryingCapacity(Text text)
+    {
+        int iCollectedResources = Core.GetCore().thePlayer.collectedResources.Count;
+        int iCapacity = Core.GetCore().thePlayer.capacity;
+
+        text.text = iCollectedResources + " / " + iCapacity;
     }
 }

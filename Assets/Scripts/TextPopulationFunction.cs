@@ -1,16 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class TextPopulationFunction : MonoBehaviour {
+[System.Serializable]
+public class TextPplnFn : UnityEvent<Text>
+{
+
+}
+
+public class TextPopulationFunction : MonoBehaviour
+{
+    public TextPplnFn populationFunction;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update()
+    {
+        Text text = gameObject.GetComponent<Text>();
+        populationFunction.Invoke(text);
 	}
 }

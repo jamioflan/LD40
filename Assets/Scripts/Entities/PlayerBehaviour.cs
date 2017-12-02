@@ -17,7 +17,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public CollectedResource blueTemplate;
 
 	public List<CollectedResource> collectedResources;
-	public uint capacity = 5;
+	public int capacity = 5;
 
 	public float speed = 1.0F;
 

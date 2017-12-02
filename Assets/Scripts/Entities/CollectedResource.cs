@@ -16,16 +16,16 @@ public class CollectedResource : ResourceBase {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         if (leader != null)
         {
             Vector3 distance = leader.position - transform.position;
             Vector3 moveDirection = Vector3.zero;
             if (distance.magnitude > followDistance)
             {
-                moveDirection = transform.TransformDirection(distance) * speed;
+                moveDirection = distance * speed;
             }
-            transform.Translate(moveDirection * Time.deltaTime);
+            transform.position += (moveDirection * Time.fixedDeltaTime);
         }
     }
 }
