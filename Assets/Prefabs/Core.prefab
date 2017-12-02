@@ -1485,6 +1485,8 @@ MonoBehaviour:
   hill: {fileID: 114951066238025624, guid: ac29ea6da62aef04d8e561879cc9bf2c, type: 2}
   edge: {fileID: 114951066238025624, guid: ee1a1bad6e83abb4fbfd6d6e2f42b48a, type: 2}
   home: {fileID: 114972608325600932, guid: 975928a11fddce547ba82bf586965395, type: 2}
+  playerPrefab: {fileID: 114257802786489760, guid: d0c062d72dc9ae345b5ff43026a4e558,
+    type: 2}
   biomeMaterials:
   - {fileID: 2100000, guid: e4a96c8de7c775c449b521953ed5fcee, type: 2}
   - {fileID: 2100000, guid: 6c4c17456697f1444bd2ca23d5c100eb, type: 2}
@@ -1868,7 +1870,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807485117128502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.3700466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224498805511351198}
