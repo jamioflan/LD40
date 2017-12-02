@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-	public float speed = 6.0F;
+	public float baseSpeed = 6.0F;
 
 	public Vector3 moveDirection = Vector3.zero;
+	public float speed = 0.0F;
 
 	// Use this for initialization
 	void Start () {
