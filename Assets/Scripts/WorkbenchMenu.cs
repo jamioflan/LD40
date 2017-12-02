@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour
+public class WorkbenchMenu : MonoBehaviour
 {
     public int NumItems = 5; // Get this from somewhere?
     public bool ShowBuiltItems = false;

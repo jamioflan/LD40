@@ -47,15 +47,19 @@ public class PlayerBehaviour : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit) )
             {
-                if (hit.collider != null)
+                if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude < interactDistance)
                 {
                     
-                    if ( (hit.collider.transform.position - transform.position).magnitude < interactDistance && hit.collider.GetComponent<ResourceBase>() != null)
+                    if ( hit.collider.GetComponent<ResourceBase>() != null)
                     {
                         if (AddResource(hit.collider.GetComponent<ResourceBase>() ) )
                         {
                             Destroy(hit.collider.gameObject);
                         }
+                    }
+                    if ( hit.collider.GetComponent<Workbench>() != null)
+                    {
+                        // Open the work bench menu
                     }
                 }
             }

@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 6
+  interactDistance: 2
   scandiumTemplate: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390,
     type: 2}
   greenTemplate: {fileID: 114870246407678840, guid: 4045db8386a72e14ea073cb404f2d4a8,
@@ -433,6 +434,52 @@ MonoBehaviour:
   capacity: 5
   moveDirection: {x: 0, y: 0, z: 0}
   speed: 6
+--- !u!1001 &1530187302
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896307729966020, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049853211474792, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+      propertyPath: m_Name
+      value: Workbench
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c38b2484bac2e4c418fd17fc054b9905, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1673031851
 Prefab:
   m_ObjectHideFlags: 0
