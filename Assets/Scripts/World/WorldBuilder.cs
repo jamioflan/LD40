@@ -95,7 +95,7 @@ public class WorldBuilder : MonoBehaviour
                     case 2: tile = edge; break;
                 }
                 worldTiles[i, j] = Instantiate<WorldTile>(tile, transform);
-                worldTiles[i, j].transform.localPosition = new Vector3(i * 10.0f, 0.0f, j * 10.0f);
+                worldTiles[i, j].transform.localPosition = new Vector3(-width * 5.0f + i * 10.0f, 0.0f, -height * 5.0f + j * 10.0f);
 
                 // Setup walls
                 if(tiles[i,j] == 1)
