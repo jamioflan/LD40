@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour {
 
+    public float meTime;
     private UnityEngine.AI.NavMeshAgent agent;
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        meTime = Random.Range(1.0f, 2.0f);
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (agent.destination == null)
+        if ((meTime -= Time.deltaTime) < 0)
         {
-            agent.destination = Core.GetCore().thePlayer.transform.position;
+            //nearbyOre = DetectOre();
         }
-		
+        agent.destination = Core.GetCore().thePlayer.transform.position;
 	}
 }

@@ -1615,6 +1615,7 @@ MonoBehaviour:
     - {fileID: 1146240746510658, guid: ebf11f6a31515ac448f5f379139639e4, type: 2}
   playerPrefab: {fileID: 114257802786489760, guid: d0c062d72dc9ae345b5ff43026a4e558,
     type: 2}
+  theBase: {fileID: 0}
   biomeMaterials:
   - {fileID: 2100000, guid: e4a96c8de7c775c449b521953ed5fcee, type: 2}
   - {fileID: 2100000, guid: 6c4c17456697f1444bd2ca23d5c100eb, type: 2}
@@ -1624,6 +1625,8 @@ MonoBehaviour:
   height: 40
   fHillNoiseScale: 9.57
   fBiomeNoiseScale: 3.81
+  enemyPrefab: {fileID: 114524864047710546, guid: 4a66d0dd502d99b48806f5c3fadc7dda,
+    type: 2}
 --- !u!114 &114741338876624194
 MonoBehaviour:
   m_ObjectHideFlags: 1

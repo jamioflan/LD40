@@ -38,6 +38,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	void FixedUpdate () {
 		CharacterController controller = GetComponent<CharacterController> ();
+        Vector3 horizontalVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * speed;
         Vector3 velocity = controller.velocity;
         if (controller.isGrounded)
         {
@@ -45,14 +46,12 @@ public class PlayerBehaviour : MonoBehaviour {
             {
                 velocity.y = 0;
             }
-            Vector2 horizontalVelocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
-            velocity.x = horizontalVelocity.x;
-            velocity.z = horizontalVelocity.y;
             velocity.y += Input.GetAxis("Jump") * jumpSpeed;
         }
         else
         {
             velocity += Physics.gravity * Time.fixedDeltaTime;
+
         }
 
         if (velocity.magnitude > 1.0f)
@@ -64,6 +63,9 @@ public class PlayerBehaviour : MonoBehaviour {
          
         fHeadAngle = Mathf.LerpAngle(fHeadAngle, fBodyAngle, 4.0f * Time.fixedDeltaTime);
         head.localEulerAngles = new Vector3(0.0f, 180.0f - fHeadAngle, 0.0f);
+
+        velocity.x = horizontalVelocity.x;
+        velocity.z = horizontalVelocity.z;
 
         controller.Move(velocity * Time.fixedDeltaTime);
 
@@ -103,7 +105,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
                     if (hit.collider.GetComponent<CollectedResource>() != null)
                     {
-                        Discard(hit.collider.GetComponent<CollectedResource>() );
+                        Yield(hit.collider.GetComponent<CollectedResource>() );
 
                     }
                 }
@@ -148,12 +150,12 @@ public class PlayerBehaviour : MonoBehaviour {
         return true;
     }
 
-    void Discard(CollectedResource resource)
+    void Yield(CollectedResource resource, Transform receiver = null)
     {
         int idx = collectedResources.IndexOf(resource);
         if (idx >= 0)
         {
-            resource.leader = null;
+            resource.SetLeader(receiver);
             collectedResources.RemoveAt(idx);
             if (idx  < collectedResources.Count)
             {

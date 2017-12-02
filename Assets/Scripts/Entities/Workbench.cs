@@ -32,4 +32,25 @@ public class Workbench : MonoBehaviour {
             return true;
         }
     }
+
+    public void ReceiveResource(ResourceBase.ResourceType type)
+    {
+        switch (type)
+        {
+            case ResourceBase.ResourceType.Blue:
+                nBlue++;
+                break;
+            case ResourceBase.ResourceType.Green:
+                nGreen++;
+                break;
+            case ResourceBase.ResourceType.Red:
+                nRed++;
+                break;
+            case ResourceBase.ResourceType.Scandium:
+                nScOre++;
+                break;
+            default:
+                break;
+        }
+    }
 }

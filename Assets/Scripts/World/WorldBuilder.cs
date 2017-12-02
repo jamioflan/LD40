@@ -22,6 +22,8 @@ public class WorldBuilder : MonoBehaviour
     public float fHillNoiseScale = 9.57f;
     public float fBiomeNoiseScale = 3.81f;
 
+    public BasicEnemy enemyPrefab;
+
 	void Start ()
     {
     }
@@ -210,6 +212,7 @@ public class WorldBuilder : MonoBehaviour
         Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
         Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
 
-
+        BasicEnemy foe = Instantiate<BasicEnemy>(enemyPrefab);
+        foe.transform.position = Core.GetCore().thePlayer.transform.position + new Vector3(1, 0, 0);
     }
 }

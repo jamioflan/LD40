@@ -28,4 +28,19 @@ public class CollectedResource : ResourceBase {
             transform.position += (moveDirection * Time.fixedDeltaTime);
         }
     }
+
+    void SetLeader(Transform receiver)
+    {
+        Workbench bench = receiver.GetComponent<Workbench>();
+        if (bench != null)
+        {
+            // If it's a workbench we destroy this and increment the workshop's count
+            bench.ReceiveResource(type);
+            Destroy(this);
+        }
+        else
+        {
+            leader = receiver;
+        }
+    }
 }
