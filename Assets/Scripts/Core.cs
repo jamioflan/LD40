@@ -7,6 +7,7 @@ public class Core : MonoBehaviour
     private static Core theCore;
 
     public WorkbenchMenu theWorkbenchMenu;
+    public PlayerBehaviour thePlayer;
 
     public static Core GetCore()
     {

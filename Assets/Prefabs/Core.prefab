@@ -1485,6 +1485,15 @@ MonoBehaviour:
   hill: {fileID: 114951066238025624, guid: ac29ea6da62aef04d8e561879cc9bf2c, type: 2}
   edge: {fileID: 114951066238025624, guid: ee1a1bad6e83abb4fbfd6d6e2f42b48a, type: 2}
   home: {fileID: 114972608325600932, guid: 975928a11fddce547ba82bf586965395, type: 2}
+  trash:
+  - whyDoIHaveToDoThisUnity:
+    - {fileID: 1146240746510658, guid: 1f1cf9b2e6294bb4291f77761118adce, type: 2}
+  - whyDoIHaveToDoThisUnity:
+    - {fileID: 1146240746510658, guid: 9c47d5b35fb522b48ba90bc763582be0, type: 2}
+  - whyDoIHaveToDoThisUnity:
+    - {fileID: 1146240746510658, guid: 9c47d5b35fb522b48ba90bc763582be0, type: 2}
+  - whyDoIHaveToDoThisUnity:
+    - {fileID: 1146240746510658, guid: 9c47d5b35fb522b48ba90bc763582be0, type: 2}
   playerPrefab: {fileID: 114257802786489760, guid: d0c062d72dc9ae345b5ff43026a4e558,
     type: 2}
   biomeMaterials:

@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class WorldBuilder : MonoBehaviour
 {
+    [System.Serializable]
+    public class eurgh
+    {
+        public List<GameObject> whyDoIHaveToDoThisUnity = new List<GameObject>();
+    }
+
     public WorldTile floor, hill, edge, home;
+    public eurgh[] trash = new eurgh[Biomes.iNUM_BIOMES];
+    public eurgh[] sweetLoot = new eurgh[Biomes.iNUM_BIOMES];
     public PlayerBehaviour playerPrefab;
     public WorldTile[,] worldTiles;
     public Material[] biomeMaterials = new Material[Biomes.iNUM_BIOMES];
@@ -41,30 +49,44 @@ public class WorldBuilder : MonoBehaviour
 
         worldTiles = new WorldTile[width,height];
 
-        int[,] tiles = new int[width, height];
+        float[,] tiles = new float[width, height];
 
         // Borders
         for(int i = 0; i < width; i++)
         {
-            tiles[i, 0] = 2;
-            tiles[i, height - 1] = 2;
+            tiles[i, 0] = 2.0f;
+            tiles[i, height - 1] = 2.0f;
         }
 
         for (int j = 0; j < height; j++)
         {
-            tiles[0, j] = 2;
-            tiles[width - 1, j] = 2;
+            tiles[0, j] = 2.0f;
+            tiles[width - 1, j] = 2.0f;
         }
 
         float fNoiseOffsetX = Random.Range(-10000.0f, 10000.0f);
         float fNoiseOffsetY = Random.Range(-10000.0f, 10000.0f);
 
         // Fill randomly
+        float fMaxPerlinOutput = 0.0f;
         for (int i = 1; i < width - 1; i++)
         {
             for(int j = 1; j < height - 1; j++)
             {
-                tiles[i, j] = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height) > 0.5f ? 1 : 0;
+                tiles[i, j] = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
+                if (tiles[i, j] > fMaxPerlinOutput)
+                    fMaxPerlinOutput = tiles[i, j];
+            }
+        }
+
+        float fLowestPerlinScore = 1.0f;
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+               float fPerlin = Mathf.PerlinNoise(fNoiseOffsetX + fBiomeNoiseScale * (float)i / (float)width, fNoiseOffsetY + fBiomeNoiseScale * (float)j / (float)height);
+                if (fPerlin < fLowestPerlinScore)
+                    fLowestPerlinScore = fPerlin;
             }
         }
 
@@ -92,51 +114,60 @@ public class WorldBuilder : MonoBehaviour
             for(int j = 0; j < height; j++)
             {
                 WorldTile tile = null;
-                switch(tiles[i, j])
-                {
-                    case 0: tile = floor; break;
-                    case 1: tile = hill; break;
-                    case 2: tile = edge; break;
-                }
+                if(tiles[i, j] > 1.0f)
+                    tile = edge;
+                else tile = tiles[i, j] > 0.5f ? hill : floor;
+
                 worldTiles[i, j] = Instantiate<WorldTile>(tile, transform);
                 worldTiles[i, j].transform.localPosition = new Vector3(-width * 5.0f + i * 10.0f, 0.0f, -height * 5.0f + j * 10.0f);
 
+                float fFloorHeight = 0.0f;
+
                 // Setup walls
-                switch (tiles[i, j])
+                if (tiles[i, j] > 1.0f) // Edge
                 {
-                    case 0:
+                    fFloorHeight = 1000.0f;
+                    worldTiles[i, j].walls[(int)Direction.UP].SetActive(j != height - 1 && tiles[i, j + 1] < 2);
+                    worldTiles[i, j].walls[(int)Direction.RIGHT].SetActive(i != width - 1 && tiles[i + 1, j] < 2);
+                    worldTiles[i, j].walls[(int)Direction.DOWN].SetActive(j != 0 && tiles[i, j - 1] < 2);
+                    worldTiles[i, j].walls[(int)Direction.LEFT].SetActive(i != 0 && tiles[i - 1, j] < 2);
+                }
+                else if (tiles[i, j] > 0.5f) // Hill
+                {
+                    fFloorHeight = 2.0f;
+                    worldTiles[i, j].walls[(int)Direction.UP].SetActive(j != height - 1 && tiles[i, j + 1] == 0);
+                    worldTiles[i, j].walls[(int)Direction.RIGHT].SetActive(i != width - 1 && tiles[i + 1, j] == 0);
+                    worldTiles[i, j].walls[(int)Direction.DOWN].SetActive(j != 0 && tiles[i, j - 1] == 0);
+                    worldTiles[i, j].walls[(int)Direction.LEFT].SetActive(i != 0 && tiles[i - 1, j] == 0);
+                }
+                else // Floor
+                {
+                    float fPerlinScore = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
+                    float fDistFromCentre = new Vector3(i - width / 2, 0.0f, j - height / 2).magnitude;
+                    float fScore = (fPerlinScore + 1.0f) * (fDistFromCentre + 1.0f);
+                    if (fScore < fBestHomeScore)
                     {
-                        float fPerlinScore = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
-                        float fDistFromCentre = new Vector3(i - width / 2, 0.0f, j - height / 2).magnitude;
-                        float fScore = (fPerlinScore + 1.0f) * (fDistFromCentre + 1.0f);
-                        if (fScore < fBestHomeScore)
-                        {
-                            fBestHomeScore = fScore;
-                            iBestHomeX = i;
-                            iBestHomeY = j;
-                        }
-                        break;
-                    }
-                    case 1:
-                    {
-                        worldTiles[i, j].walls[(int)Direction.UP].SetActive(j != height - 1 && tiles[i, j + 1] == 0);
-                        worldTiles[i, j].walls[(int)Direction.RIGHT].SetActive(i != width - 1 && tiles[i + 1, j] == 0);
-                        worldTiles[i, j].walls[(int)Direction.DOWN].SetActive(j != 0 && tiles[i, j - 1] == 0);
-                        worldTiles[i, j].walls[(int)Direction.LEFT].SetActive(i != 0 && tiles[i - 1, j] == 0);
-                        break;
-                    }
-                    case 2:
-                    {
-                        worldTiles[i, j].walls[(int)Direction.UP].SetActive(j != height - 1 && tiles[i, j + 1] < 2);
-                        worldTiles[i, j].walls[(int)Direction.RIGHT].SetActive(i != width - 1 && tiles[i + 1, j] < 2);
-                        worldTiles[i, j].walls[(int)Direction.DOWN].SetActive(j != 0 && tiles[i, j - 1] < 2);
-                        worldTiles[i, j].walls[(int)Direction.LEFT].SetActive(i != 0 && tiles[i - 1, j] < 2);
-                        break;
+                        fBestHomeScore = fScore;
+                        iBestHomeX = i;
+                        iBestHomeY = j;
                     }
                 }
 
                 // Setup biome
                 worldTiles[i, j].floorMesh.material = biomeMaterials[(int)biomes[i, j]];
+
+                // Spawn some trash, maybe
+                if (fFloorHeight < 500.0f)
+                {
+                    if(Random.Range(0.0f, 1.0f) < 0.1f)
+                    {
+                        List<GameObject> trashList = trash[(int)biomes[i, j]].whyDoIHaveToDoThisUnity;
+                        GameObject whatAnExcellentPieceOfTrash = Instantiate<GameObject>(trashList[Random.Range(0, trashList.Count)]);
+                        whatAnExcellentPieceOfTrash.transform.SetParent(worldTiles[i, j].transform);
+                        whatAnExcellentPieceOfTrash.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), fFloorHeight, Random.Range(2.0f, 8.0f));
+                        whatAnExcellentPieceOfTrash.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
+                    }
+                }
             }
         }
 
@@ -144,7 +175,7 @@ public class WorldBuilder : MonoBehaviour
         worldTiles[iBestHomeX, iBestHomeY] = Instantiate<WorldTile>(home, transform);
         worldTiles[iBestHomeX, iBestHomeY].transform.localPosition = new Vector3(-width * 5.0f + iBestHomeX * 10.0f, 0.0f, -height * 5.0f + iBestHomeY * 10.0f);
 
-        PlayerBehaviour player = Instantiate<PlayerBehaviour>(playerPrefab);
-        player.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
+        Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
+        Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
     }
 }
