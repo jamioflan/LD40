@@ -26,7 +26,7 @@ public class Core : MonoBehaviour
         theCore = this;
 
         theWorkbenchMenu.Initialise();
-        theSpaceship.Initialise();
+        //theSpaceship.Initialise();
         worldBuilder.GenerateWorld();
     }
     
