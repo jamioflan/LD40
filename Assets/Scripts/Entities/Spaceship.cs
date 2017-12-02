@@ -51,7 +51,6 @@ public class Spaceship : MonoBehaviour
 
     struct SpaceshipPart
     {
-        // TODO: Add cost
         public bool m_bPurchased;
     }
 

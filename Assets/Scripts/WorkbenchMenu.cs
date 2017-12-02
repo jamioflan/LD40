@@ -27,7 +27,18 @@ public class WorkbenchMenu : MonoBehaviour
         for (uint u = 0; u < NumItems; u++)
         {
             ListItem xItem;
-            xItem.m_bBuilt = false; // No saved profile data, so initialise everything to false
+
+            // TODO: Get type from somewhere
+            xItem.m_bSpaceshipPart = false;
+
+            // TODO: Get cost from somewhere
+            xItem.m_iGreenCost = 0;
+            xItem.m_iRedCost = 0;
+            xItem.m_iBlueCost = 0;
+            
+            // No saved profile data, so initialise everything to false
+            xItem.m_bBuilt = false;
+
             m_xItems.Add(xItem);
         }
     }
@@ -159,6 +170,8 @@ public class WorkbenchMenu : MonoBehaviour
                 }
             }
 
+            Core.GetCore().theWorkbench.Pay(xItem.m_iGreenCost, xItem.m_iRedCost, xItem.m_iBlueCost);
+
             // TODO: Actually build the item and add it to the ship/unlock the player skill...
         }
 	}
@@ -171,7 +184,16 @@ public class WorkbenchMenu : MonoBehaviour
 
     struct ListItem
     {
-        public bool m_bBuilt; // Whether the player has built this item
+        // Whether it's a spaceship part ( if not it's a skill)
+        public bool m_bSpaceshipPart;
+
+        // Cost
+        public int m_iGreenCost;
+        public int m_iRedCost;
+        public int m_iBlueCost;
+
+        // Whether the player has built this item
+        public bool m_bBuilt;
     }
 
     // List of all items that can be built
