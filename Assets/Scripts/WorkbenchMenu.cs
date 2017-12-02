@@ -161,6 +161,7 @@ public class WorkbenchMenu : MonoBehaviour
     public void BackOut()
     {
         Core.GetCore().theWorkbenchMenu.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     struct ListItem
