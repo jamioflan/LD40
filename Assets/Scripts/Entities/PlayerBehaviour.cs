@@ -36,7 +36,7 @@ public class PlayerBehaviour : MonoBehaviour {
 		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
         if (!controller.isGrounded)
         {
-            moveDirection += Physics.gravity;
+            moveDirection += Physics.gravity * 0;
         }
 		moveDirection = transform.TransformDirection (moveDirection);
 		moveDirection *= speed;
@@ -61,6 +61,7 @@ public class PlayerBehaviour : MonoBehaviour {
                     {
                         // Open the work bench menu
                         Core.GetCore().theWorkbenchMenu.gameObject.SetActive(true);
+                        Time.timeScale = 0;
                     }
                 }
             }
