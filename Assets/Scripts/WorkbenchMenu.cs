@@ -31,6 +31,9 @@ public class WorkbenchMenu : MonoBehaviour
             // TODO: Get type from somewhere
             xItem.m_bSpaceshipPart = false;
 
+            // TODO: This too
+            xItem.m_iIndex = 0;
+
             // TODO: Get cost from somewhere
             xItem.m_iGreenCost = 0;
             xItem.m_iRedCost = 0;
