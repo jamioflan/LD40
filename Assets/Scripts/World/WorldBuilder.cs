@@ -190,7 +190,7 @@ public class WorldBuilder : MonoBehaviour
         {
             for (int j = 0; j < sweetLoot[i].whyDoIHaveToDoThisUnity.Count; j++)
             {
-                KeyValuePair<int, int> pair = tilesByBiome[i][Random.Range(0, tilesByBiome[i].Count)];
+                KeyValuePair<int, int> pair = tilesByBiome[i][Random.Range(0, tilesByBiome[i].Count - 1)];
                 WorldTile tile = worldTiles[pair.Key, pair.Value];
                 GameObject loot = Instantiate<GameObject>(sweetLoot[i].whyDoIHaveToDoThisUnity[j], tile.transform);
                 loot.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), tile.walls.Length > 0 ? 2.0f : 0.0f, Random.Range(2.0f, 8.0f)); // No hacks here, honest.
