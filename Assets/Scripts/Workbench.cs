@@ -95,7 +95,64 @@ public class Workbench : MonoBehaviour
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
             xItem.m_bBuilt = true;
 
-            // Do something else?
+            // Make sure we still have a valid selection
+            if (!ShowBuiltItems)
+            {
+                // Try to jump forwards to a new selection
+                bool bFoundValidItem = false;
+
+                if (m_iCurrentItemIndex + 1 < NumItems)
+                {
+                    int iIndexToTry = m_iCurrentItemIndex + 1;
+
+                    while (iIndexToTry < NumItems)
+                    {
+                        ListItem xListItem = m_xItems[iIndexToTry];
+
+                        {
+                            iIndexToTry++;
+                        }
+                        else
+                        {
+                            m_iCurrentItemIndex = iIndexToTry;
+                            bFoundValidItem = true;
+                            break;
+                        }
+                    }
+                }
+
+                if( !bFoundValidItem )
+                {
+                    // Try to jump backwards instead
+                    if (m_iCurrentItemIndex > 0)
+                    {
+                        int iIndexToTry = m_iCurrentItemIndex - 1;
+
+                        while (iIndexToTry >= 0)
+                        {
+                            ListItem xListItem = m_xItems[iIndexToTry];
+
+                            {
+                                iIndexToTry--;
+                            }
+                            else
+                            {
+                                m_iCurrentItemIndex = iIndexToTry;
+                                bFoundValidItem = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if( !bFoundValidItem )
+                {
+                    // Just set the index to 0, but nothing should be displaying if we get here
+                    m_iCurrentItemIndex = 0;
+                }
+            }
+
+            // TODO: Actually build the item and add it to the ship...
         }
 	}
 
