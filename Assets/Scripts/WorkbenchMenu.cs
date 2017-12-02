@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WorkbenchMenu : MonoBehaviour
 {
@@ -158,6 +159,25 @@ public class WorkbenchMenu : MonoBehaviour
     {
         Core.GetCore().theWorkbenchMenu.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
+    }
+
+    // Population functions
+    public void PopulateCollectedResources_Gems(Text text)
+    {
+        List<CollectedResource> collectedResources = Core.GetCore().thePlayer.collectedResources;
+
+        // Count number of resources of this type
+        int count = 0;
+
+        for (int u = 0; u < collectedResources.Count; u++)
+        {
+            if( collectedResources[u].type == ResourceBase.ResourceType.GEMS )
+            {
+                count++;
+            }
+        }
+
+        text.text = "" + count;
     }
 
     [System.Serializable]
