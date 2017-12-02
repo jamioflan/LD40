@@ -19,7 +19,6 @@ public class PlayerBehaviour : MonoBehaviour {
 	public List<CollectedResource> collectedResources;
 	public uint capacity = 5;
 
-	public Vector3 moveDirection = Vector3.zero;
 	public float speed = 1.0F;
 
     public float currentYSpeed = 0.0F;
@@ -39,26 +38,26 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	void FixedUpdate () {
 		CharacterController controller = GetComponent<CharacterController> ();
-		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0.0F, Input.GetAxis ("Vertical"));
-        if (controller.isGrounded && Input.GetAxis("Jump") > 0)
+        Vector3 velocity = controller.velocity;
+        if (controller.isGrounded)
         {
-            currentYSpeed += jumpSpeed;            
+            if (velocity.y < 0)
+            {
+                velocity.y = 0;
+            }
+            Vector2 horizontalVelocity = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized * speed;
+            velocity.x = horizontalVelocity.x;
+            velocity.z = horizontalVelocity.y;
+            velocity.y += Input.GetAxis("Jump") * jumpSpeed;
         }
-        if (!controller.isGrounded)
+        else
         {
-            currentYSpeed += Physics.gravity.y * Time.fixedDeltaTime;
+            velocity += Physics.gravity * Time.fixedDeltaTime;
         }
-        if (controller.isGrounded && currentYSpeed < 0)
-        {
-            currentYSpeed = 0.0F;
-        }
-        // move with speed
-        moveDirection *= speed;
-        moveDirection.y += currentYSpeed;
 
-        if (moveDirection.magnitude > 1.0f)
+        if (velocity.magnitude > 1.0f)
         {
-            float fAngle = Mathf.Rad2Deg * Mathf.Atan2(controller.velocity.z, controller.velocity.x);
+            float fAngle = Mathf.Rad2Deg * Mathf.Atan2(velocity.z, velocity.x);
             fBodyAngle = Mathf.LerpAngle(fBodyAngle, fAngle, 8.0f * Time.fixedDeltaTime);
             body.localEulerAngles = new Vector3(0.0f, 180.0f - fBodyAngle, 0.0f);
         }
@@ -66,7 +65,8 @@ public class PlayerBehaviour : MonoBehaviour {
         fHeadAngle = Mathf.LerpAngle(fHeadAngle, fBodyAngle, 4.0f * Time.fixedDeltaTime);
         head.localEulerAngles = new Vector3(0.0f, 180.0f - fHeadAngle, 0.0f);
 
-        controller.Move (moveDirection * Time.fixedDeltaTime);
+        controller.Move(velocity * Time.fixedDeltaTime);
+
         if (Input.GetMouseButtonDown(0) )
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

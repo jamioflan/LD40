@@ -7,6 +7,8 @@ public class Core : MonoBehaviour
     private static Core theCore;
 
     public WorkbenchMenu theWorkbenchMenu;
+    public Workbench theWorkbench;
+    public Spaceship theSpaceship;
     public PlayerBehaviour thePlayer;
     public WorldBuilder worldBuilder;
 
@@ -24,6 +26,8 @@ public class Core : MonoBehaviour
         }
         theCore = this;
 
+        theWorkbenchMenu.Initialise();
+        //theSpaceship.Initialise();
         worldBuilder.GenerateWorld();
     }
     
