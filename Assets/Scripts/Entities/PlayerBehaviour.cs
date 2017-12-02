@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour {
 
-	public float baseSpeed = 6.0F;
+
     public float interactDistance = 4.0F;
+    public float jumpSpeed = 8.0F;
 
     /**********************
      * Resource Templates *
@@ -19,7 +20,9 @@ public class PlayerBehaviour : MonoBehaviour {
 	public uint capacity = 5;
 
 	public Vector3 moveDirection = Vector3.zero;
-	public float speed = 0.0F;
+	public float speed = 1.0F;
+
+    public float currentYSpeed = 0.0F;
 
 	// Use this for initialization
 	void Start () {
@@ -33,13 +36,22 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	void FixedUpdate () {
 		CharacterController controller = GetComponent<CharacterController> ();
-		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0.0F, Input.GetAxis ("Vertical"));
+        if (controller.isGrounded && Input.GetAxis("Jump") > 0)
+        {
+            currentYSpeed += jumpSpeed;            
+        }
         if (!controller.isGrounded)
         {
-            moveDirection += Physics.gravity * 0;
+            currentYSpeed += Physics.gravity.y * Time.fixedDeltaTime;
         }
-		moveDirection = transform.TransformDirection (moveDirection);
-		moveDirection *= speed;
+        if (controller.isGrounded && currentYSpeed < 0)
+        {
+            currentYSpeed = 0.0F;
+        }
+        moveDirection *= speed;
+        moveDirection.y += currentYSpeed;
+
 		controller.Move (moveDirection * Time.fixedDeltaTime);
         if (Input.GetMouseButtonDown(0) )
         {
