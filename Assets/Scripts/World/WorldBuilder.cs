@@ -6,18 +6,19 @@ public class WorldBuilder : MonoBehaviour
 {
     public WorldTile floor, hill;
     public WorldTile[,] worldTiles;
+    public Material[] biomeMaterials = new Material[Biomes.iNUM_BIOMES];
 
 	// Use this for initialization
 	void Start ()
     {
-		
-	}
+        GenerateWorld(21, 21);
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
         if (Input.GetKeyUp(KeyCode.A))
-            GenerateWorld(49, 49);
+            GenerateWorld(21, 21);
 	}
 
     private void GenerateWorld(int width, int height)
@@ -72,18 +73,22 @@ public class WorldBuilder : MonoBehaviour
                 for(int x = -1; x <= 1; x++)
                 {
                     for(int y = -1; y <= 1; y++)
-                    {
-                        fCumulative += noise[i + x, j + y];
+                    {                   
+                        if (x != 0 || y != 0)
+                            fCumulative += noise[i + x, j + y];
                     }
                 }
 
                 fCumulative *= 0.125f;
 
-                tiles[i, j] = fCumulative > 0.7f;
+                tiles[i, j] = fCumulative > 0.5f;
             }
         }
 
         // TODO : Biome-y bsns
+        Biome[,] biomes = new Biome[width, height];
+
+
 
         // Spawn tiles
 
