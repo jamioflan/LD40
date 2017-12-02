@@ -62,7 +62,7 @@ public class PlayerBehaviour : MonoBehaviour {
             fBodyAngle = Mathf.LerpAngle(fBodyAngle, fAngle, 8.0f * Time.fixedDeltaTime);
             body.localEulerAngles = new Vector3(0.0f, 180.0f - fBodyAngle, 0.0f);
         }
-
+         
         fHeadAngle = Mathf.LerpAngle(fHeadAngle, fBodyAngle, 4.0f * Time.fixedDeltaTime);
         head.localEulerAngles = new Vector3(0.0f, 180.0f - fHeadAngle, 0.0f);
 
