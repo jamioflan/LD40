@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 362c68839fd13304681c2866128f4356
-timeCreated: 1512231748
+guid: f12a6d8eec4629c4fadc99444283d8f0
+timeCreated: 1512235597
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -12,8 +12,7 @@ ModelImporter:
     100008: mesh332437561
     100010: mesh546511690
     100012: mesh690757844
-    100014: mesh792298484
-    100016: //RootNode
+    100014: //RootNode
     400000: mesh1039071374
     400002: mesh1503934702
     400004: mesh164314794
@@ -21,8 +20,7 @@ ModelImporter:
     400008: mesh332437561
     400010: mesh546511690
     400012: mesh690757844
-    400014: mesh792298484
-    400016: //RootNode
+    400014: //RootNode
     2300000: mesh1039071374
     2300002: mesh1503934702
     2300004: mesh164314794
@@ -30,7 +28,6 @@ ModelImporter:
     2300008: mesh332437561
     2300010: mesh546511690
     2300012: mesh690757844
-    2300014: mesh792298484
     3300000: mesh1039071374
     3300002: mesh1503934702
     3300004: mesh164314794
@@ -38,7 +35,6 @@ ModelImporter:
     3300008: mesh332437561
     3300010: mesh546511690
     3300012: mesh690757844
-    3300014: mesh792298484
     4300000: mesh1039071374
     4300002: mesh1503934702
     4300004: mesh164314794
@@ -46,48 +42,12 @@ ModelImporter:
     4300008: mesh332437561
     4300010: mesh546511690
     4300012: mesh690757844
-    4300014: mesh792298484
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: mesh1039071374Mat
-    second: {fileID: 2100000, guid: 026f596ddee252b48a2fa14682448d36, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh1503934702Mat
-    second: {fileID: 2100000, guid: b16168f380cbc0545bdd5583374126e4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh164314794Mat
-    second: {fileID: 2100000, guid: 68e7b02ff78676644baa649b19563409, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh1693294625Mat
-    second: {fileID: 2100000, guid: 50050dcca05fbba4a861dbf1d5e4703d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh332437561Mat
-    second: {fileID: 2100000, guid: 5425c1db5913d4147bf34d115b3e1cc3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh546511690Mat
-    second: {fileID: 2100000, guid: 04e8b989011468f418a14e7922fb959f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh690757844Mat
-    second: {fileID: 2100000, guid: faa46e701b6a7144b9c1621ecd551609, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: mesh792298484Mat
-    second: {fileID: 2100000, guid: 77f184bd0f431f043a87c9b38f4c5895, type: 2}
+      name: mat22
+    second: {fileID: 2100000, guid: c6703303bbe579b46b0f51664361d047, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
