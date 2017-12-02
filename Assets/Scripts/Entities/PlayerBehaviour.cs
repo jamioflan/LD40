@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour {
 
 	public float baseSpeed = 6.0F;
+    public float interactDistance = 4.0F;
 
     /**********************
      * Resource Templates *
@@ -22,10 +23,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        // For a test spawn in two resources
-        AddResource(ResourceType.Scandium);
-        AddResource(ResourceType.Green);
-        AddResource(ResourceType.Red);
+
 	}
 	
 	// Update is called once per frame
@@ -43,10 +41,47 @@ public class PlayerBehaviour : MonoBehaviour {
 		moveDirection = transform.TransformDirection (moveDirection);
 		moveDirection *= speed;
 		controller.Move (moveDirection * Time.fixedDeltaTime);
+        if (Input.GetMouseButtonDown(0) )
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit) )
+            {
+                if (hit.collider != null)
+                {
+                    
+                    if ( (hit.collider.transform.position - transform.position).magnitude < interactDistance && hit.collider.GetComponent<ResourceBase>() != null)
+                    {
+                        if (AddResource(hit.collider.GetComponent<ResourceBase>() ) )
+                        {
+                            Destroy(hit.collider.gameObject);
+                        }
+                    }
+                }
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider != null)
+                {
+
+                    if (hit.collider.GetComponent<CollectedResource>() != null)
+                    {
+                        Discard(hit.collider.GetComponent<CollectedResource>() );
+
+                    }
+                }
+            }
+        }
 	}
 
+
     // Try and add a resource. Returns false if we're already at carrying capacity
-    bool AddResource(ResourceType type)
+    bool AddResource(ResourceBase resource)
     {
         if (collectedResources.Count == capacity)
         {
@@ -57,28 +92,41 @@ public class PlayerBehaviour : MonoBehaviour {
         // Create a new resource behind the player
         // First work out what sort we should be making
         CollectedResource template;
-        switch (type)
+        switch (resource.type)
         {
-            case ResourceType.Scandium:
+            case ResourceBase.ResourceType.Scandium:
                 template = scandiumTemplate;
                 break;
-            case ResourceType.Green:
+            case ResourceBase.ResourceType.Green:
                 template = greenTemplate;
                 break;
-            case ResourceType.Red:
+            case ResourceBase.ResourceType.Red:
                 template = redTemplate;
                 break;
-            case ResourceType.Blue:
+            case ResourceBase.ResourceType.Blue:
                 template = blueTemplate;
                 break;
             default: // This is just to make VS happy...
                 template = scandiumTemplate;
                 break;
         }
-        CollectedResource newResource = Instantiate<CollectedResource>(template, last.position - last.forward * CollectedResource.followDistance, last.rotation);
+        CollectedResource newResource = Instantiate<CollectedResource>(template, resource.transform.position, resource.transform.rotation);
         newResource.leader = last;
-        newResource.type = type;
         collectedResources.Add(newResource);
         return true;
+    }
+
+    void Discard(CollectedResource resource)
+    {
+        int idx = collectedResources.IndexOf(resource);
+        if (idx >= 0)
+        {
+            resource.leader = null;
+            collectedResources.RemoveAt(idx);
+            if (idx  < collectedResources.Count)
+            {
+                collectedResources[idx].leader = collectedResources[idx - 1].transform;
+            }
+        }
     }
 }
