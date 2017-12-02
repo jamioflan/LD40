@@ -154,7 +154,7 @@ public class WorkbenchMenu : MonoBehaviour
                 }
             }
 
-            // TODO: Actually build the item and add it to the ship...
+            // TODO: Actually build the item and add it to the ship/unlock the player skill...
         }
 	}
 
