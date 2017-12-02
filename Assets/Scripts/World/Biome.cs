@@ -5,6 +5,9 @@ using UnityEngine;
 public enum Biome
 {
 	SAND, // Sandy business, boring ore, blep blep
+    CHEESE,
+    CRUMPETS,
+    SHINYLAND, // Oooo, pretty!
 
     NUM_BIOMES,
 }

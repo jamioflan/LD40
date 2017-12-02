@@ -7,18 +7,17 @@ public class WorldBuilder : MonoBehaviour
     public WorldTile floor, hill;
     public WorldTile[,] worldTiles;
     public Material[] biomeMaterials = new Material[Biomes.iNUM_BIOMES];
+    public int iWidth = 40, iHeight = 40;
+    public float fHillNoiseScale = 9.57f;
+    public float fBiomeNoiseScale = 3.81f;
 
-	// Use this for initialization
 	void Start ()
     {
-        GenerateWorld(21, 21);
+        GenerateWorld(iWidth, iHeight);
     }
 	
-	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyUp(KeyCode.A))
-            GenerateWorld(21, 21);
 	}
 
     private void GenerateWorld(int width, int height)
@@ -38,17 +37,6 @@ public class WorldBuilder : MonoBehaviour
 
         worldTiles = new WorldTile[width,height];
 
-        // LET'S MAKE SOME NOISE!!!
-        float[,] noise = new float[width, height];
-
-        for (int i = 0; i < width; i++)
-        {
-            for(int j = 0; j < height; j++)
-            {
-                noise[i, j] = Random.Range(0.0f, 1.0f);
-            }
-        }
-
         bool[,] tiles = new bool[width, height];
 
         // Borders
@@ -64,35 +52,38 @@ public class WorldBuilder : MonoBehaviour
             tiles[width - 1, j] = hill;
         }
 
+        float fNoiseOffsetX = Random.Range(-10000.0f, 10000.0f);
+        float fNoiseOffsetY = Random.Range(-10000.0f, 10000.0f);
+
         // Fill randomly
         for (int i = 1; i < width - 1; i++)
         {
             for(int j = 1; j < height - 1; j++)
             {
-                float fCumulative = 0.0f;
-                for(int x = -1; x <= 1; x++)
-                {
-                    for(int y = -1; y <= 1; y++)
-                    {                   
-                        if (x != 0 || y != 0)
-                            fCumulative += noise[i + x, j + y];
-                    }
-                }
-
-                fCumulative *= 0.125f;
-
-                tiles[i, j] = fCumulative > 0.5f;
+                tiles[i, j] = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height) > 0.5f;
             }
         }
 
-        // TODO : Biome-y bsns
+        // Biome-y bsns
         Biome[,] biomes = new Biome[width, height];
-
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height; j++)
+            {
+                float fBiomeSeed = Mathf.PerlinNoise(fNoiseOffsetX + fBiomeNoiseScale * (float)i / (float)width, fNoiseOffsetY + fBiomeNoiseScale * (float)j / (float)height);
+                if (fBiomeSeed > 0.7f)
+                    biomes[i, j] = Biome.SAND;
+                else if (fBiomeSeed > 0.4f)
+                    biomes[i, j] = Biome.CHEESE;
+                else if (fBiomeSeed > 0.1f)
+                    biomes[i, j] = Biome.CRUMPETS;
+                else biomes[i, j] = Biome.SHINYLAND;
+            }
+        }
 
 
         // Spawn tiles
-
-        for(int i = 0; i < width; i++)
+        for (int i = 0; i < width; i++)
         {
             for(int j = 0; j < height; j++)
             {
@@ -108,6 +99,8 @@ public class WorldBuilder : MonoBehaviour
                     worldTiles[i, j].walls[(int)Direction.LEFT].SetActive(i != 0 && !tiles[i - 1, j]);
                 }
 
+                // Setup biome
+                worldTiles[i, j].floorMesh.material = biomeMaterials[(int)biomes[i, j]];
             }
         }
     }
