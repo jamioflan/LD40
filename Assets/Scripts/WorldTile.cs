@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldBuilder : MonoBehaviour {
-
-
+public class WorldTile : MonoBehaviour
+{
+  //  public 
 
 	// Use this for initialization
 	void Start () {
