@@ -19,10 +19,11 @@ public class CollectedResource : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         Vector3 distance = leader.position - transform.position;
+        Vector3 moveDirection = Vector3.zero;
 		if (distance.magnitude > followDistance ) {
             // We have to catch up
-            Vector3 moveDirection = transform.TransformDirection(distance) * speed;
-            transform.Translate(moveDirection * Time.deltaTime);
+            moveDirection = transform.TransformDirection(distance) * speed;
         }
-	}
+        transform.Translate(moveDirection * Time.deltaTime);
+    }
 }

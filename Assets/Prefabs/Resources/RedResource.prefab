@@ -95,5 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
-  type: 0
+  type: 1
   leader: {fileID: 0}

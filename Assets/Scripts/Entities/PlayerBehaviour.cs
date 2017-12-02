@@ -36,6 +36,10 @@ public class PlayerBehaviour : MonoBehaviour {
 	void FixedUpdate () {
 		CharacterController controller = GetComponent<CharacterController> ();
 		moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
+        if (!controller.isGrounded)
+        {
+            moveDirection += Physics.gravity;
+        }
 		moveDirection = transform.TransformDirection (moveDirection);
 		moveDirection *= speed;
 		controller.Move (moveDirection * Time.fixedDeltaTime);
@@ -71,7 +75,6 @@ public class PlayerBehaviour : MonoBehaviour {
                 template = scandiumTemplate;
                 break;
         }
-        Debug.Log(type);
         CollectedResource newResource = Instantiate<CollectedResource>(template, last.position - last.forward * CollectedResource.followDistance, last.rotation);
         newResource.leader = last;
         newResource.type = type;
