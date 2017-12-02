@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor: {fileID: 114972608325600932, guid: 89518c9e48218d145ac400faba07ad64, type: 2}
   hill: {fileID: 114951066238025624, guid: 0334f7bd2502b4d4ebd980cdb5442db1, type: 2}
-  edge: {fileID: 114951066238025624, guid: f4fafd51bfcc36e4e8e5503d8d61fe27, type: 2}
+  edge: {fileID: 114951066238025624, guid: ee1a1bad6e83abb4fbfd6d6e2f42b48a, type: 2}
   biomeMaterials:
   - {fileID: 2100000, guid: e4a96c8de7c775c449b521953ed5fcee, type: 2}
   - {fileID: 2100000, guid: 6c4c17456697f1444bd2ca23d5c100eb, type: 2}
