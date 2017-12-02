@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ResourceType { Scandium, Red, Green, Blue }
+
 public class CollectedResource : MonoBehaviour {
 
 	// Use this for initialization
