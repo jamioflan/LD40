@@ -18,7 +18,7 @@ public class Workbench : MonoBehaviour {
 		
 	}
 
-    bool Pay(int costGreen, int costRed, int costBlue)
+    public bool Pay(int costGreen, int costRed, int costBlue)
     {
         if (costGreen < nGreen || costRed < nRed || costBlue < nBlue)
         {

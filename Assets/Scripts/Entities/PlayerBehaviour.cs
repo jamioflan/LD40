@@ -23,8 +23,11 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public float currentYSpeed = 0.0F;
 
-	// Use this for initialization
-	void Start () {
+    public Transform body, head;
+    public float fBodyAngle = 0.0f, fHeadAngle = 0.0f;
+
+    // Use this for initialization
+    void Start () {
 
 	}
 	
@@ -51,7 +54,19 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             velocity += Physics.gravity * Time.fixedDeltaTime;
         }
+
+        if (velocity.magnitude > 1.0f)
+        {
+            float fAngle = Mathf.Rad2Deg * Mathf.Atan2(velocity.z, velocity.x);
+            fBodyAngle = Mathf.LerpAngle(fBodyAngle, fAngle, 8.0f * Time.fixedDeltaTime);
+            body.localEulerAngles = new Vector3(0.0f, 180.0f - fBodyAngle, 0.0f);
+        }
+         
+        fHeadAngle = Mathf.LerpAngle(fHeadAngle, fBodyAngle, 4.0f * Time.fixedDeltaTime);
+        head.localEulerAngles = new Vector3(0.0f, 180.0f - fHeadAngle, 0.0f);
+
         controller.Move(velocity * Time.fixedDeltaTime);
+
         if (Input.GetMouseButtonDown(0) )
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -61,11 +76,11 @@ public class PlayerBehaviour : MonoBehaviour {
                 if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude < interactDistance)
                 {
                     
-                    if ( hit.collider.GetComponent<ResourceBase>() != null)
+                    if ( hit.collider.GetComponentInParent<ResourceBase>() != null)
                     {
-                        if (AddResource(hit.collider.GetComponent<ResourceBase>() ) )
+                        if (AddResource(hit.collider.GetComponentInParent<ResourceBase>() ) )
                         {
-                            Destroy(hit.collider.gameObject);
+                            Destroy(hit.collider.GetComponentInParent<ResourceBase>().gameObject);
                         }
                     }
                     if ( hit.collider.GetComponent<Workbench>() != null)
@@ -145,5 +160,10 @@ public class PlayerBehaviour : MonoBehaviour {
                 collectedResources[idx].leader = collectedResources[idx - 1].transform;
             }
         }
+    }
+
+    public void UnlockSkill(int iSkillIndex)
+    {
+        // TODO
     }
 }

@@ -7,6 +7,7 @@ public class Core : MonoBehaviour
     private static Core theCore;
 
     public WorkbenchMenu theWorkbenchMenu;
+    public Workbench theWorkbench;
     public Spaceship theSpaceship;
     public PlayerBehaviour thePlayer;
     public WorldBuilder worldBuilder;
@@ -25,7 +26,6 @@ public class Core : MonoBehaviour
         }
         theCore = this;
 
-        theWorkbenchMenu.Initialise();
         //theSpaceship.Initialise();
         worldBuilder.GenerateWorld();
     }
@@ -35,5 +35,13 @@ public class Core : MonoBehaviour
 
     }
 
+    public static WorldTile OuEstLeBase(bool bSilVousPlait = false)
+    {
+        if(bSilVousPlait)
+        {
+            return theCore.worldBuilder.theBase;
+        }
 
+        return null;
+    }
 }

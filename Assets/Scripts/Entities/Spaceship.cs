@@ -37,7 +37,7 @@ public class Spaceship : MonoBehaviour
 		// TODO: Display equipped spaceship parts? (Do this event-based ideally)
 	}
 
-    void OnPartPurchased(int iPartIndex)
+    public void OnPartPurchased(int iPartIndex)
     {
         // Mark as purchased
         if( iPartIndex < numParts)
@@ -51,7 +51,6 @@ public class Spaceship : MonoBehaviour
 
     struct SpaceshipPart
     {
-        // TODO: Add cost
         public bool m_bPurchased;
     }
 
