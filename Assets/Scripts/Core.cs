@@ -16,7 +16,7 @@ public class Core : MonoBehaviour
         if (theCore != null)
         {
             // There can be only one!
-            Destroy(theCore);
+            Destroy(theCore.gameObject);
         }
         theCore = this;
     }
