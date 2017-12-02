@@ -17,4 +17,19 @@ public class Workbench : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    bool Pay(int costGreen, int costRed, int costBlue)
+    {
+        if (costGreen < nGreen || costRed < nRed || costBlue < nBlue)
+        {
+            return false;
+        }
+        else
+        {
+            nGreen -= costGreen;
+            nRed -= costRed;
+            nBlue -= costBlue;
+            return true;
+        }
+    }
 }
