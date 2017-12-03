@@ -3043,7 +3043,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114506503716013552}
-        m_MethodName: PopulateCollectedResources_Fuel
+        m_MethodName: PopulateCurrentItemCost_Fuel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
