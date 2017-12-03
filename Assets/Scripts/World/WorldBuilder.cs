@@ -210,6 +210,12 @@ public class WorldBuilder : MonoBehaviour
                 GameObject loot = Instantiate<GameObject>(sweetLoot[i].whyDoIHaveToDoThisUnity[j], tile.transform);
                 loot.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), tile.walls.Length > 0 ? 2.0f : 0.0f, Random.Range(2.0f, 8.0f)); // No hacks here, honest.
                 loot.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
+
+                if (loot.GetComponent<EnemyLair>() != null)
+                {
+                    lairs.Add(loot.GetComponent<EnemyLair>());
+                    loot.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                }
             }
         }
 
