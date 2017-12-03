@@ -37,8 +37,8 @@ public class HUD : MonoBehaviour
 
     public void PopulateCarryingCapacity(Text text)
     {
-        int iCollectedResources = Core.GetCore().thePlayer.collectedResources.Count;
-        int iCapacity = Core.GetCore().thePlayer.capacity;
+        int iCollectedResources = Core.GetCore().thePlayer.collector.collectedResources.Count;
+        int iCapacity = Core.GetCore().thePlayer.collector.capacity;
 
         text.text = iCollectedResources + " / " + iCapacity;
     }

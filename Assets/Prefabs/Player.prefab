@@ -135,6 +135,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4142407344675572}
+  - component: {fileID: 114979561354800272}
   m_Layer: 0
   m_Name: FollowPoint
   m_TagString: Untagged
@@ -215,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373389499547888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.72014, y: 141.29602, z: 28.069084}
+  m_LocalPosition: {x: -15.90588, y: -2.8778517, z: -6.372163}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4208708930934892}
@@ -435,6 +436,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactDistance: 4
   jumpSpeed: 15
+  collector: {fileID: 0}
+  speed: 12
+  currentYSpeed: 0
+  body: {fileID: 4889667815838630}
+  head: {fileID: 4520787058459996}
+  fBodyAngle: 0
+  fHeadAngle: 0
+  followPoint: {fileID: 4142407344675572}
+--- !u!114 &114979561354800272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960398297281942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3083d70edf6c978478755d2c2d53cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   scandiumTemplate: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390,
     type: 2}
   gemTemplate: {fileID: 114870246407678840, guid: 4045db8386a72e14ea073cb404f2d4a8,
@@ -445,13 +465,6 @@ MonoBehaviour:
     type: 2}
   collectedResources: []
   capacity: 5
-  speed: 12
-  currentYSpeed: 0
-  body: {fileID: 4889667815838630}
-  head: {fileID: 4520787058459996}
-  fBodyAngle: 0
-  fHeadAngle: 0
-  followPoint: {fileID: 4142407344675572}
 --- !u!124 &124221845757647828
 Behaviour:
   m_ObjectHideFlags: 1

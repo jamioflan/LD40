@@ -8,16 +8,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public float interactDistance = 4.0F;
     public float jumpSpeed = 8.0F;
 
-    /**********************
-     * Resource Templates *
-     *********************/
-	public CollectedResource scandiumTemplate;
-    public CollectedResource gemTemplate;
-    public CollectedResource fuelTemplate;
-    public CollectedResource beamsTemplate;
-
-	public List<CollectedResource> collectedResources;
-	public int capacity = 5;
+    public ResourceCollector collector;
 
 	public float speed = 1.0F;
 
@@ -29,7 +20,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        collector = GetComponentInChildren<ResourceCollector>();
 	}
 	
 	// Update is called once per frame
@@ -81,10 +72,7 @@ public class PlayerBehaviour : MonoBehaviour {
                     
                     if ( hit.collider.GetComponentInParent<ResourceBase>() != null)
                     {
-                        if (AddResource(hit.collider.GetComponentInParent<ResourceBase>() ) )
-                        {
-                            Destroy(hit.collider.GetComponentInParent<ResourceBase>().gameObject);
-                        }
+                        collector.AddResource(hit.collider.GetComponentInParent<ResourceBase>());
                     }
                     if ( hit.collider.GetComponent<Workbench>() != null)
                     {
@@ -106,7 +94,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
                     if (hit.collider.GetComponent<CollectedResource>() != null)
                     {
-                        Yield(hit.collider.GetComponent<CollectedResource>() );
+                        collector.Yield(hit.collider.GetComponent<CollectedResource>() );
 
                     }
                 }
@@ -115,57 +103,7 @@ public class PlayerBehaviour : MonoBehaviour {
 	}
 
 
-    // Try and add a resource. Returns false if we're already at carrying capacity
-    bool AddResource(ResourceBase resource)
-    {
-        if (collectedResources.Count == capacity)
-        {
-            return false; // Maybe trigger a message to the UI? TODO
-        }
-        // Find the last object in the list (or the player if it's empty)
-        Transform last = collectedResources.Count == 0 ? followPoint : collectedResources[collectedResources.Count - 1].transform;
-        // Create a new resource behind the player
-        // First work out what sort we should be making
-        CollectedResource template;
-        switch (resource.type)
-        {
-            case ResourceBase.ResourceType.SCANDIUM:
-                template = scandiumTemplate;
-                break;
-            case ResourceBase.ResourceType.GEMS:
-                template = gemTemplate;
-                break;
-            case ResourceBase.ResourceType.FUEL:
-                template = fuelTemplate;
-                break;
-            case ResourceBase.ResourceType.BEAMS:
-                template = beamsTemplate;
-                break;
-            default: // This is just to make VS happy...
-                template = scandiumTemplate;
-                break;
-        }
-        CollectedResource newResource = Instantiate<CollectedResource>(template, resource.transform.position, resource.transform.rotation);
-        newResource.leader = last;
-        if (collectedResources.Count == 0)
-            newResource.followDistance = 0.0f;
-        collectedResources.Add(newResource);
-        return true;
-    }
-
-    void Yield(CollectedResource resource, Transform receiver = null)
-    {
-        int idx = collectedResources.IndexOf(resource);
-        if (idx >= 0)
-        {
-            resource.SetLeader(receiver);
-            collectedResources.RemoveAt(idx);
-            if (idx  < collectedResources.Count)
-            {
-                collectedResources[idx].leader = collectedResources[idx - 1].transform;
-            }
-        }
-    }
+    
 
     public void UnlockSkill(int iSkillIndex)
     {

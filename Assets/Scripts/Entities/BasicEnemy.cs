@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class BasicEnemy : MonoBehaviour {
 
+    public enum State
+    {
+        IDLE,
+        FOLLOWING,
+        GUARDING,
+        PATROLLING,
+        RETURNING
+    }
+
     public float meTime;
     private UnityEngine.AI.NavMeshAgent agent;
 	// Use this for initialization
