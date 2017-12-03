@@ -8,6 +8,7 @@ public class Workbench : MonoBehaviour, IInteractable
     public int nFuel = 0;
     public int nBeams = 0;
     public int nScOre = 0;
+    public Transform resourceReceiver;
 	// Use this for initialization
 	void Start () {
 		
