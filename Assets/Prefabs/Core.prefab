@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 224075116733023562}
   - component: {fileID: 222230328619453552}
   - component: {fileID: 114069976431306562}
+  - component: {fileID: 114999571518334116}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -122,6 +123,7 @@ GameObject:
   - component: {fileID: 224673617163620428}
   - component: {fileID: 222023106800552084}
   - component: {fileID: 114236603185759920}
+  - component: {fileID: 114341501902620028}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -321,6 +323,7 @@ GameObject:
   - component: {fileID: 224018664846706582}
   - component: {fileID: 222655147612113446}
   - component: {fileID: 114509613237091824}
+  - component: {fileID: 114462514398117222}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -909,6 +912,7 @@ GameObject:
   - component: {fileID: 224969158548273158}
   - component: {fileID: 222464956089842000}
   - component: {fileID: 114412937826443566}
+  - component: {fileID: 114384646945244500}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1514,10 +1518,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 1125443df45709742b71bf5be5695728, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1909,10 +1913,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d231c5017fcd1d74693c67f4f5317366, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2105,6 +2109,32 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: ALREADY BUILT
+--- !u!114 &114341501902620028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132115365628946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002e0850344e69b4089a599a413eb06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114242117739901486}
+        m_MethodName: PopulateCooldownImage_Scanner
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ImagePplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114358179290835384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2234,6 +2264,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114384646945244500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634557627303718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002e0850344e69b4089a599a413eb06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114242117739901486}
+        m_MethodName: PopulateCooldownImage_SlowEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ImagePplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114390468970974342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2308,10 +2364,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 9df83cca17fca5f49a0fb920f9e2a79a, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2481,6 +2537,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114462514398117222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1276200107528578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002e0850344e69b4089a599a413eb06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114242117739901486}
+        m_MethodName: PopulateCooldownImage_Stun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ImagePplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114462878127545682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2727,10 +2809,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: af34fd1e136cf2e4397e8e0f48532bf6, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -3874,6 +3956,32 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114999571518334116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1113714442177460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002e0850344e69b4089a599a413eb06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114242117739901486}
+        m_MethodName: PopulateCooldownImage_SpeedBoost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ImagePplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!222 &222007052448332628
 CanvasRenderer:
   m_ObjectHideFlags: 1
