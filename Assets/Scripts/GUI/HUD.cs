@@ -124,4 +124,36 @@ public class HUD : MonoBehaviour
 
         text.text = iCollectedResources + " / " + iCapacity;
     }
+
+    // Visibility conditions
+    public void ShouldPopulateButtonPrompt_JetPack(Text text)
+    {
+        text.enabled = ShouldPopulateButtonPrompt(PlayerBehaviour.Skill.JETPACK);
+    }
+
+    public void ShouldPopulateButtonPrompt_Scanner(Text text)
+    {
+        text.enabled = ShouldPopulateButtonPrompt(PlayerBehaviour.Skill.PING);
+    }
+
+    public void ShouldPopulateButtonPrompt_Stun(Text text)
+    {
+        text.enabled = ShouldPopulateButtonPrompt(PlayerBehaviour.Skill.STUN);
+    }
+
+    public void ShouldPopulateButtonPrompt_SlowEnemy(Text text)
+    {
+        text.enabled = ShouldPopulateButtonPrompt(PlayerBehaviour.Skill.SLOW);
+    }
+
+    public void ShouldPopulateButtonPrompt_SpeedBoost(Text text)
+    {
+        text.enabled = ShouldPopulateButtonPrompt(PlayerBehaviour.Skill.SPEED_BOOST);
+    }
+
+    bool ShouldPopulateButtonPrompt(PlayerBehaviour.Skill skill)
+    {
+        PlayerBehaviour.SkillData skillData = Core.GetCore().thePlayer.skills[(int)skill];
+        return skillData.bUnlocked;
+    }
 }
