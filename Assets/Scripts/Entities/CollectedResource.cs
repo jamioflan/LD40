@@ -22,12 +22,18 @@ public class CollectedResource : ResourceBase
 	void FixedUpdate () {
         if (leader != null)
         {
+
             Vector3 distance = leader.position - transform.position;
             Vector3 moveDirection = Vector3.zero;
             float fDistanceAway = distance.magnitude - followDistance;
             if (fDistanceAway > 0)
             {
                 moveDirection = distance.normalized * Mathf.Min(speed, fDistanceAway / Time.fixedDeltaTime);
+            }
+            else if (leader == Core.GetCore().theWorkbench.resourceReceiver)
+            {
+                Debug.Log("HERE");
+                SetOwner(Core.GetCore().theWorkbench);
             }
             transform.position += (moveDirection * Time.fixedDeltaTime);
         }
@@ -69,7 +75,7 @@ public class CollectedResource : ResourceBase
     {
         LeaveOwner();
         bench.ReceiveResource(type);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void SetOwner()
@@ -92,4 +98,5 @@ public class CollectedResource : ResourceBase
             }
         }
     }
+
 }

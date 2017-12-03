@@ -1062,3 +1062,4 @@ MonoBehaviour:
   red: {fileID: 2100000, guid: 0e05fb358f4bbd64788ffd3e163d8734, type: 2}
   green: {fileID: 2100000, guid: c1fc0f4d657fed544bca6ff31570656e, type: 2}
   type: 2
+  template: {fileID: 114870246407678840, guid: 3732d60b65c009f4191e76288da0b842, type: 2}

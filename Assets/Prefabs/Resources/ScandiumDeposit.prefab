@@ -1393,3 +1393,4 @@ MonoBehaviour:
   red: {fileID: 2100000, guid: 0e05fb358f4bbd64788ffd3e163d8734, type: 2}
   green: {fileID: 2100000, guid: c1fc0f4d657fed544bca6ff31570656e, type: 2}
   type: 0
+  template: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390, type: 2}
