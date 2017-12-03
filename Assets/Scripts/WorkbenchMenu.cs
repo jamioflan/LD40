@@ -157,7 +157,10 @@ public class WorkbenchMenu : MonoBehaviour
 
     public void BackOut()
     {
+        // Close the workbench menu
         Core.GetCore().theWorkbenchMenu.gameObject.SetActive(false);
+        // Open the HUD
+        Core.GetCore().theHUD.gameObject.SetActive(true);
         Time.timeScale = 1.0f;
     }
 

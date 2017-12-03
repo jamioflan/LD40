@@ -2849,6 +2849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theWorkbenchMenu: {fileID: 114506503716013552}
+  theHUD: {fileID: 114242117739901486}
   theWorkbench: {fileID: 0}
   theSpaceship: {fileID: 0}
   thePlayer: {fileID: 0}

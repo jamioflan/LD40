@@ -76,6 +76,8 @@ public class PlayerBehaviour : MonoBehaviour {
                     }
                     if ( hit.collider.GetComponent<Workbench>() != null)
                     {
+                        // Close the HUD
+                        Core.GetCore().theHUD.gameObject.SetActive(true);
                         // Open the work bench menu
                         Core.GetCore().theWorkbenchMenu.gameObject.SetActive(true);
                         Time.timeScale = 0;
