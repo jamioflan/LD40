@@ -235,6 +235,9 @@ public class WorkbenchMenu : MonoBehaviour
         // The index of the spaceship part/skill
         public int m_iIndex;
 
+        // The icon for the item
+        public Sprite m_iSprite;
+
         // Cost
         public int m_iCost_Gems;
         public int m_iCost_Fuel;
