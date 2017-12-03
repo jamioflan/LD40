@@ -2547,7 +2547,7 @@ MonoBehaviour:
   - m_xDebugName: Part1
     m_bSpaceshipPart: 1
     m_iIndex: 0
-    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: 23b49f11523cf82458952b03f82fd2f2, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2555,7 +2555,7 @@ MonoBehaviour:
   - m_xDebugName: Part2
     m_bSpaceshipPart: 1
     m_iIndex: 1
-    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: 916e48e659c9d214eb4a8b90f99bd1dc, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2563,7 +2563,7 @@ MonoBehaviour:
   - m_xDebugName: Part3
     m_bSpaceshipPart: 1
     m_iIndex: 2
-    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: e8289fe14e57e734e9a7ef37d776e51d, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2571,7 +2571,7 @@ MonoBehaviour:
   - m_xDebugName: Part4
     m_bSpaceshipPart: 1
     m_iIndex: 3
-    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: fd1268d70001cdd41bdbf110f8b95d72, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2579,7 +2579,7 @@ MonoBehaviour:
   - m_xDebugName: Part5
     m_bSpaceshipPart: 1
     m_iIndex: 4
-    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: 9c2c441f9bbe73442a619dc7e9c8704b, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
