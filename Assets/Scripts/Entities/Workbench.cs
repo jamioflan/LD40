@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour {
-
+public class Workbench : MonoBehaviour, IInteractable
+{
     public int nGem = 0;
     public int nFuel = 0;
     public int nBeams = 0;
@@ -51,6 +51,32 @@ public class Workbench : MonoBehaviour {
                 break;
             default:
                 break;
+        }
+    }
+
+    public void Hover(bool bInRange)
+    {
+        //ring.enabled = true;
+        //ring.material = bInRange ? green : red;
+    }
+
+    public void Unhover()
+    {
+        //ring.enabled = false;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void Interact(PlayerBehaviour player, int mouseButton)
+    {
+        if (mouseButton == 0)
+        {
+            // Open the work bench menu
+            Core.GetCore().theWorkbenchMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 }

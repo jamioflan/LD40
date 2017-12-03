@@ -18,6 +18,8 @@ public class PlayerBehaviour : MonoBehaviour {
     public float fBodyAngle = 0.0f, fHeadAngle = 0.0f;
     public Transform followPoint;
 
+    public IInteractable hoveringOver = null;
+
     // Use this for initialization
     void Start () {
         collector = GetComponentInChildren<ResourceCollector>();
@@ -61,42 +63,61 @@ public class PlayerBehaviour : MonoBehaviour {
 
         controller.Move(velocity * Time.fixedDeltaTime);
 
-        if (Input.GetMouseButtonDown(0) )
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        bool bInRange = false;
+        if (Physics.Raycast(ray, out hit) && hit.collider != null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit) )
+            IInteractable newHover = hit.collider.GetComponentInParent<IInteractable>();
+            if (newHover != null)
             {
-                if (hit.collider != null && (hit.collider.transform.position - transform.position).magnitude < interactDistance)
+                bInRange = (hit.collider.transform.position - transform.position).magnitude < interactDistance;
+
+                if (hoveringOver != null && newHover != hoveringOver)
                 {
-                    
-                    if ( hit.collider.GetComponentInParent<ResourceBase>() != null)
-                    {
-                        collector.AddResource(hit.collider.GetComponentInParent<ResourceBase>());
-                    }
-                    if ( hit.collider.GetComponent<Workbench>() != null)
-                    {
-                        // Open the work bench menu
-                        Core.GetCore().theWorkbenchMenu.gameObject.SetActive(true);
-                        Time.timeScale = 0;
-                    }
+                    hoveringOver.Unhover();
+                }
+
+                hoveringOver = newHover;
+                hoveringOver.Hover(bInRange);
+            }
+            else
+            {
+                if (hoveringOver != null)
+                {
+                    hoveringOver.Unhover();
+                    hoveringOver = null;
                 }
             }
         }
-        if (Input.GetMouseButtonDown(1))
+        else
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            if (hoveringOver != null)
             {
-                if (hit.collider != null)
+                hoveringOver.Unhover();
+                hoveringOver = null;
+            }
+        }
+
+        if(hoveringOver != null)
+        {
+            if (bInRange)
+            {
+                if (Input.GetMouseButtonUp(0))
                 {
-
-                    if (hit.collider.GetComponent<CollectedResource>() != null)
-                    {
-                        collector.Yield(hit.collider.GetComponent<CollectedResource>() );
-
-                    }
+                    hoveringOver.Interact(this, 0);
+                }
+                if (Input.GetMouseButtonUp(1))
+                {
+                    hoveringOver.Interact(this, 1);
+                }
+            }
+            else
+            {
+                if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+                {
+                    // Play a nastay SFX
                 }
             }
         }

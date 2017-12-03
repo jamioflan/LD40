@@ -45,4 +45,13 @@ public class CollectedResource : ResourceBase
             leader = receiver;
         }
     }
+
+    public override void Interact(PlayerBehaviour player, int mouseButton)
+    {
+        base.Interact(player, mouseButton);
+        if (mouseButton == 1)
+        {
+            player.collector.Yield(this);
+        }
+    }
 }
