@@ -12,6 +12,16 @@ public class CollectedResource : ResourceBase
     public Transform leader;
     // The object that owns this one
     public Transform owner;
+
+    public enum OwnerType
+    {
+        Player,
+        Workbench,
+        Enemy,
+        Lair,
+        None
+    }
+    public OwnerType ownerType = OwnerType.None;
     
 	// Use this for initialization
 	protected override void Start () {
@@ -30,7 +40,7 @@ public class CollectedResource : ResourceBase
             {
                 moveDirection = distance.normalized * Mathf.Min(speed, fDistanceAway / Time.fixedDeltaTime);
             }
-            else if (leader == Core.GetCore().theWorkbench.resourceReceiver)
+            else if (ownerType == OwnerType.Workbench)
             {
                 SetOwner(Core.GetCore().theWorkbench);
             }
@@ -48,6 +58,7 @@ public class CollectedResource : ResourceBase
                 collector.Yield(this);
             }
         }
+        ownerType = OwnerType.None;
     }
 
     public override void SetOwner(ResourceCollector collector)
@@ -61,6 +72,7 @@ public class CollectedResource : ResourceBase
             LeaveOwner();
         }
         owner = collector.transform;
+        ownerType = collector == Core.GetCore().thePlayer.collector ? OwnerType.Player : OwnerType.Enemy;
     }
 
     public void SetOwner(Transform receiver)

@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class ResourceCollector : MonoBehaviour {
 
-    /**********************
-     * Resource Templates *
-     *********************/
-    public CollectedResource scandiumTemplate;
-    public CollectedResource gemTemplate;
-    public CollectedResource fuelTemplate;
-    public CollectedResource beamsTemplate;
 
     public List<CollectedResource> collectedResources;
     public int capacity = 5;

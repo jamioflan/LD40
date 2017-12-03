@@ -24,6 +24,7 @@ public class Forcefield : MonoBehaviour {
             {
                 CollectedResource resource = player.collector.collectedResources[0];
                 resource.SetOwner(Core.GetCore().theWorkbench.resourceReceiver);
+                resource.ownerType = CollectedResource.OwnerType.Workbench;
                 resource.followDistance = 0.0f;
             }
         }
