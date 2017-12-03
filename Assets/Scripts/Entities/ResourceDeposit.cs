@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ResourceDeposit : ResourceBase
 {
-    public static List<ResourceDeposit> deposits;
+    public static List<ResourceDeposit> deposits = new List<ResourceDeposit>();
     public CollectedResource template;
 
     public override void SetOwner(ResourceCollector collector)
