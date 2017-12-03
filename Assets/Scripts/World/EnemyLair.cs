@@ -7,6 +7,7 @@ public class EnemyLair : MonoBehaviour {
 
     public BasicEnemy enemyTemplate;
     public int spawnSize;
+    public Transform holder;
 	// Use this for initialization
 	void Start () {
 
@@ -41,7 +42,7 @@ public class EnemyLair : MonoBehaviour {
 
     public void AddResource(CollectedResource resource)
     {
-        resource.leader = transform;
+        resource.leader = holder;
     }
 	
 	// Update is called once per frame

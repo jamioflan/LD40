@@ -110,8 +110,8 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                     {
                         target.GetComponent<CollectedResource>().SetOwner(collector);
                         state = State.RETURNING;
-                        agent.destination = lair.transform.position;
-                        Debug.Log(agent.destination.y);
+                        //agent.destination = lair.transform.position + new Vector3(5, 0, 5);
+                        agent.destination = lair.holder.position;
                         targetPosition = agent.destination;
                     }
                     else
@@ -121,14 +121,19 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                     }
                     break;
                 case State.RETURNING:
-                    if ((lair.transform.position - transform.position).magnitude < 10.0f)
+                    if ((agent.destination - transform.position).magnitude < 2.0f)
                     {
                         while (collector.collectedResources.Count > 0)
                         {
                             collector.collectedResources[collector.collectedResources.Count - 1].SetOwner(lair);
                         }
                     }
+                    Debug.Log(lair.holder.position);
+                    Debug.Log(agent.destination + " - " + transform.position + " (" + agent.nextPosition + ") " + agent.desiredVelocity);
                     state = State.IDLE;
+                    break;
+                case State.IDLE:
+                    agent.destination = transform.position;
                     break;
 
             }
