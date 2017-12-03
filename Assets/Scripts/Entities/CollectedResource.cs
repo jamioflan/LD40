@@ -33,17 +33,20 @@ public class CollectedResource : ResourceBase
 
     public void SetLeader(Transform receiver)
     {
-        Workbench bench = receiver.GetComponent<Workbench>();
-        if (bench != null)
+        if (receiver != null)
         {
-            // If it's a workbench we destroy this and increment the workshop's count
-            bench.ReceiveResource(type);
-            Destroy(this);
+            Workbench bench = receiver.GetComponent<Workbench>();
+            if (bench != null)
+            {
+                // If it's a workbench we destroy this and increment the workshop's count
+                bench.ReceiveResource(type);
+                Destroy(this);
+                return;
+            }
         }
-        else
-        {
-            leader = receiver;
-        }
+
+        leader = receiver;
+
     }
 
     public override void Interact(PlayerBehaviour player, int mouseButton)

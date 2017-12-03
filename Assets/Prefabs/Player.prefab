@@ -216,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373389499547888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.90588, y: -2.8778517, z: -6.372163}
+  m_LocalPosition: {x: 2.3433576, y: 22.380138, z: -40.47437}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4208708930934892}
@@ -443,7 +443,7 @@ MonoBehaviour:
   head: {fileID: 4520787058459996}
   fBodyAngle: 0
   fHeadAngle: 0
-  followPoint: {fileID: 4142407344675572}
+  followPoint: {fileID: 0}
 --- !u!114 &114979561354800272
 MonoBehaviour:
   m_ObjectHideFlags: 1
