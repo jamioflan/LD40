@@ -71,6 +71,12 @@ public class Core : MonoBehaviour
 
     public void CheckForWin()
     {
+        // Wait for workbench to close
+        if( theWorkbenchMenu.gameObject.activeSelf)
+        {
+            return;
+        }
+
         foreach(WorkbenchMenu.ListItem item in theWorkbenchMenu.m_xItems)
         {
             if (item.m_bSpaceshipPart && !item.m_bBuilt)
