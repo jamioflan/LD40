@@ -240,6 +240,25 @@ public class WorkbenchMenu : MonoBehaviour
         }
     }
 
+    // Visibility Conditions
+    public void ShouldDisplayCurrentItem(Image image)
+    {
+        image.enabled = (m_iCurrentItemIndex < m_xItems.Count);
+    }
+
+    public void ShouldDisplayBuildButton(Button button)
+    {
+        if(m_iCurrentItemIndex < m_xItems.Count)
+        {
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            button.enabled = Core.GetCore().theWorkbench.CanAfford(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams);
+        }
+        else
+        {
+            button.enabled = false;
+        }
+    }
+
     [System.Serializable]
     public class ListItem
     {
