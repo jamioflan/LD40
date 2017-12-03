@@ -19,6 +19,14 @@ public class WorkbenchMenu : MonoBehaviour
 
 	}
 
+    private void OnGUI()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            BackOut();
+        }
+    }
+
     // OnClick functions
     public void Listbox_Decrement()
 	{
