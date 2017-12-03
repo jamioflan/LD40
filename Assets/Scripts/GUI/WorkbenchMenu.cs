@@ -157,7 +157,10 @@ public class WorkbenchMenu : MonoBehaviour
 
     public void BackOut()
     {
+        // Close the workbench menu
         Core.GetCore().theWorkbenchMenu.gameObject.SetActive(false);
+        // Open the HUD
+        Core.GetCore().theHUD.gameObject.SetActive(true);
         Time.timeScale = 1.0f;
     }
 
@@ -231,6 +234,9 @@ public class WorkbenchMenu : MonoBehaviour
 
         // The index of the spaceship part/skill
         public int m_iIndex;
+
+        // The icon for the item
+        public Sprite m_iSprite;
 
         // Cost
         public int m_iCost_Gems;

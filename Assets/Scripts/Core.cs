@@ -7,6 +7,7 @@ public class Core : MonoBehaviour
     private static Core theCore;
 
     public WorkbenchMenu theWorkbenchMenu;
+    public HUD theHUD;
     public Workbench theWorkbench;
     public Spaceship theSpaceship;
     public PlayerBehaviour thePlayer;

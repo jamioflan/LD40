@@ -74,6 +74,8 @@ public class Workbench : MonoBehaviour, IInteractable
     {
         if (mouseButton == 0)
         {
+            // Close the HUD
+            Core.GetCore().theHUD.gameObject.SetActive(false);
             // Open the work bench menu
             Core.GetCore().theWorkbenchMenu.gameObject.SetActive(true);
             Time.timeScale = 0;
