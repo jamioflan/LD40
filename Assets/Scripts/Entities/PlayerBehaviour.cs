@@ -224,7 +224,7 @@ public class PlayerBehaviour : MonoBehaviour {
                     }
                 }
 
-                //skills[i].soundEffect;
+                GetComponent<AudioSource>().PlayOneShot(skills[i].soundEffect);
                 skills[i].fTimeSinceUsed = 0.0f;
             }
         }
