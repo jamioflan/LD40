@@ -18,26 +18,24 @@ public class ResourceBase : MonoBehaviour, IInteractable
 
     public ResourceType type;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	protected virtual void Start ()
+    {
+        Unhover();
+    }
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
     public void Hover(bool bInRange)
     {
-        if (ring == null) return;
         ring.enabled = true;
         ring.material = bInRange ? green : red;
     }
 
     public void Unhover()
     {
-        if (ring == null) return;
         ring.enabled = false;
     }
 
