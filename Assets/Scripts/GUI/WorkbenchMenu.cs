@@ -241,6 +241,20 @@ public class WorkbenchMenu : MonoBehaviour
         }
     }
 
+    public void PopulateCurrentItem_ExtraInfo(Text text)
+    {
+        if (m_iCurrentItemIndex < m_xItems.Count)
+        {
+            text.enabled = true;
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            text.text = xItem.m_xExtraInfo;
+        }
+        else
+        {
+            text.enabled = false;
+        }
+    }
+
     // Visibility Conditions
     public void ShouldDisplayBuildButton(Button button)
     {
@@ -284,6 +298,9 @@ public class WorkbenchMenu : MonoBehaviour
 
         // The icon for the item
         public Sprite m_xSprite;
+
+        // Extra info
+        public string m_xExtraInfo;
 
         // Cost
         public int m_iCost_Gems;
