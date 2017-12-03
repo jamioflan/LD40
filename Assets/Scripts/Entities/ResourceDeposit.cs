@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ResourceDeposit : ResourceBase
 {
-
+    public static List<ResourceDeposit> deposits;
     public CollectedResource template;
 
     public override void SetOwner(ResourceCollector collector)
@@ -22,7 +22,13 @@ public class ResourceDeposit : ResourceBase
     // Use this for initialization
     protected override void Start () {
         base.Start();
+        deposits.Add(this);
 	}
+
+    public void OnDestroy()
+    {
+        deposits.Remove(this);
+    }
 	
 	// Update is called once per frame
 	void Update () {

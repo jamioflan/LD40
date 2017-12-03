@@ -36,14 +36,15 @@ public class HUD : MonoBehaviour
             arrow.rectTransform.localEulerAngles = new Vector3(0.0f, 0.0f, fAngle - 90.0f);
         }
 
-        if (fPingProgress < 1.0f)
+        if (fPingProgress < 2.0f)
         {
             fPingProgress += Time.deltaTime;
 
             Vector3 deltaPos = pingTarget - Core.GetCore().thePlayer.transform.position;
 
             ping.enabled = true;
-            ping.rectTransform.localScale = new Vector3(fPingProgress, fPingProgress, fPingProgress) * 2.0f;
+            ping.rectTransform.localScale = new Vector3(fPingProgress + 1.0f, fPingProgress + 1.0f, fPingProgress + 1.0f);
+            ping.color = new Color(1.0f, 1.0f, 1.0f, 1.0f - Mathf.Abs(fPingProgress - 1.0f));
             float fAngle = Mathf.Atan2(deltaPos.z, deltaPos.x) * Mathf.Rad2Deg;
             ping.rectTransform.localEulerAngles = new Vector3(0.0f, 0.0f, fAngle - 90.0f);
         }

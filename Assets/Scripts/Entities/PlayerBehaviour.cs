@@ -52,8 +52,8 @@ public class PlayerBehaviour : MonoBehaviour {
         skills[(int)Skill.JETPACK].bUnlocked = true;
 
         // --- DEBUG
-//        for (int i = 0; i < 5; i++)
-//            skills[i].bUnlocked = true;
+        for (int i = 0; i < 5; i++)
+            skills[i].bUnlocked = true;
     }
 	
 	// Update is called once per frame
