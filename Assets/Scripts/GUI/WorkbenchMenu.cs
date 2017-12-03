@@ -247,11 +247,27 @@ public class WorkbenchMenu : MonoBehaviour
         if(m_iCurrentItemIndex < m_xItems.Count)
         {
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
-            button.enabled = Core.GetCore().theWorkbench.CanAfford(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams);
+            bool bEnabled = Core.GetCore().theWorkbench.CanAfford(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams);
+            button.enabled = bEnabled;
+            button.image.enabled = bEnabled;
         }
         else
         {
             button.enabled = false;
+        }
+    }
+
+    public void ShouldDisplayBuildButtonText(Text text)
+    {
+        if (m_iCurrentItemIndex < m_xItems.Count)
+        {
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            bool bEnabled = Core.GetCore().theWorkbench.CanAfford(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams);
+            text.enabled = bEnabled;
+        }
+        else
+        {
+            text.enabled = false;
         }
     }
 
