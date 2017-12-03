@@ -12,8 +12,8 @@ public class CollectedResource : ResourceBase
     public Transform leader;
     
 	// Use this for initialization
-	void Start () {
-		
+	protected override void Start () {
+        base.Start();
 	}
 	
 	// Update is called once per frame

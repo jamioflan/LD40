@@ -80,7 +80,6 @@ public class PlayerBehaviour : MonoBehaviour {
                 }
 
                 hoveringOver = newHover;
-                hoveringOver.Hover(bInRange);
             }
             else
             {
@@ -102,15 +101,21 @@ public class PlayerBehaviour : MonoBehaviour {
 
         if(hoveringOver != null)
         {
+            hoveringOver.Hover(bInRange);
+
             if (bInRange)
             {
                 if (Input.GetMouseButtonUp(0))
                 {
+                    hoveringOver.Unhover();
                     hoveringOver.Interact(this, 0);
+                    hoveringOver = null;
                 }
                 if (Input.GetMouseButtonUp(1))
                 {
+                    hoveringOver.Unhover();
                     hoveringOver.Interact(this, 1);
+                    hoveringOver = null;
                 }
             }
             else

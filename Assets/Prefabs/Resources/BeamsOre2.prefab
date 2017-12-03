@@ -254,7 +254,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4579309915824608}
   - component: {fileID: 33066561191690322}
-  - component: {fileID: 64639085975990902}
   - component: {fileID: 23642029242371718}
   m_Layer: 0
   m_Name: Plane
@@ -1327,20 +1326,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1927859221096748}
   m_Mesh: {fileID: 4300028, guid: fdccf5b85d124ca49be77f750519e0c6, type: 3}
---- !u!64 &64639085975990902
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1728695481855860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &65561359446160072
 BoxCollider:
   m_ObjectHideFlags: 1

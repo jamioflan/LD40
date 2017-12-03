@@ -8,9 +8,9 @@ public class ResourceDeposit : ResourceBase
 
 
 
-	// Use this for initialization
-	void Start () {
-		
+    // Use this for initialization
+    protected override void Start () {
+        base.Start();
 	}
 	
 	// Update is called once per frame
