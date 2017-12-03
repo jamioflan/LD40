@@ -32,7 +32,6 @@ public class CollectedResource : ResourceBase
             }
             else if (leader == Core.GetCore().theWorkbench.resourceReceiver)
             {
-                Debug.Log("HERE");
                 SetOwner(Core.GetCore().theWorkbench);
             }
             transform.position += (moveDirection * Time.fixedDeltaTime);
