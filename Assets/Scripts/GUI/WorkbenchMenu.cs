@@ -21,7 +21,7 @@ public class WorkbenchMenu : MonoBehaviour
 
     private void OnGUI()
     {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown("escape") && Core.GetCore().theWorkbenchMenu.gameObject.activeSelf)
         {
             BackOut();
         }

@@ -1476,7 +1476,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265426107364128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.637462, y: 2.7975216, z: 3.3700466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4013313439888086}
@@ -2592,7 +2592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2995,24 +2995,24 @@ MonoBehaviour:
     m_bSpaceshipPart: 1
     m_iIndex: 0
     m_xSprite: {fileID: 21300000, guid: 23b49f11523cf82458952b03f82fd2f2, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
+    m_iCost_Gems: 0
+    m_iCost_Fuel: 0
     m_iCost_Beams: 5
     m_bBuilt: 0
   - m_xDebugName: Part2
     m_bSpaceshipPart: 1
     m_iIndex: 1
     m_xSprite: {fileID: 21300000, guid: 916e48e659c9d214eb4a8b90f99bd1dc, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 3
+    m_iCost_Fuel: 0
+    m_iCost_Beams: 3
     m_bBuilt: 0
   - m_xDebugName: Part3
     m_bSpaceshipPart: 1
     m_iIndex: 2
     m_xSprite: {fileID: 21300000, guid: e8289fe14e57e734e9a7ef37d776e51d, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
+    m_iCost_Gems: 0
+    m_iCost_Fuel: 10
     m_iCost_Beams: 5
     m_bBuilt: 0
   - m_xDebugName: Part4
@@ -3020,56 +3020,56 @@ MonoBehaviour:
     m_iIndex: 3
     m_xSprite: {fileID: 21300000, guid: fd1268d70001cdd41bdbf110f8b95d72, type: 3}
     m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Fuel: 0
+    m_iCost_Beams: 2
     m_bBuilt: 0
   - m_xDebugName: Part5
     m_bSpaceshipPart: 1
     m_iIndex: 4
     m_xSprite: {fileID: 21300000, guid: 9c2c441f9bbe73442a619dc7e9c8704b, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 3
+    m_iCost_Fuel: 6
+    m_iCost_Beams: 6
     m_bBuilt: 0
   - m_xDebugName: Skill_JetPack
     m_bSpaceshipPart: 0
     m_iIndex: 0
     m_xSprite: {fileID: 21300000, guid: 7f6974bc0fdbeb940a5e921cf73c4c47, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 0
+    m_iCost_Fuel: 0
+    m_iCost_Beams: 0
     m_bBuilt: 1
   - m_xDebugName: Skill_Scanner
     m_bSpaceshipPart: 0
     m_iIndex: 1
     m_xSprite: {fileID: 21300000, guid: d231c5017fcd1d74693c67f4f5317366, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 4
+    m_iCost_Fuel: 0
+    m_iCost_Beams: 2
     m_bBuilt: 0
   - m_xDebugName: Skill_Stun
     m_bSpaceshipPart: 0
     m_iIndex: 2
     m_xSprite: {fileID: 21300000, guid: af34fd1e136cf2e4397e8e0f48532bf6, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 3
+    m_iCost_Fuel: 3
+    m_iCost_Beams: 0
     m_bBuilt: 0
   - m_xDebugName: Skill_Slow
     m_bSpaceshipPart: 0
     m_iIndex: 3
     m_xSprite: {fileID: 21300000, guid: 9df83cca17fca5f49a0fb920f9e2a79a, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 3
+    m_iCost_Fuel: 2
+    m_iCost_Beams: 2
     m_bBuilt: 0
   - m_xDebugName: Skill_SpeedBoost
     m_bSpaceshipPart: 0
     m_iIndex: 4
     m_xSprite: {fileID: 21300000, guid: 1125443df45709742b71bf5be5695728, type: 3}
-    m_iCost_Gems: 5
-    m_iCost_Fuel: 5
-    m_iCost_Beams: 5
+    m_iCost_Gems: 1
+    m_iCost_Fuel: 6
+    m_iCost_Beams: 1
     m_bBuilt: 0
 --- !u!114 &114509613237091824
 MonoBehaviour:
@@ -3396,6 +3396,9 @@ MonoBehaviour:
   theSpaceship: {fileID: 0}
   thePlayer: {fileID: 0}
   worldBuilder: {fileID: 114710636587697150}
+  bWin: 0
+  fTimeSinceWin: 0
+  datTastyCamera: {fileID: 0}
 --- !u!114 &114614272863192894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3520,7 +3523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5124,7 +5127,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807485117128502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.3700466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224498805511351198}
@@ -6393,7 +6396,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319833863756386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.3700466}
   m_LocalScale: {x: 1.28, y: 1.28, z: 1.28}
   m_Children:
   - {fileID: 224569500283810132}
