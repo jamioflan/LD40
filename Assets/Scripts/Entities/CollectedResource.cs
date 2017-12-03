@@ -89,6 +89,14 @@ public class CollectedResource : ResourceBase
         Destroy(gameObject);
     }
 
+    public void SetOwner(EnemyLair lair)
+    {
+        LeaveOwner();
+        lair.AddResource(this);
+        owner = lair.transform;
+        ownerType = OwnerType.Lair;
+    }
+
     public void SetOwner()
     {
         LeaveOwner();

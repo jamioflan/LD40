@@ -188,7 +188,7 @@ public class WorldBuilder : MonoBehaviour
                         whatAnExcellentPieceOfTrash.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), fFloorHeight, Random.Range(2.0f, 8.0f));
                         whatAnExcellentPieceOfTrash.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
 
-                        if(whatAnExcellentPieceOfTrash.GetComponent<EnemyLair>())
+                        if(whatAnExcellentPieceOfTrash.GetComponent<EnemyLair>() != null)
                         {
                             lairs.Add(whatAnExcellentPieceOfTrash.GetComponent<EnemyLair>());
                             whatAnExcellentPieceOfTrash.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
@@ -223,8 +223,8 @@ public class WorldBuilder : MonoBehaviour
 
         Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
         Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
+        foreach (EnemyLair lair in lairs)
+            lair.SpawnEnemies();
 
-        BasicEnemy foe = Instantiate<BasicEnemy>(enemyPrefab);
-        foe.transform.position = Core.GetCore().thePlayer.transform.position + new Vector3(1, 0, 0);
     }
 }

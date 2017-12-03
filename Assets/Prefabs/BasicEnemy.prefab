@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 33149345198683580}
   - component: {fileID: 136734870824171344}
   - component: {fileID: 23993136762635634}
-  - component: {fileID: 195821247808428826}
   - component: {fileID: 114524864047710546}
   m_Layer: 0
   m_Name: BasicEnemy
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1175479763313276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.32, y: -0.63, z: 0}
+  m_LocalPosition: {x: 0.32, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4036642615645460}
@@ -67,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533624573877640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.024456, y: 62.792175, z: -105.919846}
+  m_LocalPosition: {x: -125.64692, y: 4.725473, z: -143.31288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4009011813148320}
@@ -139,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41078723f29c10249840a00d7e56e798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infightingChance: 0.1
+  infightingChance: 0
   droppedInterest: 4
   captureRadius: 2
   meTime: 0
@@ -147,6 +146,7 @@ MonoBehaviour:
   baseSpeed: 1
   speedUnits: 3
   collector: {fileID: 0}
+  lair: {fileID: 0}
   state: 0
   target: {fileID: 0}
   detectionRadius: 100
@@ -162,25 +162,4 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &195821247808428826
-NavMeshAgent:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1533624573877640}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5000001
-  m_Speed: 8
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 240
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_Center: {x: 0, y: 1, z: 0}

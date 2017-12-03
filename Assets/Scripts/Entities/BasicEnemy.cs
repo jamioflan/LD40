@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BasicEnemy : MonoBehaviour {
 
@@ -22,15 +23,18 @@ public class BasicEnemy : MonoBehaviour {
     public float aggression = 0.0f;
     public float baseSpeed = 1.0f;
     public float speedUnits = 3.0f;
+    public float accelerationUnits = 8.0f;
+    public float angularSpeedUnits = 100;
+    public Vector3 targetPosition;
 
     public ResourceCollector collector;
+    public EnemyLair lair;
     private UnityEngine.AI.NavMeshAgent agent;
     public State state;
     public Transform target;
     public float detectionRadius = 100.0f;
 	// Use this for initialization
 	void Start () {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         collector = GetComponentInChildren<ResourceCollector>();
         meTime = Random.Range(1.0f, 2.0f);
         state = State.IDLE;
@@ -55,26 +59,54 @@ public class BasicEnemy : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
+        if (Time.time < 0.2f) {
+            return;
+        }
+        if (agent == null)
+        {
+            agent = gameObject.AddComponent<NavMeshAgent>();
+        }
         agent.speed = speedUnits * (baseSpeed + aggression);
+        agent.acceleration = accelerationUnits * (1 + aggression);
+        agent.angularSpeed = angularSpeedUnits * (1 + aggression);
+
         if (agent.isOnNavMesh)
         {
             // Check to make sure the target is still there
-            if (target == null)
+            if (state == State.FOLLOWING && target == null)
                 UpdateTarget();
             if ((meTime -= Time.deltaTime) < 0)
             {
+                meTime = Random.Range(1.0f, 2.0f);
                 if (collector.CanReceive())
                     UpdateTarget();
             }
             switch (state)
             {
                 case State.FOLLOWING:
-                    if ((target.transform.position-transform.position).magnitude < captureRadius)
+                    if ((target.transform.position - transform.position).magnitude < captureRadius)
                     {
                         target.GetComponent<CollectedResource>().SetOwner(collector);
                         state = State.RETURNING;
+                        agent.destination = lair.transform.position;
+                        Debug.Log(agent.destination.y);
+                        targetPosition = agent.destination;
                     }
-                    agent.destination = target.transform.position;
+                    else
+                    {
+                        agent.destination = target.transform.position;
+                        targetPosition = agent.destination;
+                    }
+                    break;
+                case State.RETURNING:
+                    if ((lair.transform.position - transform.position).magnitude < 10.0f)
+                    {
+                        while (collector.collectedResources.Count > 0)
+                        {
+                            collector.collectedResources[collector.collectedResources.Count - 1].SetOwner(lair);
+                        }
+                    }
+                    state = State.IDLE;
                     break;
 
             }

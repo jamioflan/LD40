@@ -236,6 +236,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4757261811800024}
+  - component: {fileID: 114971138219074222}
   m_Layer: 0
   m_Name: EnemyLair
   m_TagString: Untagged
@@ -1307,6 +1308,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.2797819, y: 1.0250096, z: 1.1959188}
   m_Center: {x: 0.3601096, y: 0.012514906, z: 0.2900129}
+--- !u!114 &114971138219074222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632459774131650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe95aafa19be7354d8a30de2bad20386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTemplate: {fileID: 114524864047710546, guid: 4a66d0dd502d99b48806f5c3fadc7dda,
+    type: 2}
+  spawnSize: 3
 --- !u!136 &136422777475314348
 CapsuleCollider:
   m_ObjectHideFlags: 1

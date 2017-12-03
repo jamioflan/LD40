@@ -51,6 +51,7 @@ public class ResourceCollector : MonoBehaviour {
             }
         }
     }
+    
 
     // Use this for initialization
     void Start () {
