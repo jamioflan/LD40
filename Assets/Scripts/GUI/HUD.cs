@@ -54,6 +54,32 @@ public class HUD : MonoBehaviour
         }
     }
 
+    // Population functions
+    public void PopulateCooldownImage_JetPack(Image image)
+    {
+        float filledAmount = 0.0f;
+
+        PlayerBehaviour.SkillData skill = Core.GetCore().thePlayer.skills[(int)PlayerBehaviour.Skill.JETPACK];
+        if (!skill.bUnlocked)
+        {
+            filledAmount = 0.0f;
+        }
+        else
+        {
+            filledAmount = skill.fTimeSinceUsed / skill.fCooldown;
+            if( filledAmount > 1.0f )
+            {
+                filledAmount = 1.0f;
+            }
+            else if( filledAmount < 0.0f )
+            {
+                filledAmount = 0.0f;
+            }
+        }
+
+        image.fillAmount = filledAmount;
+    }
+
     public void PopulateCarryingCapacity(Text text)
     {
         int iCollectedResources = Core.GetCore().thePlayer.collector.collectedResources.Count;

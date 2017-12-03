@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 224279567074388152}
   - component: {fileID: 222397068614306612}
   - component: {fileID: 114064042688731966}
+  - component: {fileID: 114793551244101086}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1459,10 +1460,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7f6974bc0fdbeb940a5e921cf73c4c47, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 1
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -3518,6 +3519,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114793551244101086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397288880496464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002e0850344e69b4089a599a413eb06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114242117739901486}
+        m_MethodName: PopulateCooldownImage_JetPack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ImagePplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114809460029494418
 MonoBehaviour:
   m_ObjectHideFlags: 1
