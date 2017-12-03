@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     public Image ping;
 
     public Vector3 pingTarget = Vector3.zero;
-    public float fPingProgress = 1.0f;
+    public float fPingProgress = 2.0f;
 
 	// Use this for initialization
 	void Start()

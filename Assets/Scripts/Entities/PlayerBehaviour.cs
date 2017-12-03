@@ -82,8 +82,26 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Ping()
     {
-        Core.GetCore().theHUD.pingTarget = new Vector3(50.0f, 0.0f, 50.0f);
-        Core.GetCore().theHUD.fPingProgress = 0.0f;
+        ResourceDeposit bestDeposit = null;
+        float fBestDistance = 10000.0f;
+        foreach (ResourceDeposit deposit in ResourceDeposit.deposits)
+        {
+            float fDistance = (deposit.transform.position - transform.position).magnitude;
+            if (fDistance < fBestDistance)
+            {
+                bestDeposit = deposit;
+                fBestDistance = fDistance;
+            }
+        }
+        if (bestDeposit != null)
+        {
+            Core.GetCore().theHUD.pingTarget = bestDeposit.transform.position;
+            Core.GetCore().theHUD.fPingProgress = 0.0f;
+        }
+        else
+        {
+            // TODO : Make a "nah m8" sound effect
+        }
     }
 
     private void Stun()
