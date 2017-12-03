@@ -141,8 +141,8 @@ public class WorkbenchMenu : MonoBehaviour
 
                     if (!bFoundValidItem)
                     {
-                        // Just set the index to 0, but nothing should be displaying if we get here
-                        m_iCurrentItemIndex = 0;
+                        // Just set the index to something invalid, but nothing should be displaying if we get here
+                        m_iCurrentItemIndex = 9999;
                     }
                 }
 
@@ -236,7 +236,7 @@ public class WorkbenchMenu : MonoBehaviour
         }
         else
         {
-            image.sprite = null;
+            image.sprite = null; // TODO: Add some 'all done' image/empty image
         }
     }
 
