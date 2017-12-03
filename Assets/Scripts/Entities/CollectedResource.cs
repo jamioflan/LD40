@@ -29,7 +29,7 @@ public class CollectedResource : ResourceBase {
         }
     }
 
-    void SetLeader(Transform receiver)
+    public void SetLeader(Transform receiver)
     {
         Workbench bench = receiver.GetComponent<Workbench>();
         if (bench != null)

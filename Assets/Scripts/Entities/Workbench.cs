@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Workbench : MonoBehaviour {
 
-    public int nGreen = 0;
-    public int nRed = 0;
-    public int nBlue = 0;
+    public int nGem = 0;
+    public int nFuel = 0;
+    public int nBeams = 0;
     public int nScOre = 0;
 	// Use this for initialization
 	void Start () {
@@ -18,17 +18,17 @@ public class Workbench : MonoBehaviour {
 		
 	}
 
-    public bool Pay(int costGreen, int costRed, int costBlue)
+    public bool Pay(int costGem, int costFuel, int costBeams)
     {
-        if (costGreen < nGreen || costRed < nRed || costBlue < nBlue)
+        if (costGem < nGem || costFuel < nFuel || costBeams < nBeams)
         {
             return false;
         }
         else
         {
-            nGreen -= costGreen;
-            nRed -= costRed;
-            nBlue -= costBlue;
+            nGem -= costGem;
+            nFuel -= costFuel;
+            nBeams -= costBeams;
             return true;
         }
     }
@@ -37,16 +37,16 @@ public class Workbench : MonoBehaviour {
     {
         switch (type)
         {
-            case ResourceBase.ResourceType.Blue:
-                nBlue++;
+            case ResourceBase.ResourceType.BEAMS:
+                nBeams++;
                 break;
-            case ResourceBase.ResourceType.Green:
-                nGreen++;
+            case ResourceBase.ResourceType.GEMS:
+                nGem++;
                 break;
-            case ResourceBase.ResourceType.Red:
-                nRed++;
+            case ResourceBase.ResourceType.FUEL:
+                nFuel++;
                 break;
-            case ResourceBase.ResourceType.Scandium:
+            case ResourceBase.ResourceType.SCANDIUM:
                 nScOre++;
                 break;
             default:
