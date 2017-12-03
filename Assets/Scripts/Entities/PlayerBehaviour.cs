@@ -52,9 +52,9 @@ public class PlayerBehaviour : MonoBehaviour {
         skills[(int)Skill.JETPACK].bUnlocked = true;
 
         // --- DEBUG
-        for(int i = 0; i < 5; i++)
-         skills[i].bUnlocked = true;
-	}
+//        for (int i = 0; i < 5; i++)
+//            skills[i].bUnlocked = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -237,6 +237,10 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void UnlockSkill(int iSkillIndex)
     {
-        // TODO
+        if( iSkillIndex < iNUM_SKILLS)
+        {
+            SkillData xSkill = skills[iSkillIndex];
+            xSkill.bUnlocked = true;
+        }
     }
 }
