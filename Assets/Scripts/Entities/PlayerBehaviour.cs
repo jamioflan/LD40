@@ -51,6 +51,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public float fStunPFXTime = 0.0f;
 
     public ParticleSystem pfx;
+    public LayerMask layerMask;
 
     // Use this for initialization
     void Start () {
@@ -253,7 +254,7 @@ public class PlayerBehaviour : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         bool bInRange = false;
-        if (Physics.Raycast(ray, out hit) && hit.collider != null)
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, ~(1 << LayerMask.NameToLayer("DoNotRaytraceThisTrash"))) && hit.collider != null)
         {
             IInteractable newHover = hit.collider.GetComponentInParent<IInteractable>();
             if (newHover != null)

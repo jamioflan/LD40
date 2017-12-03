@@ -46,15 +46,15 @@ public class Core : MonoBehaviour
         {
             fTimeSinceWin += Time.deltaTime;
 
-            datTastyCamera.transform.position = Vector3.Lerp(datTastyCamera.transform.position, theSpaceship.transform.position + new Vector3(0.0f, 10.0f, -10.0f), Time.deltaTime);
+            datTastyCamera.transform.position = Vector3.Lerp(datTastyCamera.transform.position, theSpaceship.transform.position + new Vector3(0.0f, 10.0f, -10.0f), Time.deltaTime * 10.0f);
 
             if (fTimeSinceWin < 5.0f)
             {
-                theSpaceship.transform.localPosition = Random.onUnitSphere * 0.5f;
+                theSpaceship.transform.localPosition = new Vector3(5.0f, 0.0f, 5.0f) + Random.onUnitSphere * 0.05f;
             }
             else
             {
-                theSpaceship.transform.localPosition = new Vector3(0.0f, fTimeSinceWin * fTimeSinceWin, 0.0f);
+                theSpaceship.transform.localPosition = new Vector3(0.0f, fTimeSinceWin * fTimeSinceWin * 0.25f, 0.0f);
             }
         }
     }

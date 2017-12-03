@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373389499547888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9892693, y: 7.91, z: 6.3220997}
+  m_LocalPosition: {x: 2239.8032, y: 1752.398, z: -3126.766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4208708930934892}
@@ -665,6 +665,9 @@ MonoBehaviour:
   fSlowPFXTime: 2
   fStunPFXTime: 0
   pfx: {fileID: 198085119443045914}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967294
 --- !u!114 &114979561354800272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,7 +860,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
