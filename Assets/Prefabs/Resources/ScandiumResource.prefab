@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  speed: 8
+  speed: 40
   leader: {fileID: 0}
 --- !u!135 &135984771675483468
 SphereCollider:

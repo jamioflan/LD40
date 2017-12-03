@@ -25,6 +25,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public Transform body, head;
     public float fBodyAngle = 0.0f, fHeadAngle = 0.0f;
+    public Transform followPoint;
 
     // Use this for initialization
     void Start () {
@@ -122,7 +123,7 @@ public class PlayerBehaviour : MonoBehaviour {
             return false; // Maybe trigger a message to the UI? TODO
         }
         // Find the last object in the list (or the player if it's empty)
-        Transform last = collectedResources.Count == 0 ? transform : collectedResources[collectedResources.Count - 1].transform;
+        Transform last = collectedResources.Count == 0 ? followPoint : collectedResources[collectedResources.Count - 1].transform;
         // Create a new resource behind the player
         // First work out what sort we should be making
         CollectedResource template;
@@ -146,6 +147,8 @@ public class PlayerBehaviour : MonoBehaviour {
         }
         CollectedResource newResource = Instantiate<CollectedResource>(template, resource.transform.position, resource.transform.rotation);
         newResource.leader = last;
+        if (collectedResources.Count == 0)
+            newResource.followDistance = 0.0f;
         collectedResources.Add(newResource);
         return true;
     }

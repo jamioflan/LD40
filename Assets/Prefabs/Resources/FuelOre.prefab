@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4754297964967398}
   - component: {fileID: 114062431420141850}
   m_Layer: 0
-  m_Name: PurpleOre
+  m_Name: FuelOre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

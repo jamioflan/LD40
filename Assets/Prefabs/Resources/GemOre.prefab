@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4754297964967398}
   - component: {fileID: 114805363726343212}
   m_Layer: 0
-  m_Name: GreenOre
+  m_Name: GemOre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

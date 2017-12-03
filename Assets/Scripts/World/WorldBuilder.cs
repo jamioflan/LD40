@@ -159,14 +159,17 @@ public class WorldBuilder : MonoBehaviour
                 }
                 else // Floor
                 {
-                    float fPerlinScore = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
-                    float fDistFromCentre = new Vector3(i - width / 2, 0.0f, j - height / 2).magnitude;
-                    float fScore = (fPerlinScore + 1.0f) * (fDistFromCentre + 1.0f);
-                    if (fScore < fBestHomeScore)
+                    if (j != 0 && tiles[i, j - 1] < 0.5f)
                     {
-                        fBestHomeScore = fScore;
-                        iBestHomeX = i;
-                        iBestHomeY = j;
+                        float fPerlinScore = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
+                        float fDistFromCentre = new Vector3(i - width / 2, 0.0f, j - height / 2).magnitude;
+                        float fScore = (fPerlinScore + 1.0f) * (fDistFromCentre + 1.0f);
+                        if (fScore < fBestHomeScore)
+                        {
+                            fBestHomeScore = fScore;
+                            iBestHomeX = i;
+                            iBestHomeY = j;
+                        }
                     }
                 }
 

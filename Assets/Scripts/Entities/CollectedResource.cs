@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CollectedResource : ResourceBase {
-    public static float followDistance = 1.0F;
+public class CollectedResource : ResourceBase
+{
+    public float followDistance = 1.0F;
     public float speed = 8.0F;
 
     // The object that this one is following
@@ -21,9 +22,10 @@ public class CollectedResource : ResourceBase {
         {
             Vector3 distance = leader.position - transform.position;
             Vector3 moveDirection = Vector3.zero;
-            if (distance.magnitude > followDistance)
+            float fDistanceAway = distance.magnitude - followDistance;
+            if (fDistanceAway > 0)
             {
-                moveDirection = distance * speed;
+                moveDirection = distance.normalized * Mathf.Min(speed, fDistanceAway / Time.fixedDeltaTime);
             }
             transform.position += (moveDirection * Time.fixedDeltaTime);
         }
