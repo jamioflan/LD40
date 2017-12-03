@@ -6,6 +6,7 @@ public class WorldTile : MonoBehaviour
 {
     public GameObject[] walls = new GameObject[Directions.iNUM_DIRECTIONS];
     public MeshRenderer floorMesh;
+    public Workbench myWorkbench;
 
 	// Use this for initialization
 	void Start ()
