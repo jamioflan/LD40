@@ -231,21 +231,17 @@ public class WorkbenchMenu : MonoBehaviour
     {
         if (m_iCurrentItemIndex < m_xItems.Count)
         {
+            image.enabled = true;
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
             image.sprite = xItem.m_xSprite;
         }
         else
         {
-            image.sprite = null; // TODO: Add some 'all done' image/empty image
+            image.enabled = false;
         }
     }
 
     // Visibility Conditions
-    public void ShouldDisplayCurrentItem(Image image)
-    {
-        image.enabled = (m_iCurrentItemIndex < m_xItems.Count);
-    }
-
     public void ShouldDisplayBuildButton(Button button)
     {
         if(m_iCurrentItemIndex < m_xItems.Count)
