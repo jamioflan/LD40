@@ -434,10 +434,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc141891960fb945adea9abd3e287e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skills:
+  - fCooldown: 1
+    inputAxis: Jump
+    soundEffect: {fileID: 0}
+    fTimeSinceUsed: 0
+    bUnlocked: 0
+    bCanUse: 0
+  - fCooldown: 1
+    inputAxis: Ping
+    soundEffect: {fileID: 0}
+    fTimeSinceUsed: 0
+    bUnlocked: 0
+    bCanUse: 0
+  - fCooldown: 1
+    inputAxis: Stun
+    soundEffect: {fileID: 0}
+    fTimeSinceUsed: 0
+    bUnlocked: 0
+    bCanUse: 0
+  - fCooldown: 1
+    inputAxis: Slow
+    soundEffect: {fileID: 0}
+    fTimeSinceUsed: 0
+    bUnlocked: 0
+    bCanUse: 0
+  - fCooldown: 1
+    inputAxis: SpeedBoost
+    soundEffect: {fileID: 0}
+    fTimeSinceUsed: 0
+    bUnlocked: 0
+    bCanUse: 0
   interactDistance: 6
   jumpSpeed: 15
   collector: {fileID: 0}
   speed: 12
+  fSpeedBoostActive: 0
   currentYSpeed: 0
   body: {fileID: 4889667815838630}
   head: {fileID: 4520787058459996}
