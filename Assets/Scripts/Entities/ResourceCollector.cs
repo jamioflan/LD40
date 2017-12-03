@@ -14,42 +14,25 @@ public class ResourceCollector : MonoBehaviour {
 
     public List<CollectedResource> collectedResources;
     public int capacity = 5;
-    // Try and add a resource. Returns false if we're already at carrying capacity
-    public bool AddResource(ResourceBase resource)
+    public bool CanReceive()
     {
-        if (collectedResources.Count == capacity)
+        return collectedResources.Count < capacity;
+    }
+    // Try and add a resource. Returns false if we're already at carrying capacity
+    public bool AddResource(CollectedResource resource)
+    {
+        if (!CanReceive())
         {
-            return false; // Maybe trigger a message to the UI? TODO
+            return false;
         }
+
         // Find the last object in the list (or the player if it's empty)
         Transform last = collectedResources.Count == 0 ? transform : collectedResources[collectedResources.Count - 1].transform;
-        // Create a new resource behind the player
-        // First work out what sort we should be making
-        CollectedResource template;
-        switch (resource.type)
-        {
-            case ResourceBase.ResourceType.SCANDIUM:
-                template = scandiumTemplate;
-                break;
-            case ResourceBase.ResourceType.GEMS:
-                template = gemTemplate;
-                break;
-            case ResourceBase.ResourceType.FUEL:
-                template = fuelTemplate;
-                break;
-            case ResourceBase.ResourceType.BEAMS:
-                template = beamsTemplate;
-                break;
-            default: // This is just to make VS happy...
-                template = scandiumTemplate;
-                break;
-        }
-        CollectedResource newResource = Instantiate<CollectedResource>(template, resource.transform.position, resource.transform.rotation);
-        Destroy(resource.gameObject);
-        newResource.leader = last;
-        if (collectedResources.Count == 0)
-            newResource.followDistance = 0.0f;
-        collectedResources.Add(newResource);
+
+        resource.leader = last;
+        resource.followDistance = collectedResources.Count == 0 ? 0.0f : 1.0f;
+
+        collectedResources.Add(resource);
         return true;
     }
 
@@ -58,12 +41,20 @@ public class ResourceCollector : MonoBehaviour {
         int idx = collectedResources.IndexOf(resource);
         if (idx >= 0)
         {
-            resource.SetLeader(receiver);
             collectedResources.RemoveAt(idx);
 
             if (idx < collectedResources.Count)
             {
-                collectedResources[idx].leader = idx == 0 ? transform : collectedResources[idx - 1].transform;
+                if (idx == 0)
+                {
+                    collectedResources[0].leader = transform;
+                    collectedResources[0].followDistance = 0.0f;
+                }
+                else
+                {
+                    collectedResources[idx].leader = collectedResources[idx - 1].transform;
+                    collectedResources[idx].followDistance = 1.0f;
+                }
             }
         }
     }

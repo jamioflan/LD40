@@ -18,6 +18,11 @@ public class ResourceBase : MonoBehaviour, IInteractable
 
     public ResourceType type;
 
+    public virtual void SetOwner(ResourceCollector collector)
+    {
+
+    }
+
 	protected virtual void Start ()
     {
         Unhover();
@@ -48,7 +53,7 @@ public class ResourceBase : MonoBehaviour, IInteractable
     {
         if (mouseButton == 0)
         {
-            player.collector.AddResource(this);
+            SetOwner(player.collector);
         }
     }
 }

@@ -6,6 +6,17 @@ using UnityEngine;
 public class ResourceDeposit : ResourceBase
 {
 
+    public CollectedResource template;
+
+    public override void SetOwner(ResourceCollector collector)
+    {
+        if (collector.CanReceive() )
+        {
+            CollectedResource resource = Instantiate<CollectedResource>(template, transform.position, transform.rotation);
+            Destroy(gameObject);
+            resource.SetOwner(collector);
+        }
+    }
 
 
     // Use this for initialization

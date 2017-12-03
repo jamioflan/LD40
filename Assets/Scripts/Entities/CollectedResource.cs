@@ -10,6 +10,8 @@ public class CollectedResource : ResourceBase
 
     // The object that this one is following
     public Transform leader;
+    // The object that owns this one
+    public Transform owner;
     
 	// Use this for initialization
 	protected override void Start () {
@@ -31,30 +33,63 @@ public class CollectedResource : ResourceBase
         }
     }
 
-    public void SetLeader(Transform receiver)
+    public void LeaveOwner()
     {
-        if (receiver != null)
+        if (owner != null)
         {
-            Workbench bench = receiver.GetComponent<Workbench>();
-            if (bench != null)
+            ResourceCollector collector = owner.GetComponent<ResourceCollector>();
+            if (collector != null)
             {
-                // If it's a workbench we destroy this and increment the workshop's count
-                bench.ReceiveResource(type);
-                Destroy(this);
-                return;
+                collector.Yield(this);
             }
         }
-
-        leader = receiver;
-
     }
+
+    public override void SetOwner(ResourceCollector collector)
+    {
+        if (owner == collector.transform)
+        {
+            return;
+        }
+        if (collector.AddResource(this) )
+        {
+            LeaveOwner();
+        }
+        owner = collector.transform;
+    }
+
+    public void SetOwner(Transform receiver)
+    {
+        LeaveOwner();
+        owner = receiver;
+        leader = receiver;
+    }
+
+    public void SetOwner(Workbench bench)
+    {
+        LeaveOwner();
+        bench.ReceiveResource(type);
+        Destroy(this);
+    }
+
+    public void SetOwner()
+    {
+        LeaveOwner();
+        owner = null;
+        leader = null;
+    }
+
 
     public override void Interact(PlayerBehaviour player, int mouseButton)
     {
         base.Interact(player, mouseButton);
         if (mouseButton == 1)
         {
-            player.collector.Yield(this);
+            // Only discard if the player owns this
+            if (owner == player.collector.transform)
+            {
+                SetOwner();
+            }
         }
     }
 }
