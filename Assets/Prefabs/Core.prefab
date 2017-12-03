@@ -1342,6 +1342,7 @@ GameObject:
   - component: {fileID: 222703651945349412}
   - component: {fileID: 114434528752902788}
   - component: {fileID: 114227596664517314}
+  - component: {fileID: 114442279525155034}
   m_Layer: 5
   m_Name: Button_Build
   m_TagString: Untagged
@@ -2772,6 +2773,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114442279525155034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1866433372280404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 179f564313582e343aea258cb2602002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dispCond:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: ShouldDisplayBuildButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: displayCond, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114445159803610832
 MonoBehaviour:
   m_ObjectHideFlags: 1
