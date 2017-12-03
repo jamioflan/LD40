@@ -15,6 +15,11 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void OnGUI()
+    {
         // Draw an arrow to where the base is
         /*WorldTile baseTile = Core.OuEstLeBase(true);
         if (baseTile != null)

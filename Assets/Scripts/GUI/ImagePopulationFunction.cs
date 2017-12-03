@@ -23,6 +23,11 @@ public class ImagePopulationFunction : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        
+    }
+
+    private void OnGUI()
+    {
         Image image = gameObject.GetComponent<Image>();
         populationFunction.Invoke(image);
     }

@@ -23,7 +23,12 @@ public class TextPopulationFunction : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
+        
+	}
+
+    private void OnGUI()
+    {
         Text text = gameObject.GetComponent<Text>();
         populationFunction.Invoke(text);
-	}
+    }
 }

@@ -16,12 +16,6 @@ public class WorkbenchMenu : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-        // TODO: Populate all the text and images with the right stuff
-
-        // First populate the quantities of the ores
-
-        // Then, for the current item index, populate the image, the cost (or hide if can't
-        // afford) and hide/show the right build button and increment/decrement buttons.
 
 	}
 
