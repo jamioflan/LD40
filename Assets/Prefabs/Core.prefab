@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 224784402414211290}
   - component: {fileID: 222662421317673086}
   - component: {fileID: 114371844424527892}
+  - component: {fileID: 114979513466721704}
   m_Layer: 5
   m_Name: Ore_3_Amount
   m_TagString: Untagged
@@ -412,7 +413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1324702936986568
 GameObject:
   m_ObjectHideFlags: 1
@@ -716,6 +717,7 @@ GameObject:
   - component: {fileID: 224160328025319376}
   - component: {fileID: 222174016855986446}
   - component: {fileID: 114018347274491992}
+  - component: {fileID: 114918592327423270}
   m_Layer: 5
   m_Name: Ore_3_Cost
   m_TagString: Untagged
@@ -836,6 +838,7 @@ GameObject:
   - component: {fileID: 224831140092739968}
   - component: {fileID: 222933638485019742}
   - component: {fileID: 114561573964969256}
+  - component: {fileID: 114086915186502768}
   m_Layer: 5
   m_Name: Ore_2_Amount
   m_TagString: Untagged
@@ -981,6 +984,7 @@ GameObject:
   - component: {fileID: 224804035422461488}
   - component: {fileID: 222739147018032038}
   - component: {fileID: 114601899961641694}
+  - component: {fileID: 114918302882658164}
   m_Layer: 5
   m_Name: Ore_1_Cost
   m_TagString: Untagged
@@ -998,6 +1002,7 @@ GameObject:
   - component: {fileID: 224163955329644592}
   - component: {fileID: 222165807296501146}
   - component: {fileID: 114129748636779996}
+  - component: {fileID: 114997936018345992}
   m_Layer: 5
   m_Name: Ore_1_Amount
   m_TagString: Untagged
@@ -1163,6 +1168,7 @@ GameObject:
   - component: {fileID: 224731056389388712}
   - component: {fileID: 222882769437672232}
   - component: {fileID: 114809460029494418}
+  - component: {fileID: 114708493774328286}
   m_Layer: 5
   m_Name: Ore_2_Cost
   m_TagString: Untagged
@@ -1312,7 +1318,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1265426107364128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.637462, y: 2.7975216, z: 3.3700466}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4013313439888086}
@@ -1489,6 +1495,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114086915186502768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632712470723774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4732d10a01a043bce3fd250d86248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCollectedResources_Fuel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114097740214433382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2988,6 +3020,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114708493774328286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841567001439094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4732d10a01a043bce3fd250d86248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCollectedResources_Fuel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114710636587697150
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3488,6 +3546,84 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114918302882658164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1725622166675572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4732d10a01a043bce3fd250d86248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCurrentItemCost_Gems
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114918592327423270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1589469840109766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4732d10a01a043bce3fd250d86248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCurrentItemCost_Beams
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114979513466721704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1188101603786226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4732d10a01a043bce3fd250d86248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCollectedResources_Beams
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114985567165536586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3515,6 +3651,32 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114997936018345992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730517699035162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b4732d10a01a043bce3fd250d86248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationFunction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCollectedResources_Gems
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TextPplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!222 &222007052448332628
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -4058,7 +4220,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807485117128502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.3700466}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224498805511351198}
@@ -5180,7 +5342,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319833863756386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.3700466}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.28, y: 1.28, z: 1.28}
   m_Children:
   - {fileID: 224569500283810132}
