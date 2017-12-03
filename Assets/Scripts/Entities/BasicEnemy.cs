@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour {
+public class BasicEnemy : MonoBehaviour, IInteractable
+{
 
     public enum State
     {
@@ -43,6 +44,11 @@ public class BasicEnemy : MonoBehaviour {
     public void Slow(float fTime)
     {
         fSlowTime = fTime;
+    }
+
+    public void Stun(float fTime)
+    {
+        fStunTime = fTime;
     }
 
     float GetBaseInterest(CollectedResource.OwnerType type)
@@ -139,5 +145,25 @@ public class BasicEnemy : MonoBehaviour {
             state = State.IDLE;
         }
     }
- 
+
+    public MeshRenderer ring;
+
+    public void Hover(bool bInRange)
+    {
+        ring.enabled = true;
+    }
+
+    public void Unhover()
+    {
+        ring.enabled = false;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void Interact(PlayerBehaviour player, int mouseButton)
+    {
+    }
 }

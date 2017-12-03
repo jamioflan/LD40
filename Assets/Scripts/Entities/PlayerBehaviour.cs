@@ -48,6 +48,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public MeshRenderer slowPFX;
     public float fSlowPFXTime = 0.0f;
+    public float fStunPFXTime = 0.0f;
 
     // Use this for initialization
     void Start () {
@@ -73,9 +74,10 @@ public class PlayerBehaviour : MonoBehaviour {
         {
             case Skill.JETPACK:
                 return GetComponent<CharacterController>().isGrounded;
+            case Skill.STUN:
+                return hoveringOver != null && hoveringOver.GetGameObject().GetComponent<BasicEnemy>() != null;
             case Skill.PING:
             case Skill.SLOW:
-            case Skill.STUN:
             case Skill.SPEED_BOOST:
                 return true;
         }
@@ -109,7 +111,33 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Stun()
     {
+        BasicEnemy target = hoveringOver.GetGameObject().GetComponent<BasicEnemy>();
+        target.Stun(5.0f);
 
+        LineRenderer lr = GetComponent<LineRenderer>();
+        List<Vector3> positions = new List<Vector3>();
+
+        positions.Add(transform.position);
+
+        Vector3 dPos = target.transform.position - transform.position;
+        float fDistance = dPos.magnitude;
+        dPos.Normalize();
+        int iNumSteps = 0;
+
+        while (fDistance > 1.0f)
+        {
+            iNumSteps++;
+            fDistance -= 1.0f;
+            Vector3 pos = transform.position + dPos * iNumSteps + Random.onUnitSphere * 0.5f;
+            positions.Add(pos);
+        }
+
+        positions.Add(target.transform.position);
+
+        lr.positionCount = positions.Count;
+        lr.SetPositions(positions.ToArray());
+        lr.enabled = true;
+        fStunPFXTime = 0.1f;
     }
 
     private void Slow()
@@ -121,7 +149,7 @@ public class PlayerBehaviour : MonoBehaviour {
             BasicEnemy enemy = collider.GetComponent<BasicEnemy>();
             if (enemy != null)
             {
-                enemy.Slow(5.0f);
+                enemy.Slow(2.0f);
             }
         }
     }
@@ -143,6 +171,16 @@ public class PlayerBehaviour : MonoBehaviour {
         }
         else
             slowPFX.enabled = false;
+
+        if (fStunPFXTime > 0.0f)
+        {
+            fStunPFXTime -= Time.deltaTime;
+
+            if (fStunPFXTime <= 0.0f)
+            {
+                GetComponent<LineRenderer>().enabled = false;
+            }
+        }
 
         for (int i = 0; i < iNUM_SKILLS; i++)
         {
