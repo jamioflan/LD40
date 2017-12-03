@@ -86,5 +86,7 @@ public class Core : MonoBehaviour
             datTastyCamera.transform.SetParent(null);
         }
         thePlayer.transform.position = new Vector3(0.0f, -1000.0f, 0.0f);
+
+        theSpaceship.pfx.Play();
     }
 }

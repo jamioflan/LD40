@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Spaceship : MonoBehaviour
 {
+    public ParticleSystem pfx;
+
 	// Use this for initialization
 	void Start()
     {
