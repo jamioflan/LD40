@@ -79,49 +79,29 @@ public class WorkbenchMenu : MonoBehaviour
         if (m_iCurrentItemIndex < m_xItems.Count)
         {
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
-            xItem.m_bBuilt = true;
 
-            // Make sure we still have a valid selection
-            if (!ShowBuiltItems)
+            // Pay and build
+            if (Core.GetCore().theWorkbench.Pay(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams))
             {
-                // Try to jump forwards to a new selection
-                bool bFoundValidItem = false;
+                xItem.m_bBuilt = true;
 
-                if (m_iCurrentItemIndex + 1 < m_xItems.Count)
+                // Make sure we still have a valid selection
+                if (!ShowBuiltItems)
                 {
-                    int iIndexToTry = m_iCurrentItemIndex + 1;
+                    // Try to jump forwards to a new selection
+                    bool bFoundValidItem = false;
 
-                    while (iIndexToTry < m_xItems.Count)
+                    if (m_iCurrentItemIndex + 1 < m_xItems.Count)
                     {
-                        ListItem xListItem = m_xItems[iIndexToTry];
+                        int iIndexToTry = m_iCurrentItemIndex + 1;
 
-                        if (xListItem.m_bBuilt)
-                        {
-                            iIndexToTry++;
-                        }
-                        else
-                        {
-                            m_iCurrentItemIndex = iIndexToTry;
-                            bFoundValidItem = true;
-                            break;
-                        }
-                    }
-                }
-
-                if( !bFoundValidItem )
-                {
-                    // Try to jump backwards instead
-                    if (m_iCurrentItemIndex > 0)
-                    {
-                        int iIndexToTry = m_iCurrentItemIndex - 1;
-
-                        while (iIndexToTry >= 0)
+                        while (iIndexToTry < m_xItems.Count)
                         {
                             ListItem xListItem = m_xItems[iIndexToTry];
 
                             if (xListItem.m_bBuilt)
                             {
-                                iIndexToTry--;
+                                iIndexToTry++;
                             }
                             else
                             {
@@ -131,18 +111,39 @@ public class WorkbenchMenu : MonoBehaviour
                             }
                         }
                     }
+
+                    if (!bFoundValidItem)
+                    {
+                        // Try to jump backwards instead
+                        if (m_iCurrentItemIndex > 0)
+                        {
+                            int iIndexToTry = m_iCurrentItemIndex - 1;
+
+                            while (iIndexToTry >= 0)
+                            {
+                                ListItem xListItem = m_xItems[iIndexToTry];
+
+                                if (xListItem.m_bBuilt)
+                                {
+                                    iIndexToTry--;
+                                }
+                                else
+                                {
+                                    m_iCurrentItemIndex = iIndexToTry;
+                                    bFoundValidItem = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!bFoundValidItem)
+                    {
+                        // Just set the index to 0, but nothing should be displaying if we get here
+                        m_iCurrentItemIndex = 0;
+                    }
                 }
 
-                if( !bFoundValidItem )
-                {
-                    // Just set the index to 0, but nothing should be displaying if we get here
-                    m_iCurrentItemIndex = 0;
-                }
-            }
-
-            // Pay and build
-            if (Core.GetCore().theWorkbench.Pay(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams))
-            {
                 if (xItem.m_bSpaceshipPart)
                 {
                     Core.GetCore().theSpaceship.OnPartPurchased(xItem.m_iIndex);

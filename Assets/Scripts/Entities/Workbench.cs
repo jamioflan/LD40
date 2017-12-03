@@ -21,7 +21,7 @@ public class Workbench : MonoBehaviour, IInteractable
 
     public bool Pay(int costGem, int costFuel, int costBeams)
     {
-        if (costGem < nGem || costFuel < nFuel || costBeams < nBeams)
+        if (costGem > nGem || costFuel > nFuel || costBeams > nBeams)
         {
             return false;
         }
