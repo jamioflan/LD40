@@ -57,27 +57,64 @@ public class HUD : MonoBehaviour
     // Population functions
     public void PopulateCooldownImage_JetPack(Image image)
     {
+        float filledAmount = GetCooldownFilledAmount(PlayerBehaviour.Skill.JETPACK);
+        image.fillAmount = filledAmount;
+    }
+
+    public void PopulateCooldownImage_Scanner(Image image)
+    {
+        float filledAmount = GetCooldownFilledAmount(PlayerBehaviour.Skill.PING);
+        image.fillAmount = filledAmount;
+    }
+
+    public void PopulateCooldownImage_Stun(Image image)
+    {
+        float filledAmount = GetCooldownFilledAmount(PlayerBehaviour.Skill.STUN);
+        image.fillAmount = filledAmount;
+    }
+
+    public void PopulateCooldownImage_SlowEnemy(Image image)
+    {
+        float filledAmount = GetCooldownFilledAmount(PlayerBehaviour.Skill.SLOW);
+        image.fillAmount = filledAmount;
+    }
+
+    public void PopulateCooldownImage_SpeedBoost(Image image)
+    {
+        float filledAmount = GetCooldownFilledAmount(PlayerBehaviour.Skill.SPEED_BOOST);
+        image.fillAmount = filledAmount;
+    }
+
+    float GetCooldownFilledAmount(PlayerBehaviour.Skill skill)
+    {
         float filledAmount = 0.0f;
 
-        PlayerBehaviour.SkillData skill = Core.GetCore().thePlayer.skills[(int)PlayerBehaviour.Skill.JETPACK];
-        if (!skill.bUnlocked)
+        PlayerBehaviour.SkillData skillData = Core.GetCore().thePlayer.skills[(int)skill];
+        if (!skillData.bUnlocked)
         {
             filledAmount = 0.0f;
         }
         else
         {
-            filledAmount = skill.fTimeSinceUsed / skill.fCooldown;
-            if( filledAmount > 1.0f )
+            if (skillData.fCooldown == 0.0f)
             {
                 filledAmount = 1.0f;
             }
-            else if( filledAmount < 0.0f )
+            else
             {
-                filledAmount = 0.0f;
+                filledAmount = skillData.fTimeSinceUsed / skillData.fCooldown;
+                if (filledAmount > 1.0f)
+                {
+                    filledAmount = 1.0f;
+                }
+                else if (filledAmount < 0.0f)
+                {
+                    filledAmount = 0.0f;
+                }
             }
         }
 
-        image.fillAmount = filledAmount;
+        return filledAmount;
     }
 
     public void PopulateCarryingCapacity(Text text)
