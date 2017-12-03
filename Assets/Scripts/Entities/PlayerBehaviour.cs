@@ -50,6 +50,8 @@ public class PlayerBehaviour : MonoBehaviour {
     public float fSlowPFXTime = 0.0f;
     public float fStunPFXTime = 0.0f;
 
+    public ParticleSystem pfx;
+
     // Use this for initialization
     void Start () {
         collector = GetComponentInChildren<ResourceCollector>();
@@ -200,6 +202,7 @@ public class PlayerBehaviour : MonoBehaviour {
                             velocity.y = 0;
                         }
                         velocity.y += jumpSpeed;
+                        pfx.Play();
                         break;
                     }
                     case (int)Skill.PING:
