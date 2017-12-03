@@ -17,6 +17,7 @@ public class WorldBuilder : MonoBehaviour
     public PlayerBehaviour playerPrefab;
     public WorldTile[,] worldTiles;
     public WorldTile theBase;
+    public List<EnemyLair> lairs = new List<EnemyLair>();
     public Material[] biomeMaterials = new Material[Biomes.iNUM_BIOMES];
     public int width = 40, height = 40;
     public float fHillNoiseScale = 9.57f;
@@ -186,6 +187,12 @@ public class WorldBuilder : MonoBehaviour
                         whatAnExcellentPieceOfTrash.transform.SetParent(worldTiles[i, j].transform);
                         whatAnExcellentPieceOfTrash.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), fFloorHeight, Random.Range(2.0f, 8.0f));
                         whatAnExcellentPieceOfTrash.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
+
+                        if(whatAnExcellentPieceOfTrash.GetComponent<EnemyLair>())
+                        {
+                            lairs.Add(whatAnExcellentPieceOfTrash.GetComponent<EnemyLair>());
+                            whatAnExcellentPieceOfTrash.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                        }
                     }
                 }
 
