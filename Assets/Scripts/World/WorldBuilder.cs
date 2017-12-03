@@ -218,6 +218,7 @@ public class WorldBuilder : MonoBehaviour
         worldTiles[iBestHomeX, iBestHomeY].transform.localPosition = new Vector3(-width * 5.0f + iBestHomeX * 10.0f, 0.0f, -height * 5.0f + iBestHomeY * 10.0f);
         theBase = worldTiles[iBestHomeX, iBestHomeY];
         Core.GetCore().theWorkbench = theBase.myWorkbench;
+        Core.GetCore().theSpaceship = theBase.mySpaceship;
         theBase.floorMesh.GetComponent<NavMeshSurface>().BuildNavMesh();
 
         Core.GetCore().thePlayer = Instantiate<PlayerBehaviour>(playerPrefab);
