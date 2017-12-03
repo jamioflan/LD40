@@ -94,6 +94,11 @@ public class BasicEnemy : MonoBehaviour, IInteractable
 
         if (agent.isOnNavMesh)
         {
+            NavMeshPath path = agent.path;
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+            }
             // Check to make sure the target is still there
             if (state == State.FOLLOWING && target == null)
                 UpdateTarget();

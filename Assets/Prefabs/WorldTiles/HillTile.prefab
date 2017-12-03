@@ -338,6 +338,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4471599487742376}
+  - component: {fileID: 114109972890244574}
   m_Layer: 0
   m_Name: LeftWall
   m_TagString: Untagged
@@ -387,6 +388,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4217066208950796}
+  - component: {fileID: 114590567643069420}
   m_Layer: 0
   m_Name: RightWall
   m_TagString: Untagged
@@ -417,6 +419,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4027930313158628}
+  - component: {fileID: 114916418185333470}
   m_Layer: 0
   m_Name: BackWall
   m_TagString: Untagged
@@ -480,6 +483,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4998252169877894}
+  - component: {fileID: 114346362755218618}
   m_Layer: 0
   m_Name: FrontWall
   m_TagString: Untagged
@@ -1088,7 +1092,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632459774131650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 140.96988, y: 26.12355, z: -107.046234}
+  m_LocalPosition: {x: -28.929441, y: 84.46442, z: -211.57925}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4698442619489590}
@@ -2490,6 +2494,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114109972890244574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1425774773870070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 1, y: 2, z: 5}
+  m_EndPoint: {x: -2, y: -0.2, z: 5}
+  m_Width: 10
+  m_CostModifier: 1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
+--- !u!114 &114346362755218618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1673963192774846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 1, y: 2, z: 5}
+  m_EndPoint: {x: -3, y: -0.2, z: 5}
+  m_Width: 10
+  m_CostModifier: 1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
+--- !u!114 &114590567643069420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566377536755134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 1, y: 2, z: 5}
+  m_EndPoint: {x: -3, y: -0.2, z: 5}
+  m_Width: 10
+  m_CostModifier: 1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!114 &114594964961048650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2517,7 +2578,26 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: ec81abdbe5d85bc4da9ecff4070b3c09, type: 2}
+--- !u!114 &114916418185333470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613492510455302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eeb5dc026fdf4b488bc7ae0138ab719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_StartPoint: {x: 1, y: 2, z: 5}
+  m_EndPoint: {x: -3, y: -0.2, z: 5}
+  m_Width: 10
+  m_CostModifier: 1
+  m_Bidirectional: 1
+  m_AutoUpdatePosition: 0
+  m_Area: 0
 --- !u!114 &114951066238025624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2535,3 +2615,5 @@ MonoBehaviour:
   - {fileID: 1673963192774846}
   - {fileID: 1425774773870070}
   floorMesh: {fileID: 23752342625813912}
+  myWorkbench: {fileID: 0}
+  mySpaceship: {fileID: 0}
