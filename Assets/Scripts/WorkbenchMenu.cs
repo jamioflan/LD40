@@ -164,22 +164,22 @@ public class WorkbenchMenu : MonoBehaviour
     // Population functions
     public void PopulateCollectedResources_Gems(Text text)
     {
-        text.text = "" + Core.GetCore().theWorkbench.nGem;
+        text.text = "x " + Core.GetCore().theWorkbench.nGem;
     }
 
     public void PopulateCollectedResources_Fuel(Text text)
     {
-        text.text = "" + Core.GetCore().theWorkbench.nFuel;
+        text.text = "x " + Core.GetCore().theWorkbench.nFuel;
     }
 
     public void PopulateCollectedResources_Beams(Text text)
     {
-        text.text = "" + Core.GetCore().theWorkbench.nBeams;
+        text.text = "x " + Core.GetCore().theWorkbench.nBeams;
     }
 
     public void PopulateCollectedResources_Scandium(Text text)
     {
-        text.text = "" + Core.GetCore().theWorkbench.nScOre;
+        text.text = "x " + Core.GetCore().theWorkbench.nScOre;
     }
 
     public void PopulateCurrentItemCost_Gems(Text text)
@@ -187,7 +187,7 @@ public class WorkbenchMenu : MonoBehaviour
         if (m_iCurrentItemIndex < m_xItems.Count)
         {
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
-            text.text = "" + xItem.m_iCost_Gems;
+            text.text = "x " + xItem.m_iCost_Gems;
         }
         else
         {
@@ -200,7 +200,7 @@ public class WorkbenchMenu : MonoBehaviour
         if (m_iCurrentItemIndex < m_xItems.Count)
         {
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
-            text.text = "" + xItem.m_iCost_Fuel;
+            text.text = "x " + xItem.m_iCost_Fuel;
         }
         else
         {
@@ -213,7 +213,7 @@ public class WorkbenchMenu : MonoBehaviour
         if (m_iCurrentItemIndex < m_xItems.Count)
         {
             ListItem xItem = m_xItems[m_iCurrentItemIndex];
-            text.text = "" + xItem.m_iCost_Beams;
+            text.text = "x " + xItem.m_iCost_Beams;
         }
         else
         {
