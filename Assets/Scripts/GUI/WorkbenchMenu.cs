@@ -49,7 +49,7 @@ public class WorkbenchMenu : MonoBehaviour
                 }
             }
         }
-	}
+    }
 
 	public void Listbox_Increment()
 	{
@@ -72,7 +72,7 @@ public class WorkbenchMenu : MonoBehaviour
                 }
             }
         }
-	}
+    }
 
 	public void BuildItem()
 	{
@@ -224,8 +224,21 @@ public class WorkbenchMenu : MonoBehaviour
         }
     }
 
+    public void PopulateCurrentItem_Icon(Image image)
+    {
+        if (m_iCurrentItemIndex < m_xItems.Count)
+        {
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            image.sprite = xItem.m_xSprite;
+        }
+        else
+        {
+            image.sprite = null;
+        }
+    }
+
     [System.Serializable]
-    public struct ListItem
+    public class ListItem
     {
         public string m_xDebugName;
 
@@ -236,7 +249,7 @@ public class WorkbenchMenu : MonoBehaviour
         public int m_iIndex;
 
         // The icon for the item
-        public Sprite m_iSprite;
+        public Sprite m_xSprite;
 
         // Cost
         public int m_iCost_Gems;

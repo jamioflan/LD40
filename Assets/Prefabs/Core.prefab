@@ -1797,8 +1797,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114963307091477542, guid: 6017527de9376ad478e0317eae05d390,
-          type: 2}
+      - m_Target: {fileID: 114506503716013552}
         m_MethodName: BuildItem
         m_Mode: 1
         m_Arguments:
@@ -2272,8 +2271,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114963307091477542, guid: 6017527de9376ad478e0317eae05d390,
-          type: 2}
+      - m_Target: {fileID: 114506503716013552}
         m_MethodName: Listbox_Decrement
         m_Mode: 1
         m_Arguments:
@@ -2520,8 +2518,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114963307091477542, guid: 6017527de9376ad478e0317eae05d390,
-          type: 2}
+      - m_Target: {fileID: 114506503716013552}
         m_MethodName: Listbox_Increment
         m_Mode: 1
         m_Arguments:
@@ -2550,7 +2547,7 @@ MonoBehaviour:
   - m_xDebugName: Part1
     m_bSpaceshipPart: 1
     m_iIndex: 0
-    m_iSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2558,7 +2555,7 @@ MonoBehaviour:
   - m_xDebugName: Part2
     m_bSpaceshipPart: 1
     m_iIndex: 1
-    m_iSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2566,7 +2563,7 @@ MonoBehaviour:
   - m_xDebugName: Part3
     m_bSpaceshipPart: 1
     m_iIndex: 2
-    m_iSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2574,7 +2571,7 @@ MonoBehaviour:
   - m_xDebugName: Part4
     m_bSpaceshipPart: 1
     m_iIndex: 3
-    m_iSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2582,7 +2579,7 @@ MonoBehaviour:
   - m_xDebugName: Part5
     m_bSpaceshipPart: 1
     m_iIndex: 4
-    m_iSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
+    m_xSprite: {fileID: 21300000, guid: d8c8d9cd1fa03994cad261f49871d983, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2590,7 +2587,7 @@ MonoBehaviour:
   - m_xDebugName: Skill_JetPack
     m_bSpaceshipPart: 0
     m_iIndex: 0
-    m_iSprite: {fileID: 21300000, guid: 7f6974bc0fdbeb940a5e921cf73c4c47, type: 3}
+    m_xSprite: {fileID: 21300000, guid: 7f6974bc0fdbeb940a5e921cf73c4c47, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2598,7 +2595,7 @@ MonoBehaviour:
   - m_xDebugName: Skill_Scanner
     m_bSpaceshipPart: 0
     m_iIndex: 1
-    m_iSprite: {fileID: 21300000, guid: d231c5017fcd1d74693c67f4f5317366, type: 3}
+    m_xSprite: {fileID: 21300000, guid: d231c5017fcd1d74693c67f4f5317366, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2606,7 +2603,7 @@ MonoBehaviour:
   - m_xDebugName: Skill_Stun
     m_bSpaceshipPart: 0
     m_iIndex: 2
-    m_iSprite: {fileID: 21300000, guid: af34fd1e136cf2e4397e8e0f48532bf6, type: 3}
+    m_xSprite: {fileID: 21300000, guid: af34fd1e136cf2e4397e8e0f48532bf6, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2614,7 +2611,7 @@ MonoBehaviour:
   - m_xDebugName: Skill_Slow
     m_bSpaceshipPart: 0
     m_iIndex: 3
-    m_iSprite: {fileID: 21300000, guid: 9df83cca17fca5f49a0fb920f9e2a79a, type: 3}
+    m_xSprite: {fileID: 21300000, guid: 9df83cca17fca5f49a0fb920f9e2a79a, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2622,7 +2619,7 @@ MonoBehaviour:
   - m_xDebugName: Skill_SpeedBoost
     m_bSpaceshipPart: 0
     m_iIndex: 4
-    m_iSprite: {fileID: 21300000, guid: 1125443df45709742b71bf5be5695728, type: 3}
+    m_xSprite: {fileID: 21300000, guid: 1125443df45709742b71bf5be5695728, type: 3}
     m_iCost_Gems: 5
     m_iCost_Fuel: 5
     m_iCost_Beams: 5
@@ -2904,8 +2901,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114963307091477542, guid: 6017527de9376ad478e0317eae05d390,
-          type: 2}
+      - m_Target: {fileID: 114506503716013552}
         m_MethodName: BackOut
         m_Mode: 1
         m_Arguments:
@@ -3486,7 +3482,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   populationFunction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114506503716013552}
+        m_MethodName: PopulateCurrentItem_Icon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: ImagePplnFn, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114864794574705394
 MonoBehaviour:
