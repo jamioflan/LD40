@@ -28,6 +28,8 @@ public class BasicEnemy : MonoBehaviour {
     public State state;
     public Transform target;
     public float detectionRadius = 100.0f;
+    public float fSlowTime = 0.0f;
+    public float fStunTime = 0.0f;
 	// Use this for initialization
 	void Start () {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -37,7 +39,12 @@ public class BasicEnemy : MonoBehaviour {
         collector.capacity = 1;
 
 	}
-	
+
+    public void Slow(float fTime)
+    {
+        fSlowTime = fTime;
+    }
+
     float GetBaseInterest(CollectedResource.OwnerType type)
     {
         switch(type)
@@ -55,7 +62,14 @@ public class BasicEnemy : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
-        agent.speed = speedUnits * (baseSpeed + aggression);
+        fSlowTime -= Time.deltaTime;
+        fStunTime -= Time.deltaTime;
+
+        agent.speed = speedUnits * (baseSpeed + aggression) * (fSlowTime > 0.0f ? 0.5f : 1.0f) ;
+
+        if (fStunTime > 0.0f)
+            agent.speed = 0.0f;
+
         if (agent.isOnNavMesh)
         {
             // Check to make sure the target is still there
