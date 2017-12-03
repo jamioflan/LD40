@@ -6,7 +6,7 @@ public class Forcefield : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("I'm here!");
+
 		
 	}
 	
@@ -17,7 +17,6 @@ public class Forcefield : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision!");
         PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
         if (player != null)
         {
