@@ -82,7 +82,8 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Ping()
     {
-
+        Core.GetCore().theHUD.pingTarget = new Vector3(50.0f, 0.0f, 50.0f);
+        Core.GetCore().theHUD.fPingProgress = 0.0f;
     }
 
     private void Stun()
