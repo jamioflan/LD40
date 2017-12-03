@@ -2790,7 +2790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41078723f29c10249840a00d7e56e798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infightingChance: 0
+  patrolChance: 0.4
+  walkRange: 20
+  walkWait: 0.8
+  infightingChance: 0.5
   droppedInterest: 4
   captureRadius: 2
   meTime: 0
@@ -2804,9 +2807,10 @@ MonoBehaviour:
   lair: {fileID: 0}
   state: 0
   target: {fileID: 0}
-  detectionRadius: 100
+  detectionRadius: 40
   fSlowTime: 0
   fStunTime: 0
+  fWaitTime: 0
   ring: {fileID: 23634977074428418}
 --- !u!136 &136734870824171344
 CapsuleCollider:

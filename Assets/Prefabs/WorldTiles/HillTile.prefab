@@ -2505,12 +2505,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: 1, y: 2, z: 5}
+  m_StartPoint: {x: 0.7, y: 2, z: 5}
   m_EndPoint: {x: -2, y: -0.2, z: 5}
   m_Width: 10
   m_CostModifier: 1
   m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
+  m_AutoUpdatePosition: 1
   m_Area: 0
 --- !u!114 &114346362755218618
 MonoBehaviour:
@@ -2524,12 +2524,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: 1, y: 2, z: 5}
-  m_EndPoint: {x: -3, y: -0.2, z: 5}
+  m_StartPoint: {x: 0.7, y: 2, z: 5}
+  m_EndPoint: {x: -2, y: -0.2, z: 5}
   m_Width: 10
   m_CostModifier: 1
   m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
+  m_AutoUpdatePosition: 1
   m_Area: 0
 --- !u!114 &114590567643069420
 MonoBehaviour:
@@ -2543,12 +2543,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: 1, y: 2, z: 5}
-  m_EndPoint: {x: -3, y: -0.2, z: 5}
+  m_StartPoint: {x: 0.7, y: 2, z: 5}
+  m_EndPoint: {x: -2, y: -0.2, z: 5}
   m_Width: 10
   m_CostModifier: 1
   m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
+  m_AutoUpdatePosition: 1
   m_Area: 0
 --- !u!114 &114916418185333470
 MonoBehaviour:
@@ -2562,12 +2562,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: 1, y: 2, z: 5}
-  m_EndPoint: {x: -3, y: -0.2, z: 5}
+  m_StartPoint: {x: 0.7, y: 2, z: 5}
+  m_EndPoint: {x: -2, y: -0.2, z: 5}
   m_Width: 10
   m_CostModifier: 1
   m_Bidirectional: 1
-  m_AutoUpdatePosition: 0
+  m_AutoUpdatePosition: 1
   m_Area: 0
 --- !u!114 &114951066238025624
 MonoBehaviour:

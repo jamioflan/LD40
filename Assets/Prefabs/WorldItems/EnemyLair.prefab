@@ -1350,7 +1350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTemplate: {fileID: 114524864047710546, guid: 4a66d0dd502d99b48806f5c3fadc7dda,
     type: 2}
-  spawnSize: 3
+  spawnSize: 5
   holder: {fileID: 4920021119670166}
 --- !u!136 &136422777475314348
 CapsuleCollider:

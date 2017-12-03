@@ -11,12 +11,16 @@ public class BasicEnemy : MonoBehaviour, IInteractable
         IDLE,
         FOLLOWING,
         GUARDING,
+        GUARDING_MOVING,
         PATROLLING,
+        PATROLLING_MOVING,
         RETURNING
     }
     struct InterestPair { public CollectedResource resource; public float interest; };
 
-
+    public float patrolChance = 0.4f; // Chance to enter patrol mode from idle
+    public float walkRange = 20.0f; // Distance to move in one block in either patrol or guard mode
+    public float walkWait = 0.8f; // Time to wait between movements in either patrol or guard mode
     public float infightingChance = 0.0f;
     public float droppedInterest = 4.0f;
     public float captureRadius = 2.0f;
@@ -32,10 +36,11 @@ public class BasicEnemy : MonoBehaviour, IInteractable
     public EnemyLair lair;
     private UnityEngine.AI.NavMeshAgent agent;
     public State state;
-    public Transform target;
-    public float detectionRadius = 100.0f;
+    public CollectedResource target;
+    public float detectionRadius = 40.0f;
     public float fSlowTime = 0.0f;
     public float fStunTime = 0.0f;
+    public float fWaitTime = 0.0f;
 	// Use this for initialization
 	void Start () {
         collector = GetComponentInChildren<ResourceCollector>();
@@ -61,15 +66,25 @@ public class BasicEnemy : MonoBehaviour, IInteractable
         {
             case CollectedResource.OwnerType.Player:
                 return 1.0f;
-            case CollectedResource.OwnerType.Lair:
             case CollectedResource.OwnerType.Workbench:
                 return 0.0f;
+            case CollectedResource.OwnerType.Lair:
             case CollectedResource.OwnerType.Enemy:
                 return infightingChance;
             default: // None - i.e. dropped
                 return droppedInterest;
         }
     }
+
+    bool IsTargetValid(CollectedResource target)
+    {
+        return (
+            target != null &&
+            target.owner != transform && 
+            target.owner != lair.transform
+            );
+    }
+
     // Update is called once per frame
     void Update() {
 
@@ -99,25 +114,27 @@ public class BasicEnemy : MonoBehaviour, IInteractable
             {
                 Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
             }
-            // Check to make sure the target is still there
-            if (state == State.FOLLOWING && target == null)
-                UpdateTarget();
-            if ((meTime -= Time.deltaTime) < 0)
-            {
-                meTime = Random.Range(1.0f, 2.0f);
-                if (collector.CanReceive())
-                    UpdateTarget();
-            }
+
             switch (state)
             {
                 case State.FOLLOWING:
-                    if ((target.transform.position - transform.position).magnitude < captureRadius)
+                    if (!IsTargetValid(target))
+                    {
+                        state = State.IDLE;
+                        target = null;
+                    }
+                    else if ((target.transform.position - transform.position).magnitude < captureRadius)
                     {
                         target.GetComponent<CollectedResource>().SetOwner(collector);
+                        target = null;
                         state = State.RETURNING;
-                        //agent.destination = lair.transform.position + new Vector3(5, 0, 5);
                         agent.destination = lair.holder.position;
                         targetPosition = agent.destination;
+                    }
+                    else if ((target.transform.position - transform.position).magnitude > detectionRadius * 1.2)
+                    {
+                        state = State.IDLE;
+                        target = null;
                     }
                     else
                     {
@@ -126,27 +143,97 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                     }
                     break;
                 case State.RETURNING:
-                    if ((agent.destination - transform.position).magnitude < 2.0f)
+                    if (collector.collectedResources.Count == 0)
+                    {
+                        // We've lost our resource :(
+                        aggression = 0.0f;
+                        agent.ResetPath();
+                        state = State.IDLE;
+                    }
+                    else if ((agent.destination - transform.position).magnitude < 2.0f)
                     {
                         while (collector.collectedResources.Count > 0)
                         {
                             collector.collectedResources[collector.collectedResources.Count - 1].SetOwner(lair);
                         }
+                        aggression = 0.0f;
+                        agent.ResetPath();
+                        state = State.IDLE;
                     }
-                    Debug.Log(lair.holder.position);
-                    Debug.Log(agent.destination + " - " + transform.position + " (" + agent.nextPosition + ") " + agent.desiredVelocity);
-                    state = State.IDLE;
                     break;
                 case State.IDLE:
-                    agent.destination = transform.position;
+                    if (Random.Range(0, 1) < patrolChance)
+                    {
+                        state = State.PATROLLING;
+                    }
+                    else
+                    {
+                        state = State.GUARDING;
+                    }
                     break;
-
+                case State.PATROLLING:
+                    if (UpdateTarget())
+                        break;
+                    fWaitTime -= Time.deltaTime;
+                    if (fWaitTime < 0)
+                    {
+                        agent.destination = GetRandomPointOnMesh(transform.position, walkRange);
+                        state = State.PATROLLING_MOVING;
+                    }
+                    break;
+                case State.PATROLLING_MOVING:
+                    if (UpdateTarget())
+                        break;
+                    if ((agent.destination - transform.position).magnitude < 1.0f)
+                    {
+                        fWaitTime = walkWait;
+                        state = State.PATROLLING;
+                    }
+                    break;
+                case State.GUARDING:
+                    if (UpdateTarget())
+                        break;
+                    fWaitTime -= Time.deltaTime;
+                    if (fWaitTime < 0)
+                    {
+                        agent.destination = GetRandomPointOnMesh(lair.transform.position, walkRange);
+                        state = State.GUARDING_MOVING;
+                    }
+                    break;
+                case State.GUARDING_MOVING:
+                    if (UpdateTarget())
+                        break;
+                    if ((agent.destination - transform.position).magnitude < 1.0f)
+                    {
+                        fWaitTime = walkWait;
+                        state = State.GUARDING;
+                    }
+                    break;
             }
         }
     }
 
-    void UpdateTarget()
+    Vector3 GetRandomPointOnMesh(Vector3 center, float radius)
     {
+        int maxAttempts = 10;
+        NavMeshHit hit;
+        while (maxAttempts >= 0) {
+            Vector3 random = Random.insideUnitSphere * radius;
+            random.y = 0;
+            if (NavMesh.SamplePosition(center + random, out hit, 3.0f, NavMesh.AllAreas) ) {
+                return hit.position;
+            }
+            --maxAttempts;
+        }
+        return center;
+    }
+
+    bool UpdateTarget()
+    {
+        if ((meTime -= Time.deltaTime) > 0)
+             return false;
+   
+        meTime = Random.Range(1.0f, 2.0f);
         float totalInterest = 0.0f;
         aggression = 0.0f;
 
@@ -157,7 +244,7 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                 continue;
             InterestPair pair = new InterestPair();
             pair.resource = collider.GetComponent<CollectedResource>();
-            if (pair.resource == null || pair.resource.owner == transform) // Don't get distracted by something you're carrying!
+            if (!IsTargetValid(pair.resource) )
                 continue;
             pair.interest = GetBaseInterest(pair.resource.ownerType);
             if (pair.interest == 0.0f)
@@ -165,7 +252,7 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                 continue;
             }
             aggression += 1.0f; // Aggression isn't affected by distance?
-                                         // Be more interested in things closer to you
+            // Be more interested in things closer to you
             float distance = (transform.position - pair.resource.transform.position).magnitude;
             if (distance > 1)
             {
@@ -180,16 +267,14 @@ public class BasicEnemy : MonoBehaviour, IInteractable
         {
             if ((specificInterest -= pair.interest) < 0)
             {
-                target = pair.resource.transform;
+                target = pair.resource;
+                fWaitTime = 0;
                 state = State.FOLLOWING;
-                return;
+                aggression += 2;
+                return true;
             }
         }
-        if (target == null)
-        {
-            agent.destination = transform.position;
-            state = State.IDLE;
-        }
+        return false;
     }
 
     public MeshRenderer ring;
