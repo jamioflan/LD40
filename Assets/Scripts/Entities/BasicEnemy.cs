@@ -143,6 +143,8 @@ public class BasicEnemy : MonoBehaviour, IInteractable
         List<InterestPair> interestingResources = new List<InterestPair>();
         foreach (Collider collider in Physics.OverlapSphere(transform.position, detectionRadius, Physics.AllLayers, QueryTriggerInteraction.Collide))
         {
+            if (collider == null)
+                continue;
             InterestPair pair = new InterestPair();
             pair.resource = collider.GetComponent<CollectedResource>();
             if (pair.resource == null || pair.resource.owner == transform) // Don't get distracted by something you're carrying!
