@@ -141,7 +141,7 @@ public class WorkbenchMenu : MonoBehaviour
             }
 
             // Pay and build
-            if (Core.GetCore().theWorkbench.Pay(xItem.m_iGreenCost, xItem.m_iRedCost, xItem.m_iBlueCost))
+            if (Core.GetCore().theWorkbench.Pay(xItem.m_iCost_Gems, xItem.m_iCost_Fuel, xItem.m_iCost_Beams))
             {
                 if (xItem.m_bSpaceshipPart)
                 {
@@ -164,20 +164,61 @@ public class WorkbenchMenu : MonoBehaviour
     // Population functions
     public void PopulateCollectedResources_Gems(Text text)
     {
-        List<CollectedResource> collectedResources = Core.GetCore().thePlayer.collectedResources;
+        text.text = "" + Core.GetCore().theWorkbench.nGem;
+    }
 
-        // Count number of resources of this type
-        int count = 0;
+    public void PopulateCollectedResources_Fuel(Text text)
+    {
+        text.text = "" + Core.GetCore().theWorkbench.nFuel;
+    }
 
-        for (int u = 0; u < collectedResources.Count; u++)
+    public void PopulateCollectedResources_Beams(Text text)
+    {
+        text.text = "" + Core.GetCore().theWorkbench.nBeams;
+    }
+
+    public void PopulateCollectedResources_Scandium(Text text)
+    {
+        text.text = "" + Core.GetCore().theWorkbench.nScOre;
+    }
+
+    public void PopulateCurrentItemCost_Gems(Text text)
+    {
+        if (m_iCurrentItemIndex < m_xItems.Count)
         {
-            if( collectedResources[u].type == ResourceBase.ResourceType.GEMS )
-            {
-                count++;
-            }
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            text.text = "" + xItem.m_iCost_Gems;
         }
+        else
+        {
+            text.text = "";
+        }
+    }
 
-        text.text = "" + count;
+    public void PopulateCurrentItemCost_Fuel(Text text)
+    {
+        if (m_iCurrentItemIndex < m_xItems.Count)
+        {
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            text.text = "" + xItem.m_iCost_Fuel;
+        }
+        else
+        {
+            text.text = "";
+        }
+    }
+
+    public void PopulateCurrentItemCost_Beams(Text text)
+    {
+        if (m_iCurrentItemIndex < m_xItems.Count)
+        {
+            ListItem xItem = m_xItems[m_iCurrentItemIndex];
+            text.text = "" + xItem.m_iCost_Beams;
+        }
+        else
+        {
+            text.text = "";
+        }
     }
 
     [System.Serializable]
@@ -192,9 +233,9 @@ public class WorkbenchMenu : MonoBehaviour
         public int m_iIndex;
 
         // Cost
-        public int m_iGreenCost;
-        public int m_iRedCost;
-        public int m_iBlueCost;
+        public int m_iCost_Gems;
+        public int m_iCost_Fuel;
+        public int m_iCost_Beams;
 
         // Whether the player has built this item
         public bool m_bBuilt;
