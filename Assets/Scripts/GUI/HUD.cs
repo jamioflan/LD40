@@ -36,15 +36,20 @@ public class HUD : MonoBehaviour
             arrow.rectTransform.localEulerAngles = new Vector3(0.0f, 0.0f, fAngle - 90.0f);
         }
 
-        if(fPingProgress < 1.0f)
+        if (fPingProgress < 1.0f)
         {
             fPingProgress += Time.deltaTime;
 
             Vector3 deltaPos = pingTarget - Core.GetCore().thePlayer.transform.position;
 
-            arrow.enabled = deltaPos.magnitude >= 10.0f;
+            ping.enabled = true;
+            ping.rectTransform.localScale = new Vector3(fPingProgress, fPingProgress, fPingProgress) * 2.0f;
             float fAngle = Mathf.Atan2(deltaPos.z, deltaPos.x) * Mathf.Rad2Deg;
-            arrow.rectTransform.localEulerAngles = new Vector3(0.0f, 0.0f, fAngle - 90.0f);
+            ping.rectTransform.localEulerAngles = new Vector3(0.0f, 0.0f, fAngle - 90.0f);
+        }
+        else
+        {
+            ping.enabled = false;
         }
     }
 

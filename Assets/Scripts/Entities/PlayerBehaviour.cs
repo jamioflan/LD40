@@ -52,9 +52,9 @@ public class PlayerBehaviour : MonoBehaviour {
         skills[(int)Skill.JETPACK].bUnlocked = true;
 
         // --- DEBUG
-        for(int i = 0; i < 5; i++)
-         skills[i].bUnlocked = true;
-	}
+//        for (int i = 0; i < 5; i++)
+//            skills[i].bUnlocked = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -82,7 +82,8 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Ping()
     {
-
+        Core.GetCore().theHUD.pingTarget = new Vector3(50.0f, 0.0f, 50.0f);
+        Core.GetCore().theHUD.fPingProgress = 0.0f;
     }
 
     private void Stun()
@@ -237,6 +238,10 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public void UnlockSkill(int iSkillIndex)
     {
-        // TODO
+        if( iSkillIndex < iNUM_SKILLS)
+        {
+            SkillData xSkill = skills[iSkillIndex];
+            xSkill.bUnlocked = true;
+        }
     }
 }
