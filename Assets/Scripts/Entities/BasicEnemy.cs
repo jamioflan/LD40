@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class BasicEnemy : MonoBehaviour {
+public class BasicEnemy : MonoBehaviour, IInteractable
+{
 
     public enum State
     {
@@ -33,6 +34,8 @@ public class BasicEnemy : MonoBehaviour {
     public State state;
     public Transform target;
     public float detectionRadius = 100.0f;
+    public float fSlowTime = 0.0f;
+    public float fStunTime = 0.0f;
 	// Use this for initialization
 	void Start () {
         collector = GetComponentInChildren<ResourceCollector>();
@@ -41,7 +44,17 @@ public class BasicEnemy : MonoBehaviour {
         collector.capacity = 1;
 
 	}
-	
+
+    public void Slow(float fTime)
+    {
+        fSlowTime = fTime;
+    }
+
+    public void Stun(float fTime)
+    {
+        fStunTime = fTime;
+    }
+
     float GetBaseInterest(CollectedResource.OwnerType type)
     {
         switch(type)
@@ -59,6 +72,7 @@ public class BasicEnemy : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
+
         if (Time.time < 0.2f) {
             return;
         }
@@ -66,9 +80,17 @@ public class BasicEnemy : MonoBehaviour {
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
         }
-        agent.speed = speedUnits * (baseSpeed + aggression);
+        agent.speed = speedUnits * (baseSpeed + aggression) * (fSlowTime > 0.0f ? 0.5f : 1.0f);
         agent.acceleration = accelerationUnits * (1 + aggression);
         agent.angularSpeed = angularSpeedUnits * (1 + aggression);
+
+        fSlowTime -= Time.deltaTime;
+        fStunTime -= Time.deltaTime;
+
+
+        if (fStunTime > 0.0f)
+            agent.speed = 0.0f;
+
 
         if (agent.isOnNavMesh)
         {
@@ -157,5 +179,25 @@ public class BasicEnemy : MonoBehaviour {
             state = State.IDLE;
         }
     }
- 
+
+    public MeshRenderer ring;
+
+    public void Hover(bool bInRange)
+    {
+        ring.enabled = true;
+    }
+
+    public void Unhover()
+    {
+        ring.enabled = false;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
+
+    public void Interact(PlayerBehaviour player, int mouseButton)
+    {
+    }
 }

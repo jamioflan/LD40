@@ -1,0 +1,292 @@
+fileFormatVersion: 2
+guid: cad117247895f894ba8cecf77365030f
+timeCreated: 1512325221
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: mesh106365538
+    100004: mesh1071512577
+    100006: mesh1091032797
+    100008: mesh1101715842
+    100010: mesh1174605164
+    100012: mesh1226260918
+    100014: mesh1293233986
+    100016: mesh1321468753
+    100018: mesh1420706649
+    100020: mesh1464802860
+    100022: mesh1524299796
+    100024: mesh1592975619
+    100026: mesh1670304782
+    100028: mesh1683044002
+    100030: mesh1697705361
+    100032: mesh1697948007
+    100034: mesh175165179
+    100036: mesh177407353
+    100038: mesh1809748250
+    100040: mesh1828601591
+    100042: mesh1861737355
+    100044: mesh1921947529
+    100046: mesh1932614269
+    100048: mesh198959257
+    100050: mesh2026825102
+    100052: mesh2062118321
+    100054: mesh238466538
+    100056: mesh255778737
+    100058: mesh326160811
+    100060: mesh374183005
+    100062: mesh374645117
+    100064: mesh450075087
+    100066: mesh521822320
+    100068: mesh596386723
+    100070: mesh779604477
+    100072: mesh939646430
+    400000: //RootNode
+    400002: mesh106365538
+    400004: mesh1071512577
+    400006: mesh1091032797
+    400008: mesh1101715842
+    400010: mesh1174605164
+    400012: mesh1226260918
+    400014: mesh1293233986
+    400016: mesh1321468753
+    400018: mesh1420706649
+    400020: mesh1464802860
+    400022: mesh1524299796
+    400024: mesh1592975619
+    400026: mesh1670304782
+    400028: mesh1683044002
+    400030: mesh1697705361
+    400032: mesh1697948007
+    400034: mesh175165179
+    400036: mesh177407353
+    400038: mesh1809748250
+    400040: mesh1828601591
+    400042: mesh1861737355
+    400044: mesh1921947529
+    400046: mesh1932614269
+    400048: mesh198959257
+    400050: mesh2026825102
+    400052: mesh2062118321
+    400054: mesh238466538
+    400056: mesh255778737
+    400058: mesh326160811
+    400060: mesh374183005
+    400062: mesh374645117
+    400064: mesh450075087
+    400066: mesh521822320
+    400068: mesh596386723
+    400070: mesh779604477
+    400072: mesh939646430
+    2300000: mesh106365538
+    2300002: mesh1071512577
+    2300004: mesh1091032797
+    2300006: mesh1101715842
+    2300008: mesh1174605164
+    2300010: mesh1226260918
+    2300012: mesh1293233986
+    2300014: mesh1321468753
+    2300016: mesh1420706649
+    2300018: mesh1464802860
+    2300020: mesh1524299796
+    2300022: mesh1592975619
+    2300024: mesh1670304782
+    2300026: mesh1683044002
+    2300028: mesh1697705361
+    2300030: mesh1697948007
+    2300032: mesh175165179
+    2300034: mesh177407353
+    2300036: mesh1809748250
+    2300038: mesh1828601591
+    2300040: mesh1861737355
+    2300042: mesh1921947529
+    2300044: mesh1932614269
+    2300046: mesh198959257
+    2300048: mesh2026825102
+    2300050: mesh2062118321
+    2300052: mesh238466538
+    2300054: mesh255778737
+    2300056: mesh326160811
+    2300058: mesh374183005
+    2300060: mesh374645117
+    2300062: mesh450075087
+    2300064: mesh521822320
+    2300066: mesh596386723
+    2300068: mesh779604477
+    2300070: mesh939646430
+    3300000: mesh106365538
+    3300002: mesh1071512577
+    3300004: mesh1091032797
+    3300006: mesh1101715842
+    3300008: mesh1174605164
+    3300010: mesh1226260918
+    3300012: mesh1293233986
+    3300014: mesh1321468753
+    3300016: mesh1420706649
+    3300018: mesh1464802860
+    3300020: mesh1524299796
+    3300022: mesh1592975619
+    3300024: mesh1670304782
+    3300026: mesh1683044002
+    3300028: mesh1697705361
+    3300030: mesh1697948007
+    3300032: mesh175165179
+    3300034: mesh177407353
+    3300036: mesh1809748250
+    3300038: mesh1828601591
+    3300040: mesh1861737355
+    3300042: mesh1921947529
+    3300044: mesh1932614269
+    3300046: mesh198959257
+    3300048: mesh2026825102
+    3300050: mesh2062118321
+    3300052: mesh238466538
+    3300054: mesh255778737
+    3300056: mesh326160811
+    3300058: mesh374183005
+    3300060: mesh374645117
+    3300062: mesh450075087
+    3300064: mesh521822320
+    3300066: mesh596386723
+    3300068: mesh779604477
+    3300070: mesh939646430
+    4300000: mesh106365538
+    4300002: mesh1071512577
+    4300004: mesh1091032797
+    4300006: mesh1101715842
+    4300008: mesh1174605164
+    4300010: mesh1226260918
+    4300012: mesh1293233986
+    4300014: mesh1321468753
+    4300016: mesh1420706649
+    4300018: mesh1464802860
+    4300020: mesh1524299796
+    4300022: mesh1592975619
+    4300024: mesh1670304782
+    4300026: mesh1683044002
+    4300028: mesh1697705361
+    4300030: mesh1697948007
+    4300032: mesh175165179
+    4300034: mesh177407353
+    4300036: mesh1809748250
+    4300038: mesh1828601591
+    4300040: mesh1861737355
+    4300042: mesh1921947529
+    4300044: mesh1932614269
+    4300046: mesh198959257
+    4300048: mesh2026825102
+    4300050: mesh2062118321
+    4300052: mesh238466538
+    4300054: mesh255778737
+    4300056: mesh326160811
+    4300058: mesh374183005
+    4300060: mesh374645117
+    4300062: mesh450075087
+    4300064: mesh521822320
+    4300066: mesh596386723
+    4300068: mesh779604477
+    4300070: mesh939646430
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat15
+    second: {fileID: 2100000, guid: a4b469241a3922348b53dc2409fcd8a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat17
+    second: {fileID: 2100000, guid: 32da4ec40241f694d8aeaac70beef7ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat22
+    second: {fileID: 2100000, guid: c6703303bbe579b46b0f51664361d047, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat23
+    second: {fileID: 2100000, guid: 352a972bbc388f04a81dabb9b843cd41, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mat8
+    second: {fileID: 2100000, guid: 03f740286df2a3f4491e2a43b99916d4, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
