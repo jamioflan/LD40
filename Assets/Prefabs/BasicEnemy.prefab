@@ -734,7 +734,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533624573877640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4604859, y: 0.5271321, z: -6.924747}
+  m_LocalPosition: {x: 529.2611, y: 774.37915, z: -1153.579}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4009011813148320}
@@ -2070,7 +2070,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155227189289440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2078,7 +2078,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0e05fb358f4bbd64788ffd3e163d8734, type: 2}
+  - {fileID: 2100000, guid: 0aa6109abf38b9844bbdd776d987eecb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2793,7 +2793,8 @@ MonoBehaviour:
   patrolChance: 0.4
   walkRange: 20
   walkWait: 0.8
-  infightingChance: 0.5
+  infightingChance: 0.1
+  doNothingChance: 0.1
   droppedInterest: 4
   captureRadius: 2
   meTime: 0

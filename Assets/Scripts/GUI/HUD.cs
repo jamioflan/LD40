@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HUD : MonoBehaviour
 {
     public Image arrow;
     public Image ping;
+    public GameObject gameOverBox;
+    public Text gameOverText;
 
     public Vector3 pingTarget = Vector3.zero;
-    public float fPingProgress = 2.0f;
+    public float fPingProgress = 10.0f;
 
 	// Use this for initialization
 	void Start()
@@ -55,6 +58,27 @@ public class HUD : MonoBehaviour
     }
 
     // Population functions
+    public void PopulateCooldownImage_SpaceshipPart0(Image image)
+    {
+        image.fillAmount = Core.GetCore().theSpaceship.m_xParts[0].m_bPurchased ? 1.0f : 0.0f;
+    }
+    public void PopulateCooldownImage_SpaceshipPart1(Image image)
+    {
+        image.fillAmount = Core.GetCore().theSpaceship.m_xParts[1].m_bPurchased ? 1.0f : 0.0f;
+    }
+    public void PopulateCooldownImage_SpaceshipPart2(Image image)
+    {
+        image.fillAmount = Core.GetCore().theSpaceship.m_xParts[2].m_bPurchased ? 1.0f : 0.0f;
+    }
+    public void PopulateCooldownImage_SpaceshipPart3(Image image)
+    {
+        image.fillAmount = Core.GetCore().theSpaceship.m_xParts[3].m_bPurchased ? 1.0f : 0.0f;
+    }
+    public void PopulateCooldownImage_SpaceshipPart4(Image image)
+    {
+        image.fillAmount = Core.GetCore().theSpaceship.m_xParts[4].m_bPurchased ? 1.0f : 0.0f;
+    }
+
     public void PopulateCooldownImage_JetPack(Image image)
     {
         float filledAmount = GetCooldownFilledAmount(PlayerBehaviour.Skill.JETPACK);
@@ -125,6 +149,15 @@ public class HUD : MonoBehaviour
         text.text = iCollectedResources + " / " + iCapacity;
     }
 
+    public void PopulateEnemySpeed(Text text)
+    {
+        int iCollectedResources = Core.GetCore().thePlayer.collector.collectedResources.Count;
+
+        float fSpeed = (iCollectedResources + 1);
+
+        text.text = "Enemy Speed: " + fSpeed;
+    }
+
     // Visibility conditions
     public void ShouldPopulateButtonPrompt_JetPack(Text text)
     {
@@ -155,5 +188,15 @@ public class HUD : MonoBehaviour
     {
         PlayerBehaviour.SkillData skillData = Core.GetCore().thePlayer.skills[(int)skill];
         return skillData.bUnlocked;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0);
     }
 }

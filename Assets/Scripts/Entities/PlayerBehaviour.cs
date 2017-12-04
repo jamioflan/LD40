@@ -46,9 +46,8 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public IInteractable hoveringOver = null;
 
-    public MeshRenderer slowPFX;
-    public float fSlowPFXTime = 0.0f;
     public float fStunPFXTime = 0.0f;
+    public SlowTotem slowTotemPrefab;
 
     public ParticleSystem pfx;
     public LayerMask layerMask;
@@ -141,16 +140,8 @@ public class PlayerBehaviour : MonoBehaviour {
 
     private void Slow()
     {
-        fSlowPFXTime = 0.0f;
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 10.0f);
-        foreach(Collider collider in colliders)
-        {
-            BasicEnemy enemy = collider.GetComponent<BasicEnemy>();
-            if (enemy != null)
-            {
-                enemy.Slow(2.0f);
-            }
-        }
+        SlowTotem totem = Instantiate<SlowTotem>(slowTotemPrefab);
+        totem.transform.position = transform.position;
     }
 
 	void FixedUpdate ()
@@ -160,16 +151,6 @@ public class PlayerBehaviour : MonoBehaviour {
         Vector3 velocity = controller.velocity;
 
         fSpeedBoostActive -= Time.deltaTime;
-
-        if(fSlowPFXTime < 2.0f)
-        {
-            fSlowPFXTime += Time.deltaTime;
-            slowPFX.enabled = true;
-            slowPFX.transform.localEulerAngles = new Vector3(0.0f, -360.0f * fSlowPFXTime, 0.0f);
-            slowPFX.material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f - Mathf.Abs(fSlowPFXTime - 1.0f));
-        }
-        else
-            slowPFX.enabled = false;
 
         if (fStunPFXTime > 0.0f)
         {

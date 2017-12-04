@@ -94,5 +94,18 @@ public class Core : MonoBehaviour
         thePlayer.transform.position = new Vector3(0.0f, -1000.0f, 0.0f);
 
         theSpaceship.pfx.Play();
+
+        theHUD.gameOverBox.SetActive(true);
+        theHUD.gameOverText.text = "Mission Complete ScOre Collected: " + theWorkbench.nScOre;
+
+        Score.SetScore(theWorkbench.nScOre);
+    }
+
+    public static void OnBuiltSpaceshipPart()
+    {
+        foreach(EnemyLair lair in theCore.worldBuilder.lairs)
+        {
+            lair.SpawnEnemy();
+        }
     }
 }

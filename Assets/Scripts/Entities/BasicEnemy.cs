@@ -22,6 +22,7 @@ public class BasicEnemy : MonoBehaviour, IInteractable
     public float walkRange = 20.0f; // Distance to move in one block in either patrol or guard mode
     public float walkWait = 0.8f; // Time to wait between movements in either patrol or guard mode
     public float infightingChance = 0.0f;
+    public float doNothingChance = 1.0f;
     public float droppedInterest = 4.0f;
     public float captureRadius = 2.0f;
     public float meTime;
@@ -145,12 +146,12 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                 case State.RETURNING:
                     if (collector.collectedResources.Count == 0)
                     {
-                        // We've lost our resource :(
+                        // We've lost our resource :( :(
                         aggression = 0.0f;
                         agent.ResetPath();
                         state = State.IDLE;
                     }
-                    else if ((agent.destination - transform.position).magnitude < 2.0f)
+                    else if ((lair.holder.position - transform.position).magnitude < 2.0f)
                     {
                         while (collector.collectedResources.Count > 0)
                         {
@@ -234,7 +235,7 @@ public class BasicEnemy : MonoBehaviour, IInteractable
              return false;
    
         meTime = Random.Range(1.0f, 2.0f);
-        float totalInterest = 0.0f;
+        float totalInterest = doNothingChance;
         aggression = 0.0f;
 
         List<InterestPair> interestingResources = new List<InterestPair>();
@@ -274,6 +275,10 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                 return true;
             }
         }
+
+        // We must have decided to do nothing
+
+
         return false;
     }
 

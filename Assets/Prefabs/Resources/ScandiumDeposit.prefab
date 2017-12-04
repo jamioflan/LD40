@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 4380684909735026}
   - component: {fileID: 65241172767411674}
   - component: {fileID: 114892016780262718}
+  - component: {fileID: 208035503038440330}
   m_Layer: 0
   m_Name: ScandiumDeposit
   m_TagString: Untagged
@@ -447,7 +448,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417865124152940}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88356, y: 2, z: 4.860176}
+  m_LocalPosition: {x: 89.83308, y: 18.619244, z: 89.814995}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4946259751247636}
@@ -1394,3 +1395,18 @@ MonoBehaviour:
   green: {fileID: 2100000, guid: c1fc0f4d657fed544bca6ff31570656e, type: 2}
   type: 0
   template: {fileID: 114870246407678840, guid: e322b38e12f6e4c41b8f9ce6c57d9390, type: 2}
+--- !u!208 &208035503038440330
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417865124152940}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.445, y: 1.995, z: 1.935}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

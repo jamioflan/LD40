@@ -87,6 +87,11 @@ public class WorkbenchMenu : MonoBehaviour
             {
                 xItem.m_bBuilt = true;
 
+                if(xItem.m_bSpaceshipPart)
+                {
+                    Core.OnBuiltSpaceshipPart();
+                }
+
                 // Make sure we still have a valid selection
                 if (!ShowBuiltItems)
                 {

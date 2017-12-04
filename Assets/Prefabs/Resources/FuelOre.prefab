@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4801512684270968}
   - component: {fileID: 65420128849475072}
+  - component: {fileID: 208521453808019532}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -403,7 +404,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1146240746510658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.583171, y: 2, z: 4.656857}
+  m_LocalPosition: {x: 91.04153, y: 17.317713, z: 88.96918}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4763733530933208}
@@ -1063,3 +1064,18 @@ MonoBehaviour:
   green: {fileID: 2100000, guid: c1fc0f4d657fed544bca6ff31570656e, type: 2}
   type: 2
   template: {fileID: 114870246407678840, guid: 3732d60b65c009f4191e76288da0b842, type: 2}
+--- !u!208 &208521453808019532
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779302543386330}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

@@ -160,7 +160,9 @@ public class WorldBuilder : MonoBehaviour
                 }
                 else // Floor
                 {
-                    if (j != 0 && tiles[i, j - 1] < 0.5f)
+                    if (j != 0 && tiles[i, j - 1] < 0.5f
+                        && i != 0 && tiles[i - 1, j] < 0.5f
+                        && i != width - 1 && tiles[i + 1, j] < 0.5f)
                     {
                         float fPerlinScore = Mathf.PerlinNoise(fNoiseOffsetX + fHillNoiseScale * (float)i / (float)width, fNoiseOffsetY + fHillNoiseScale * (float)j / (float)height);
                         float fDistFromCentre = new Vector3(i - width / 2, 0.0f, j - height / 2).magnitude;
@@ -206,7 +208,20 @@ public class WorldBuilder : MonoBehaviour
             for (int j = 0; j < sweetLoot[i].whyDoIHaveToDoThisUnity.Count; j++)
             {
                 KeyValuePair<int, int> pair = tilesByBiome[i][Random.Range(0, tilesByBiome[i].Count - 1)];
-                WorldTile tile = worldTiles[pair.Key, pair.Value];
+                int x = pair.Key;
+                int y = pair.Value;
+                int iterationCount = 0;
+
+                while(iterationCount < 100 && iBestHomeX - 1 <= x && x <= iBestHomeX + 1 && iBestHomeY - 1 <= y && y <= iBestHomeY + 1)
+                {
+                    pair = tilesByBiome[i][Random.Range(0, tilesByBiome[i].Count - 1)];
+                    x = pair.Key;
+                    y = pair.Value;
+
+                    iterationCount++;
+                }
+
+                WorldTile tile = worldTiles[x, y];
                 GameObject loot = Instantiate<GameObject>(sweetLoot[i].whyDoIHaveToDoThisUnity[j], tile.transform);
                 loot.transform.localPosition = new Vector3(Random.Range(2.0f, 8.0f), tile.walls.Length > 0 ? 2.0f : 0.0f, Random.Range(2.0f, 8.0f)); // No hacks here, honest.
                 loot.transform.localEulerAngles = new Vector3(0.0f, Random.Range(0.0f, 360.0f), 0.0f);
@@ -214,7 +229,19 @@ public class WorldBuilder : MonoBehaviour
                 if (loot.GetComponent<EnemyLair>() != null)
                 {
                     lairs.Add(loot.GetComponent<EnemyLair>());
+                    loot.transform.localPosition = new Vector3(5.0f, tile.walls.Length > 0 ? 2.0f : 0.0f, 5.0f);
                     loot.transform.localEulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+                }
+            }
+        }
+
+        for(int i = -2; i <= 2; i++)
+        {
+            for(int j = -2; j <= 2; j++)
+            {
+                foreach(NavMeshLink link in worldTiles[iBestHomeX + i, iBestHomeY + j].GetComponentsInChildren<NavMeshLink>())
+                {
+                    Destroy(link);
                 }
             }
         }
@@ -231,6 +258,8 @@ public class WorldBuilder : MonoBehaviour
         Core.GetCore().thePlayer.transform.position = new Vector3(-width * 5.0f + iBestHomeX * 10.0f + 5.0f, 2.0f, -height * 5.0f + iBestHomeY * 10.0f + 5.0f);
         foreach (EnemyLair lair in lairs)
             lair.SpawnEnemies();
+
+        DynamicGI.UpdateEnvironment();
 
     }
 }

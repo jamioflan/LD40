@@ -13,6 +13,8 @@ public class CollectedResource : ResourceBase
     // The object that owns this one
     public Transform owner;
 
+    public Vector3 offset = Vector3.zero;
+
     public enum OwnerType
     {
         Player,
@@ -33,7 +35,7 @@ public class CollectedResource : ResourceBase
         if (leader != null)
         {
 
-            Vector3 distance = leader.position - transform.position;
+            Vector3 distance = leader.position + offset - transform.position;
             Vector3 moveDirection = Vector3.zero;
             float fDistanceAway = distance.magnitude - followDistance;
             if (fDistanceAway > 0)
@@ -58,6 +60,7 @@ public class CollectedResource : ResourceBase
                 collector.Yield(this);
             }
         }
+        offset = Vector3.zero;
         ownerType = OwnerType.None;
     }
 
@@ -71,6 +74,7 @@ public class CollectedResource : ResourceBase
         {
             LeaveOwner();
         }
+        offset = Vector3.zero;
         owner = collector.transform;
         ownerType = collector == Core.GetCore().thePlayer.collector ? OwnerType.Player : OwnerType.Enemy;
     }
@@ -80,6 +84,7 @@ public class CollectedResource : ResourceBase
         LeaveOwner();
         owner = receiver;
         leader = receiver;
+        offset = Vector3.zero;
     }
 
     public void SetOwner(Workbench bench)
@@ -87,6 +92,7 @@ public class CollectedResource : ResourceBase
         LeaveOwner();
         bench.ReceiveResource(type);
         Destroy(gameObject);
+        offset = Vector3.zero;
     }
 
     public void SetOwner(EnemyLair lair)
@@ -95,11 +101,13 @@ public class CollectedResource : ResourceBase
         lair.AddResource(this);
         owner = lair.transform;
         ownerType = OwnerType.Lair;
+        offset = Random.insideUnitSphere;
     }
 
     public void SetOwner()
     {
         LeaveOwner();
+        offset = Vector3.zero;
         owner = null;
         leader = null;
     }
