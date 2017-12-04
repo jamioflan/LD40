@@ -57,10 +57,6 @@ public class PlayerBehaviour : MonoBehaviour {
     void Start () {
         collector = GetComponentInChildren<ResourceCollector>();
         skills[(int)Skill.JETPACK].bUnlocked = true;
-
-        // --- DEBUG
-        for (int i = 0; i < 5; i++)
-            skills[i].bUnlocked = true;
     }
 	
 	// Update is called once per frame

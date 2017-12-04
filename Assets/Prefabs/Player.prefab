@@ -278,7 +278,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373389499547888}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2239.8032, y: 1752.398, z: -3126.766}
+  m_LocalPosition: {x: 160.86829, y: 128.33755, z: -103.75326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4208708930934892}
@@ -632,19 +632,19 @@ MonoBehaviour:
     fTimeSinceUsed: 0
     bUnlocked: 0
     bCanUse: 0
-  - fCooldown: 1
+  - fCooldown: 5
     inputAxis: Fire1
     soundEffect: {fileID: 8300000, guid: 67456d04982878042815033eadde676a, type: 3}
     fTimeSinceUsed: 0
     bUnlocked: 0
     bCanUse: 0
-  - fCooldown: 1
+  - fCooldown: 5
     inputAxis: Slow
     soundEffect: {fileID: 8300000, guid: d4bcfd7b2c078bc4bb30bbfbbb0f4a79, type: 3}
     fTimeSinceUsed: 0
     bUnlocked: 0
     bCanUse: 0
-  - fCooldown: 1
+  - fCooldown: 5
     inputAxis: SpeedBoost
     soundEffect: {fileID: 8300000, guid: c014bfa449bf83840807ec221d6ae6a6, type: 3}
     fTimeSinceUsed: 0
