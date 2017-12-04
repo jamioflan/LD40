@@ -26,7 +26,6 @@ public class BasicEnemy : MonoBehaviour, IInteractable
     public float droppedInterest = 4.0f;
     public float captureRadius = 2.0f;
     public float meTime;
-    public float aggression = 0.0f;
     public float baseSpeed = 1.0f;
     public float speedUnits = 3.0f;
     public float accelerationUnits = 8.0f;
@@ -96,6 +95,7 @@ public class BasicEnemy : MonoBehaviour, IInteractable
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
         }
+        float aggression = Core.GetCore().thePlayer.collector.collectedResources.Count;
         agent.speed = speedUnits * (baseSpeed + aggression) * (fSlowTime > 0.0f ? 0.5f : 1.0f);
         agent.acceleration = accelerationUnits * (1 + aggression);
         agent.angularSpeed = angularSpeedUnits * (1 + aggression);
@@ -236,7 +236,6 @@ public class BasicEnemy : MonoBehaviour, IInteractable
    
         meTime = Random.Range(1.0f, 2.0f);
         float totalInterest = doNothingChance;
-        aggression = 0.0f;
 
         List<InterestPair> interestingResources = new List<InterestPair>();
         foreach (Collider collider in Physics.OverlapSphere(transform.position, detectionRadius, Physics.AllLayers, QueryTriggerInteraction.Collide))
@@ -252,7 +251,6 @@ public class BasicEnemy : MonoBehaviour, IInteractable
             {
                 continue;
             }
-            aggression += 1.0f; // Aggression isn't affected by distance?
             // Be more interested in things closer to you
             float distance = (transform.position - pair.resource.transform.position).magnitude;
             if (distance > 1)
@@ -271,7 +269,6 @@ public class BasicEnemy : MonoBehaviour, IInteractable
                 target = pair.resource;
                 fWaitTime = 0;
                 state = State.FOLLOWING;
-                aggression += 2;
                 return true;
             }
         }
