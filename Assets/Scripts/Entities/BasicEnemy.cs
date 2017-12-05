@@ -95,7 +95,7 @@ public class BasicEnemy : MonoBehaviour, IInteractable
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
         }
-        float aggression = Core.GetCore().thePlayer.collector.collectedResources.Count;
+        float aggression = Core.GetCore().thePlayer.collector.collectedResources.Count * 1.25f;
         agent.speed = speedUnits * (baseSpeed + aggression) * (fSlowTime > 0.0f ? 0.5f : 1.0f);
         agent.acceleration = accelerationUnits * (1 + aggression);
         agent.angularSpeed = angularSpeedUnits * (1 + aggression);
