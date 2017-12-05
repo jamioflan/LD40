@@ -111,6 +111,8 @@ public class PlayerBehaviour : MonoBehaviour {
     {
         BasicEnemy target = hoveringOver.GetGameObject().GetComponent<BasicEnemy>();
         target.Stun(5.0f);
+        
+        
 
         LineRenderer lr = GetComponent<LineRenderer>();
         List<Vector3> positions = new List<Vector3>();
@@ -131,6 +133,15 @@ public class PlayerBehaviour : MonoBehaviour {
         }
 
         positions.Add(target.transform.position);
+
+        foreach (Collider coll in Physics.OverlapSphere(target.transform.position, 3.0f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        {
+            if (coll.GetComponent<BasicEnemy>() != null) {
+                positions.Add(coll.gameObject.transform.position);
+                positions.Add(target.transform.position);
+                coll.GetComponent<BasicEnemy>().Stun(5.0f);
+            }
+        }
 
         lr.positionCount = positions.Count;
         lr.SetPositions(positions.ToArray());
